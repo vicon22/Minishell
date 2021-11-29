@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 21:23:32 by eveiled           #+#    #+#             */
-/*   Updated: 2021/11/28 21:59:21 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/11/29 18:54:26 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,6 @@ t_envp	*ft_lstnew_envp(char *envp)
 	new->name = ft_take_name(envp);
 	new->value = ft_take_value(envp);
 	new->allstr = ft_strdup(envp);
-	printf("------\n");
-	printf("current_envp->name: %s\n", new->name);
-	printf("current_envp->value: %s\n", new->value);
-	printf("current_envp->allstr: %s\n", new->allstr);
-	printf("------\n");
 	if (new->name == NULL || new->value == NULL || new->allstr == NULL)
 	{
 		if (new->name)
@@ -82,7 +77,7 @@ t_envp	*ft_lstnew_envp(char *envp)
 		return (NULL);
 	}
 	new->next = NULL;
-	printf("++++\n");
+	new->previous = NULL;
 	return (new);
 }
 
@@ -94,11 +89,25 @@ void	ft_lstadd_back(t_envp **lst, t_envp *new)
 	if (saver)
 	{
 		while ((saver)->next)
+		{
 			saver = (saver)->next;
+		}
 		(saver)->next = new;
+		new->previous = saver;
 	}
 	else
 	{
 		*lst = new;
 	}
+}
+
+void	ft_delete_current(t_envp *current)
+{
+	t_envp	*next;
+	t_envp	*previous;
+
+	next = current->next;
+	previous = current->previous;
+	previous->next = next;
+	next->previous = previous;
 }

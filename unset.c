@@ -1,23 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/28 18:06:59 by eveiled           #+#    #+#             */
-/*   Updated: 2021/11/29 18:12:33 by eveiled          ###   ########.fr       */
+/*   Created: 2021/11/29 18:36:25 by eveiled           #+#    #+#             */
+/*   Updated: 2021/11/29 19:03:12 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "evgenii.h"
 
-void	ft_env(t_envp	*all_envp)
+void	ft_unset(int argc, char **argv, t_envp *all_envp)
 {
-	while (all_envp)
+	int		i;
+	t_envp	*saver;
+
+	if (argc == 1)
 	{
-		write(1, all_envp->allstr, ft_strlen(all_envp->allstr));
-		write(1, "\n", 1);
-		all_envp = all_envp->next;
+		write(1, "unset: not enough arguments\n", 28);
+		//переделать в errno
+		return ;
+	}
+	i = 1;
+	while (i != argc)
+	{
+		saver = all_envp;
+		while (saver)
+		{
+			if (!ft_strncmp(saver->name, argv[i], ft_strlen(saver->name)))
+			{
+				ft_delete_current(saver);
+			}
+			saver = saver->next;
+		}
+		i++;
 	}
 }
