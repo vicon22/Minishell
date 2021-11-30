@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 15:23:55 by eveiled           #+#    #+#             */
-/*   Updated: 2021/11/29 18:58:48 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/11/30 14:10:44 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int argc, char **argv, char **envp)
 	all_envp = ft_cr_list_envp(envp);
 	//ft_export(argc, argv, all_envp);
 	//ft_env(all_envp);
-	ft_unset(argc, argv, all_envp);
+	ft_unset(argv, all_envp);
 	ft_env(all_envp);
 
 	return (0);

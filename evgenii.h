@@ -18,7 +18,7 @@ void	ft_echo(int argc, char **argv);
 void	ft_pwd(void);
 void	ft_env(t_envp *all_envp);
 void	ft_export(int argc, char **argv, t_envp *all_envp);
-void	ft_unset(int argc, char **argv, t_envp *all_envp);
+void	ft_unset(char **argv, t_envp *all_envp);
 void	ft_delete_current(t_envp *current);
 void	ft_lstadd_back(t_envp **lst, t_envp *new);
 t_envp	*ft_lstnew_envp(char *envp);
