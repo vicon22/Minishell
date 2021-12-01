@@ -69,12 +69,13 @@ void	ft_show_lst(t_arg *lst)
 		while (lst != NULL)
 		{
 			if (lst->content)
-				printf("%s\n", lst->content);
+				printf("content: %s\n", lst->content);
 			if (lst->path)
-				printf("%s\n", lst->path);
+				printf("path: %s\n", lst->path);
 			if (lst->args)
 			{
 				i = 0;
+				printf("args: ");
 				while (lst->args[i])
 				{
 					printf("%s ", lst->args[i]);

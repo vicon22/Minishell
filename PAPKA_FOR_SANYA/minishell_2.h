@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:03:02 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/01 13:02:58 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/01 18:49:11 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # define PATH "/Users/kmercy/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki"
+# include <signal.h>
 
 typedef struct d_arg
 {
@@ -45,4 +46,6 @@ int		ft_is_pipe_or_redir(void *cont);
 char	*ft_strjoin2(char **s1, char *s2);
 void	ft_lst2add_args(t_arg **lst, char **line);
 void	free_all(char **result);
+/*evgenii's shit*/
+void	ft_exec(t_arg *lst, char **argv);
 #endif

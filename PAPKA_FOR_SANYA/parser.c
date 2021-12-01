@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/01 17:00:52 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/01 21:23:50 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,14 +102,35 @@ void	ft_parse_input_str(char *args_str, t_arg **arg_l)
 	}
 }
 
-int	main(int argc, char **argv, char**envp)
+//void	nothing(int signal)
+//{
+//	(void) signal;
+//	//printf("here will be nothing\n");
+//}
+//
+//void	new_prompt(int signal)
+//{
+//	(void) signal;
+//	printf("\nminishell$ ");
+//}
+//
+//void	ft_exit(int signal)
+//{
+//	(void) signal;
+//	exit (0);
+//}
+
+int	main(int argc, char **argv, char **envp)
 {
-	char	*args_str;
-	t_arg	*arg_l;
-	t_arg	*func_l;
+	char				*args_str;
+	t_arg				*arg_l;
+	t_arg				*func_l;
 
 	(void) argc;
 	(void) argv;
+//	signal(SIGQUIT, nothing);
+//	signal(SIGINT, new_prompt);
+//	signal(EOF, ft_exit);
 	while (1)
 	{
 //		args_str = "echo \"dasdada\" \'vasya\' 228 \'$PATH\' \"$LOGNAME\" | grep $PWD \"$PATH\"  \'\"31231\"\' \' \" \'";
@@ -120,6 +141,7 @@ int	main(int argc, char **argv, char**envp)
 		ft_set_funcs_structure(arg_l, &func_l);
 		ft_set_path(func_l, PATH);
 		ft_show_lst(func_l);
+		ft_exec(func_l, envp);
 		ft_free_lst(&arg_l);
 		ft_free_lst(&func_l);
 	}

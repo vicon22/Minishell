@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 21:23:32 by eveiled           #+#    #+#             */
-/*   Updated: 2021/11/29 18:54:26 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/11/30 15:13:34 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,18 @@ char	*ft_take_value(char *envp)
 	char	*current;
 	int		i;
 
-	size = ft_strlen(ft_strchr(envp, '=') + 1);
+	if (ft_strchr(envp, '='))
+		size = ft_strlen(ft_strchr(envp, '=') + 1);
+	else
+		size = 0;
+	if (size == 0)
+	{
+		value = (char *)malloc(sizeof(char) * (2));
+		value = "''";
+		if (NULL == value)
+			return (NULL);
+		return (value);
+	}
 	value = (char *)malloc(sizeof(char) * (size + 1));
 	if (NULL == value)
 		return (NULL);
