@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
-void	ft_pipe(char ***argcc, int i, int pipe_count, char **envp)
+void	ft_pipe(char ***argcc, int i, char **envp)
 {
 	int		pid;
 	int		pipe_1[2];
@@ -24,20 +24,19 @@ void	ft_pipe(char ***argcc, int i, int pipe_count, char **envp)
 		close(pipe_1[1]);
 		dup2(pipe_1[0], 0);
 		close(pipe_1[0]);
-		waitpid(pid, NULL, 0);
+		//waitpid(pid, NULL, 0);
 	}
 }
 
-void	ft_return(char ***argcc, int i, int pipe_count, char **envp)
+void	ft_return(char ***argcc, char **envp)
 {
-	int		pid;
 	int		pipe_1[2];
 
 		if (!fork())
 		{
-//			dup2(pipe_2[0], 0);
-//			close(pipe_2[1]);
-//			close(pipe_2[0]);
+			dup2(pipe_1[0], 0);
+			close(pipe_1[1]);
+			close(pipe_1[0]);
 			execve(argcc[2][0], argcc[2], envp);
 		}
 }
@@ -46,13 +45,9 @@ void	ft_return(char ***argcc, int i, int pipe_count, char **envp)
 int	main(int argc, char **argv, char **envp)
 {
 	char	**argcc[3];
-	int		pipe_1[2];
-	int		pipe_2[2];
 	char	*yes[2];
 	char	*head[2];
 	char	*wc[2];
-	int		pipe_count = 2;
-	int		i;
 
 	yes[0] = "/usr/bin/yes";
 	yes[1] = 0;
@@ -63,11 +58,34 @@ int	main(int argc, char **argv, char **envp)
 	argcc[0] = yes;
 	argcc[1] = head;
 	argcc[2] = wc;
-	ft_pipe(argcc, 0, 2, envp);
-	ft_pipe(argcc, 1, 2, envp);
-	//ft_pipe(argcc, 2, 2, envp);
-	execve(argcc[2][0], argcc[2], envp);
-	//ft_return(argcc, 2, 2, envp);
+	ft_pipe(argcc, 0, envp);
+	ft_pipe(argcc, 1, envp);
+	ft_return(argcc, envp);
+	waitpid(-1, NULL, 0);
+	waitpid(-1, NULL, 0);
+	waitpid(-1, NULL, 0);
+}
+
+//int	main(int argc, char **argv, char **envp)
+//{
+//	char	**argcc[3];
+//	int		pipe_1[2];
+//	int		pipe_2[2];
+//	char	*yes[2];
+//	char	*head[2];
+//	char	*wc[2];
+//	int		pipe_count = 2;
+//	int		i;
+//
+//	yes[0] = "/usr/bin/yes";
+//	yes[1] = 0;
+//	head[0] = "/usr/bin/head";
+//	head[1] = 0;
+//	wc[0] = "/usr/bin/wc";
+//	wc[1] = 0;
+//	argcc[0] = yes;
+//	argcc[1] = head;
+//	argcc[2] = wc;
 //	pipe(pipe_1);
 //	if (!fork())
 //	{
@@ -101,4 +119,4 @@ int	main(int argc, char **argv, char **envp)
 //	wait(0);
 //	wait(0);
 //	wait(0);
-}
+//}
