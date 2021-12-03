@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/02 13:25:57 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/03 20:35:59 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,10 @@ int	main(int argc, char **argv, char **envp)
 //		args_str = "echo \"dasdada\" \'vasya\' 228 \'$PATH\' \"$LOGNAME\" | grep $PWD \"$PATH\"  \'\"31231\"\' \' \" \'";
 		args_str = readline("minishell$ ");
 		arg_l = NULL;
+		printf("11\n");
+		printf("args_str %p\n", args_str);
 		ft_parse_input_str(args_str, &arg_l);
+		printf("22\n");
 		ft_handle_quotes(arg_l, envp);
 		ft_set_funcs_structure(arg_l, &func_l);
 		ft_set_path(func_l, PATH);
@@ -144,6 +147,7 @@ int	main(int argc, char **argv, char **envp)
 		ft_exec(func_l, envp);
 		ft_free_lst(&arg_l);
 		ft_free_lst(&func_l);
+		//break ;
 	}
 	return 0;
 }

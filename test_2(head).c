@@ -32,15 +32,15 @@ void	ft_return(char ***argcc, char **envp)
 {
 	int		pipe_1[2];
 
-		if (!fork())
-		{
-			dup2(pipe_1[0], 0);
-			close(pipe_1[1]);
-			close(pipe_1[0]);
-			execve(argcc[2][0], argcc[2], envp);
-		}
+	//pipe(pipe_1);
+	if (!fork())
+	{
+		dup2(pipe_1[0], 0);
+		close(pipe_1[1]);
+		close(pipe_1[0]);
+		execve(argcc[2][0], argcc[2], envp);
+	}
 }
-
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -64,6 +64,7 @@ int	main(int argc, char **argv, char **envp)
 	waitpid(-1, NULL, 0);
 	waitpid(-1, NULL, 0);
 	waitpid(-1, NULL, 0);
+	//printf("222\n");
 }
 
 //int	main(int argc, char **argv, char **envp)
