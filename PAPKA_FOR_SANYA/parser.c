@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/03 20:35:59 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/03 22:38:00 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,23 +102,24 @@ void	ft_parse_input_str(char *args_str, t_arg **arg_l)
 	}
 }
 
-//void	nothing(int signal)
-//{
-//	(void) signal;
-//	//printf("here will be nothing\n");
-//}
-//
-//void	new_prompt(int signal)
-//{
-//	(void) signal;
-//	printf("\nminishell$ ");
-//}
-//
-//void	ft_exit(int signal)
-//{
-//	(void) signal;
-//	exit (0);
-//}
+void	nothing(int signal)
+{
+	(void) signal;
+	//printf("here will be nothing\n");
+}
+
+void	new_prompt(int signal)
+{
+	(void) signal;
+	printf("\nminishell$ ");
+}
+
+void	ft_exit(int signal)
+{
+	(void) signal;
+	printf("VEOF\n");
+	exit (0);
+}
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -128,9 +129,9 @@ int	main(int argc, char **argv, char **envp)
 
 	(void) argc;
 	(void) argv;
-//	signal(SIGQUIT, nothing);
-//	signal(SIGINT, new_prompt);
-//	signal(EOF, ft_exit);
+	signal(SIGQUIT, nothing);
+	signal(SIGINT, new_prompt);
+	signal(EOF, ft_exit);
 	while (1)
 	{
 //		args_str = "echo \"dasdada\" \'vasya\' 228 \'$PATH\' \"$LOGNAME\" | grep $PWD \"$PATH\"  \'\"31231\"\' \' \" \'";
@@ -138,6 +139,18 @@ int	main(int argc, char **argv, char **envp)
 		arg_l = NULL;
 		printf("11\n");
 		printf("args_str %p\n", args_str);
+//		if (args_str != NULL)
+//		{
+//			ft_parse_input_str(args_str, &arg_l);
+//			printf("22\n");
+//			ft_handle_quotes(arg_l, envp);
+//			ft_set_funcs_structure(arg_l, &func_l);
+//			ft_set_path(func_l, PATH);
+//			ft_show_lst(func_l);
+//			ft_exec(func_l, envp);
+//			ft_free_lst(&arg_l);
+//			ft_free_lst(&func_l);
+//		}
 		ft_parse_input_str(args_str, &arg_l);
 		printf("22\n");
 		ft_handle_quotes(arg_l, envp);
