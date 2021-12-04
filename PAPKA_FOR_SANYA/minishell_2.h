@@ -20,6 +20,9 @@
 # include <readline/history.h>
 # define PATH "/Users/kmercy/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki"
 # include <signal.h>
+# include <unistd.h>
+# include <sys/wait.h>
+# include <fcntl.h>
 
 typedef struct d_arg
 {

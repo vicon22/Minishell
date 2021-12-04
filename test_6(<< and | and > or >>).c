@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 21:31:41 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/03 22:15:48 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/04 17:47:00 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
-# include <readline/readline.h>
 # include <readline/history.h>
 #include <fcntl.h>
 
@@ -56,7 +55,7 @@ size_t	ft_strlen(char *str)
 	return (size);
 }
 
-void ft_heredoc(char **argv, char **envp)
+void ft_heredoc(char *stop, char **envp)
 {
 	int		pip[2];
 	int		pid;
@@ -67,7 +66,7 @@ void ft_heredoc(char **argv, char **envp)
 	if (!pid)
 	{
 		args_str = readline("> ");
-		while (ft_strncmp2(args_str, argv[1], ft_strlen(argv[1])))
+		while (ft_strncmp2(args_str, stop, ft_strlen(stop)))
 		{
 			write(pip[1], args_str, ft_strlen(args_str));
 			write(pip[1], "\n", 1);
@@ -79,14 +78,14 @@ void ft_heredoc(char **argv, char **envp)
 	}
 	else
 	{
-		close(pip[1]);
-		dup2(pip[0], 0);
-		close(pip[0]);
+//		close(pip[1]);
+//		dup2(pip[0], 0);
+//		close(pip[0]);
 		waitpid(0, NULL, 0);
 	}
 }
 
-void	ft_pipe(char **path, char **envp)
+void	ft_pipe(char *path, char **argc, char **envp)
 {
 	int		pid;
 	int		pip[2];
@@ -96,9 +95,8 @@ void	ft_pipe(char **path, char **envp)
 	if (!pid)
 	{
 		close(pip[0]);
-		dup2(pip[1], 1);
 		close(pip[1]);
-		execve(path[0], path, envp);
+		execve(path, argc, envp);
 		exit(0);
 	}
 	else
@@ -110,7 +108,7 @@ void	ft_pipe(char **path, char **envp)
 	}
 }
 
-void	ft_return(char **path, char **envp)
+void	ft_return(char *path, char **argc, char **envp)
 {
 	int		pid;
 
@@ -120,9 +118,30 @@ void	ft_return(char **path, char **envp)
 //		dup2(pip[0], 0);
 //		close(pip[0]);
 //		close(pip[1]);
-		execve(path[0], path, envp);
+		execve(path, argc, envp);
 	}
+	else
+		waitpid(pid, NULL, 0);
 }
+
+//void	ft_full_return(char **envp)
+//{
+//	int		pid;
+//	char	*cat[2];
+//
+//	cat[0] = "/bin/cat";
+//	cat[1] = 0;
+//	pid = fork();
+//	if (pid == 0)
+//	{
+//		//		dup2(pip[0], 0);
+//		//		close(pip[0]);
+//		//		close(pip[1]);
+//		execve(cat[0], cat, envp);
+//	}
+//	else
+//		waitpid(pid, NULL, 0);
+//}
 
 void	ft_add(char *file_name)
 {
@@ -156,17 +175,19 @@ void	ft_rewrite(char *file_name)
 
 	write(2, "---\n", 4);
 	fd = open(file_name, O_WRONLY | O_TRUNC | O_CREAT, 0777);
-	//printf()
 	if (fd == -1)
 	{
 		write(2, "Error with open\n", 16);
 		exit(1);
 	}
-	pid = fork();
-	if (!pid)
-	{
-		dup2(fd, 1);
-	}
+	//	pid = fork();
+	//	if (!pid)
+	//	{
+	//		dup2(fd, 1);
+	//	}
+	dup2(fd, 1);
+	//	else
+	//		//waitpid(pid, NULL, 0);
 //	else
 //		//waitpid(pid, NULL, 0);
 }
@@ -184,13 +205,14 @@ int	main(int argc, char **argv, char **envp)
 	wc[0] = "/usr/bin/wc";
 	wc[1] = 0;
 	wc[2] = 0;
-	ft_heredoc(argv, envp);
-	ft_pipe(wc, envp);
-	if (ft_strlen(argv[1]) == 1)
+	ft_heredoc(argv[1], envp);
+	ft_pipe(wc[0],wc, envp);//каждому pipe нужен waitpid в конце функции
+	//добавить замену переменных окружения на их значения
+	if (ft_strlen(argv[2]) == 1)
 		ft_rewrite(argv[3]);
-	if (ft_strlen(argv[1]) == 2)
+	if (ft_strlen(argv[2]) == 2)
 		ft_add(argv[3]);
-	ft_return(cat, envp);
+	ft_return(cat[0],cat, envp);
 	waitpid(0, &status, 0);
 	//waitpid(0, &status, 0);
 	waitpid(0, &status, 0);
