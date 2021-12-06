@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:04:36 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/01 16:56:35 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/06 18:06:48 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,14 @@ void	ft_handle_quotes(t_arg *arg_l, char**envp)
 	while (arg_l != NULL)
 	{
 		content = &(arg_l->content);
-		if (ft_strchr(*content, '\"') && ft_closed_quote(ft_strchr(*content, '\"')) && ft_strchr(*content, '$'))
-		{
-			while (ft_strchr(*content, '\"') && ft_closed_quote(ft_strchr(*content, '\"')) && ft_strchr(*content, '$'))
-				ft_replace_by_envp(content, envp);
-		}
-		else if (!(ft_strchr(*content, '\'') && ft_closed_quote(ft_strchr(*content, '\''))) && ft_strchr(*content, '$'))
-			while (!(ft_strchr(*content, '\'') && ft_closed_quote(ft_strchr(*content, '\''))) && ft_strchr(*content, '$'))
-				ft_replace_by_envp(content, envp);
+		while (ft_strchr(*content, '\"') && ft_closed_quote(ft_strchr(*content, '\"')) && ft_strchr(*content, '$'))
+			ft_replace_by_envp(content, envp);
+		while (!(ft_strchr(*content, '\'') && ft_closed_quote(ft_strchr(*content, '\''))) && ft_strchr(*content, '$'))
+			ft_replace_by_envp(content, envp);
 		if (**content == '\"' && ft_closed_quote(ft_strchr(*content, '\"')))
 			ft_remove_quotes(ft_strchr(*content, '\"'));
 		else if (**content == '\'' && ft_closed_quote(ft_strchr(*content, '\'')))
-				ft_remove_quotes(ft_strchr(*content, '\''));
+			ft_remove_quotes(ft_strchr(*content, '\''));
 		arg_l = arg_l->next;
 	}
 }
@@ -76,7 +72,8 @@ void	ft_remove_quotes(void *content)
 
 char	*ft_end_of_var(char *content)
 {
-	while (*content && !ft_is_space(*content) && *content != '\'' && *content != '\"')
+	content++;
+	while (*content && !ft_is_space(*content) && *content != '\'' && *content != '\"' && *content != '$')
 	{
 		content++;
 	}

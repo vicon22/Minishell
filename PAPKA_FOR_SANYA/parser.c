@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/04 14:45:11 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/06 18:40:25 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	ft_set_funcs_structure(t_arg *arg_l, t_arg **func_l)
 			ft_lst2add_args(func_l, ft_split(line, ' '));
 			free(line);
 		}
+		else
+			arg_l = arg_l->next;
 		if (arg_l && ft_is_pipe_or_redir(arg_l->content))
 		{
 			ft_lst2add_back(func_l, ft_lst2_new(ft_strdup(arg_l->content)));
@@ -102,6 +104,48 @@ void	ft_parse_input_str(char *args_str, t_arg **arg_l)
 	}
 }
 
+int ft_array_len(char **array)
+{
+	int i;
+
+	i = 0;
+	while (array[i])
+		i++;
+	return (i);
+}
+
+void ft_set_heredoc(t_arg *func_l)
+{
+	t_arg *next;
+	int i;
+	int j;
+	char **new_args;
+
+	while (func_l)
+	{
+		next = func_l->next;
+		if (next)
+			if (!ft_strncmp(next->content, "<<", 2))
+			{
+				if (next->next)
+				{
+					new_args = (char **)ft_calloc((ft_array_len(func_l->args) + ft_array_len(next->next->args) + 1), sizeof(char *));
+					i = -1;
+					while (++i < ft_array_len(func_l->args))
+						new_args[i] = ft_strdup(func_l->args[i]);
+					j = 0;
+					while (++j < ft_array_len(next->next->args))
+						new_args[i + j - 1] = ft_strdup(next->next->args[j]);
+					free_all(func_l->args);
+//					free(func_l->args);
+					func_l->args = new_args;
+					func_l = next->next;
+				}
+			}
+		func_l = func_l->next;
+	}
+}
+
 void	nothing(int signal)
 {
 	(void) signal;
@@ -121,6 +165,8 @@ void	ft_exit(int signal)
 	exit (0);
 }
 
+
+
 int	main(int argc, char **argv, char **envp)
 {
 	char				*args_str;
@@ -131,20 +177,21 @@ int	main(int argc, char **argv, char **envp)
 	(void) argc;
 	(void) argv;
 	input_fd[0] = 0;
-	//signal(SIGQUIT, nothing);
-	//signal(SIGINT, new_prompt);
+	signal(SIGQUIT, nothing);
+	signal(SIGINT, new_prompt);
 	//signal(EOF, ft_exit);
 	while (1)
 	{
 		dup2(input_fd[0], 0);
 //		args_str = "echo \"dasdada\" \'vasya\' 228 \'$PATH\' \"$LOGNAME\" | grep $PWD \"$PATH\"  \'\"31231\"\' \' \" \'";
 		args_str = readline("minishell$ ");
+		add_history(args_str);
 		arg_l = NULL;
 		ft_parse_input_str(args_str, &arg_l);
-		printf("22\n");
 		ft_handle_quotes(arg_l, envp);
 		ft_set_funcs_structure(arg_l, &func_l);
 		ft_set_path(func_l, PATH);
+		ft_set_heredoc(func_l);
 		ft_show_lst(func_l);
 		ft_exec(func_l, envp);
 		ft_free_lst(&arg_l);
