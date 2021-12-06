@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/06 18:40:25 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/06 19:00:49 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,14 +177,17 @@ int	main(int argc, char **argv, char **envp)
 	(void) argc;
 	(void) argv;
 	input_fd[0] = 0;
-	signal(SIGQUIT, nothing);
-	signal(SIGINT, new_prompt);
+//	signal(SIGQUIT, nothing);
+//	signal(SIGINT, new_prompt);
 	//signal(EOF, ft_exit);
+
 	while (1)
 	{
 		dup2(input_fd[0], 0);
 //		args_str = "echo \"dasdada\" \'vasya\' 228 \'$PATH\' \"$LOGNAME\" | grep $PWD \"$PATH\"  \'\"31231\"\' \' \" \'";
+//		args_str = "echo 1 2 3 << st 4 5 6";
 		args_str = readline("minishell$ ");
+
 		add_history(args_str);
 		arg_l = NULL;
 		ft_parse_input_str(args_str, &arg_l);
@@ -196,6 +199,7 @@ int	main(int argc, char **argv, char **envp)
 		ft_exec(func_l, envp);
 		ft_free_lst(&arg_l);
 		ft_free_lst(&func_l);
+		free(args_str);
 		//break ;
 	}
 	return 0;

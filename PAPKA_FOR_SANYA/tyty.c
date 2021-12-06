@@ -39,6 +39,10 @@ void	ft_heredoc(char *stop, char **envp)
 		args_str = readline("> ");
 		while (ft_strncmp2(args_str, stop, ft_strlen(stop)))
 		{
+			while (ft_strchr(args_str, '\"') && ft_closed_quote(ft_strchr(args_str, '\"')) && ft_strchr(args_str, '$'))
+				ft_replace_by_envp(&args_str, envp);
+			while (!(ft_strchr(args_str, '\'') && ft_closed_quote(ft_strchr(args_str, '\''))) && ft_strchr(args_str, '$'))
+				ft_replace_by_envp(&args_str, envp);
 			write(pip[1], args_str, ft_strlen(args_str));
 			write(pip[1], "\n", 1);
 			args_str = readline("> ");
