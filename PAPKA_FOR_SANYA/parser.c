@@ -6,12 +6,13 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/08 14:37:44 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/08 17:29:06 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell_2.h"
 
+int g_n;
 void	ft_set_funcs_structure(t_arg *arg_l, t_arg **func_l)
 {
 	char	*line;
@@ -151,19 +152,22 @@ void ft_set_heredoc(t_arg *func_l)
 void	nothing(int signal)
 {
 	(void) signal;
-	//printf("here will be nothing\n");
+	rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_redisplay();
 }
 
-void	new_prompt(int signal)
+void	new_promt(int signal)
 {
-	(void) signal;
-	printf("\nminishell$ ");
+	write(1, "\n", 1);
+	rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_redisplay();
 }
 
 void	ft_exit(int signal)
 {
 	(void) signal;
-	printf("VEOF\n");
 	exit (0);
 }
 
@@ -174,6 +178,7 @@ void ft_read_history(int history_fd)
 	history_line = 	get_next_line(history_fd);
 	while (history_line != NULL)
 	{
+		history_line[ft_strlen(history_line) - 1] = '\0';
 		add_history(history_line);
 		free(history_line);
 		history_line = get_next_line(history_fd);
@@ -185,9 +190,10 @@ void ft_write_history(int history_fd, char *line)
 	write(history_fd, line, ft_strlen(line));
 	write(history_fd, "\n", 1);
 }
+
 int	main(int argc, char **argv, char **envp)
 {
-	char				*args_str;
+	static char			*args_str;
 	t_arg				*arg_l;
 	t_arg				*func_l;
 	int 				input_fd[2];
@@ -196,20 +202,21 @@ int	main(int argc, char **argv, char **envp)
 
 	history_fd = open(".history", O_RDWR | O_APPEND | O_CREAT);
 	ft_read_history(history_fd);
-
+	signal(EOF, ft_exit);
 	(void) argc;
 	(void) argv;
 	input_fd[0] = 0;
-//	signal(SIGQUIT, nothing);
-//	signal(SIGINT, new_prompt);
-	//signal(EOF, ft_exit);
 
 	while (1)
 	{
+		signal(SIGINT, new_promt);
+		signal(SIGQUIT, nothing);
 		dup2(input_fd[0], 0);
 //		args_str = "echo \"dasdada\" \'vasya\' 228 \'$PATH\' \"$LOGNAME\" | grep $PWD \"$PATH\"  \'\"31231\"\' \' \" \'";
 //		args_str = "echo 1 2 3 << st 4 5 6";
 		args_str = readline("minishell$ ");
+		if (!args_str)// ЭТО ПО СУТИ И ЕСТЬ EOF
+			exit(0);
 		ft_write_history(history_fd, args_str);
 		add_history(args_str);
 		arg_l = NULL;
@@ -223,6 +230,7 @@ int	main(int argc, char **argv, char **envp)
 		ft_free_lst(&arg_l);
 		ft_free_lst(&func_l);
 		free(args_str);
+
 		//break ;
 	}
 	return 0;
