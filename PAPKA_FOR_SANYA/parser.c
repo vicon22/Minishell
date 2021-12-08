@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/06 19:00:49 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/08 14:37:44 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,11 @@ void	ft_parse_input_str(char *args_str, t_arg **arg_l)
 				args_str += ft_pull_str(args_str, &arg, 1);
 		}
 		else if ((*args_str == '\'' || *args_str == '\"'))
-			args_str += ft_pull_str(args_str, &arg, ft_next_space(args_str));
+			args_str += ft_pull_str(args_str, &arg, ft_next_space_or_pipe(args_str));
+		else if (*args_str == '|')
+			args_str += ft_pull_str(args_str, &arg, 1);
 		else
-			args_str += ft_pull_str(args_str, &arg, ft_next_space_or_quote(args_str));
+			args_str += ft_pull_str(args_str, &arg, ft_next_space_or_quote_or_pipe(args_str));
 		ft_lst2add_back(arg_l, ft_lst2_new(arg));
 	}
 }
@@ -165,14 +167,35 @@ void	ft_exit(int signal)
 	exit (0);
 }
 
+void ft_read_history(int history_fd)
+{
+	char *history_line;
 
+	history_line = 	get_next_line(history_fd);
+	while (history_line != NULL)
+	{
+		add_history(history_line);
+		free(history_line);
+		history_line = get_next_line(history_fd);
+	}
+}
 
+void ft_write_history(int history_fd, char *line)
+{
+	write(history_fd, line, ft_strlen(line));
+	write(history_fd, "\n", 1);
+}
 int	main(int argc, char **argv, char **envp)
 {
 	char				*args_str;
 	t_arg				*arg_l;
 	t_arg				*func_l;
 	int 				input_fd[2];
+	int 				history_fd;
+
+
+	history_fd = open(".history", O_RDWR | O_APPEND | O_CREAT);
+	ft_read_history(history_fd);
 
 	(void) argc;
 	(void) argv;
@@ -187,7 +210,7 @@ int	main(int argc, char **argv, char **envp)
 //		args_str = "echo \"dasdada\" \'vasya\' 228 \'$PATH\' \"$LOGNAME\" | grep $PWD \"$PATH\"  \'\"31231\"\' \' \" \'";
 //		args_str = "echo 1 2 3 << st 4 5 6";
 		args_str = readline("minishell$ ");
-
+		ft_write_history(history_fd, args_str);
 		add_history(args_str);
 		arg_l = NULL;
 		ft_parse_input_str(args_str, &arg_l);
@@ -195,7 +218,7 @@ int	main(int argc, char **argv, char **envp)
 		ft_set_funcs_structure(arg_l, &func_l);
 		ft_set_path(func_l, PATH);
 		ft_set_heredoc(func_l);
-		ft_show_lst(func_l);
+//		ft_show_lst(func_l);
 		ft_exec(func_l, envp);
 		ft_free_lst(&arg_l);
 		ft_free_lst(&func_l);

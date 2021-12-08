@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:05:32 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/01 16:47:38 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/08 13:07:45 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	ft_is_space(char c)
 		return (0);
 }
 
-int	ft_next_space_or_quote(char *arg_str)
+int	ft_next_space_or_quote_or_pipe(char *arg_str)
 {
 	int	i;
 
@@ -73,7 +73,7 @@ int	ft_next_space_or_quote(char *arg_str)
 	while (arg_str[++i])
 	{
 		if ((arg_str[i] == ' ' || arg_str[i] == '\''
-				|| arg_str[i] == '\"' ) && i != 0)
+				|| arg_str[i] == '\"' || arg_str[i] == '|') && i != 0)
 		{
 			return (i);
 		}
@@ -81,14 +81,14 @@ int	ft_next_space_or_quote(char *arg_str)
 	return (i);
 }
 
-int	ft_next_space(char *arg_str)
+int	ft_next_space_or_pipe(char *arg_str)
 {
 	int	i;
 
 	i = -1;
 	while (arg_str[++i])
 	{
-		if ((arg_str[i] == ' ') && i != 0)
+		if ((arg_str[i] == ' ' || arg_str[i] == '|') && i != 0)
 		{
 			return (i);
 		}

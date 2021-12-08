@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:03:02 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/06 17:37:40 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/08 13:07:45 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "libft.h"
+#include "get_next_line.h"
 # include <readline/readline.h>
 # include <readline/history.h>
 # define PATH "/Users/kmercy/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki"
@@ -39,8 +40,8 @@ int		ft_is_space(char c);
 void	ft_show_lst(t_arg *lst);
 void	ft_free_lst(t_arg **lst);
 int		ft_closed_quote(char *arg_str);
-int		ft_next_space_or_quote(char *arg_str);
-int		ft_next_space(char *arg_str);
+int		ft_next_space_or_quote_or_pipe(char *arg_str);
+int		ft_next_space_or_pipe(char *arg_str);
 int		ft_pull_str(char *args_str, char **cur_arg, int n);
 void	ft_remove_quotes(void *content);
 void    ft_replace_by_envp(char **content, char**envp);
