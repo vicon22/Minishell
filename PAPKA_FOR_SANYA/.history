@@ -44,3 +44,27 @@ echo $PATH
 
 
 dsadad
+ls
+ls >> ls.txt
+ls > ls.txt
+ls | wc
+test |cat -e|cat -e
+echo test |cat -e|cat -e
+ls | wc
+ls
+sdsd
+echo test | cat -e >> r.txt | wc
+ls
+ls
+cd ..
+pwd
+ls
+pwd
+cd ..
+pwd
+ls
+ls
+pwd
+cd ..
+ls
+pwd

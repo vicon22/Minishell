@@ -200,6 +200,29 @@ void	ft_full_return(char **envp)
 		waitpid(pid, NULL, 0);
 }
 
+void	ft_full_return_2(char **envp)
+{
+	int		pid;
+	char	*cat[2];
+	int i;
+	char ch;
+
+	cat[0] = "/bin/cat";
+	cat[1] = 0;
+	pid = fork();
+	if (pid == 0)
+	{
+		i = 1;
+		while (i == 1)
+		{
+			i = read(0, &ch, 1);
+			write (1, &ch, 1);
+		}
+	}
+	else
+		waitpid(pid, NULL, 0);
+}
+
 void	ft_add(char *file_name)
 {
 	int		pip[2];
@@ -251,6 +274,20 @@ void	ft_rewrite(char *file_name)
 	//		//waitpid(pid, NULL, 0);
 }
 
+void	ft_return_one_command(char *path, char **argv, char **envp)
+{
+	int		pid;
+
+	pid = fork();
+	if (pid == 0)
+	{
+//		dup2(pip[0], 0);
+//		close(pip[0]);
+//		close(pip[1]);
+		execve(path, argv, envp);
+	}
+}
+
 void	ft_exec(t_arg *lst, char **envp)
 {
 	int		in_out[2];
@@ -266,7 +303,9 @@ void	ft_exec(t_arg *lst, char **envp)
 	needful = ft_find_heredoc(lst);
 	if (needful)
 		ft_heredoc(needful->next->content, envp);
-	if (lst->path)
+//	if (lst->next == NULL)
+//		ft_return_one_command(lst->path, lst->args, envp);
+	else if (lst->path)
 		ft_pipe(lst->path, lst->args, envp);
 //	needful = ft_find_pipe(lst);
 //	while (needful)
@@ -302,7 +341,7 @@ void	ft_exec(t_arg *lst, char **envp)
 				if (ft_strlen(needful->content) == 2)
 					ft_add(needful->next->content);
 				//dup2(in_out[1], 1);
-				ft_full_return(envp);
+				ft_full_return_2(envp);
 				dup2(in_out[1], 1);
 			}
 		}
@@ -319,10 +358,10 @@ void	ft_exec(t_arg *lst, char **envp)
 	}
 	printf("----\n");
 	//ft_return(lst->path, lst->args, envp);
-	ft_full_return(envp);
+	ft_full_return_2(envp);
 	printf("----\n");
-	waitpid(0, NULL, 0);
-	waitpid(0, NULL, 0);
+	//waitpid(0, NULL, 0);
+	//waitpid(0, NULL, 0);
 	dup2(in_out[0], 0);
 	dup2(in_out[1], 1);
 }

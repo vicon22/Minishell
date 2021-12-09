@@ -149,27 +149,27 @@ void ft_set_heredoc(t_arg *func_l)
 	}
 }
 
-void	nothing(int signal)
-{
-	(void) signal;
-	rl_on_new_line();
-	rl_replace_line("", 0);
-	rl_redisplay();
-}
+//void	nothing(int signal)
+//{
+//	(void) signal;
+//	rl_on_new_line();
+//	rl_replace_line("", 0);
+//	rl_redisplay();
+//}
 
-void	new_promt(int signal)
-{
-	write(1, "\n", 1);
-	rl_on_new_line();
-	rl_replace_line("", 0);
-	rl_redisplay();
-}
-
-void	ft_exit(int signal)
-{
-	(void) signal;
-	exit (0);
-}
+//void	new_promt(int signal)
+//{
+//	write(1, "\n", 1);
+//	rl_on_new_line();
+//	rl_replace_line("", 0);
+//	rl_redisplay();
+//}
+//
+//void	ft_exit(int signal)
+//{
+//	(void) signal;
+//	exit (0);
+//}
 
 void ft_read_history(int history_fd)
 {
@@ -202,15 +202,15 @@ int	main(int argc, char **argv, char **envp)
 
 	history_fd = open(".history", O_RDWR | O_APPEND | O_CREAT);
 	ft_read_history(history_fd);
-	signal(EOF, ft_exit);
+	//signal(EOF, ft_exit);
 	(void) argc;
 	(void) argv;
 	input_fd[0] = 0;
 
 	while (1)
 	{
-		signal(SIGINT, new_promt);
-		signal(SIGQUIT, nothing);
+		//signal(SIGINT, new_promt);
+		//signal(SIGQUIT, nothing);
 		dup2(input_fd[0], 0);
 //		args_str = "echo \"dasdada\" \'vasya\' 228 \'$PATH\' \"$LOGNAME\" | grep $PWD \"$PATH\"  \'\"31231\"\' \' \" \'";
 //		args_str = "echo 1 2 3 << st 4 5 6";
