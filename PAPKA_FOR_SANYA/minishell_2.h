@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:03:02 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/08 15:20:49 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/09 13:05:20 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINISHELL_2_H
 
 # include <stdlib.h>
+#include "../evgenii.h"
 # include <stdio.h>
 # include "libft.h"
 #include "get_next_line.h"
@@ -50,8 +51,10 @@ int		ft_is_pipe_or_redir(void *cont);
 char	*ft_strjoin2(char **s1, char *s2);
 void	ft_lst2add_args(t_arg **lst, char **line);
 void	free_all(char **result);
+void	free_all_exclude_head(char **result);
 void 	ft_set_heredoc(t_arg *func_l);
-int 	ft_array_len(char **array);
+int		ft_arr_len(char **array);
+char 	**ft_char_array_cpy(char **array);
 /*evgenii's shit*/
 void	ft_exec(t_arg *lst, char **argv);
 #endif

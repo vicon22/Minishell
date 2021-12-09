@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/08 17:29:06 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/09 16:04:32 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,27 +149,27 @@ void ft_set_heredoc(t_arg *func_l)
 	}
 }
 
-//void	nothing(int signal)
-//{
-//	(void) signal;
-//	rl_on_new_line();
-//	rl_replace_line("", 0);
-//	rl_redisplay();
-//}
+void	nothing(int signal)
+{
+	(void) signal;
+	rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_redisplay();
+}
 
-//void	new_promt(int signal)
-//{
-//	write(1, "\n", 1);
-//	rl_on_new_line();
-//	rl_replace_line("", 0);
-//	rl_redisplay();
-//}
-//
-//void	ft_exit(int signal)
-//{
-//	(void) signal;
-//	exit (0);
-//}
+void	new_promt(int signal)
+{
+	write(1, "\n", 1);
+	rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_redisplay();
+}
+
+void	ft_exit(int signal)
+{
+	(void) signal;
+	exit (0);
+}
 
 void ft_read_history(int history_fd)
 {
@@ -191,29 +191,57 @@ void ft_write_history(int history_fd, char *line)
 	write(history_fd, "\n", 1);
 }
 
+int	ft_arr_len(char **array)
+{
+	int i;
+
+	i = 0;
+	while (array[i])
+		i++;
+	return (i);
+}
+
+char **ft_char_array_cpy(char **array)
+{
+	char **new_array;
+	int i;
+
+	new_array = ft_calloc(ft_arr_len(array) + 1, sizeof (char *));
+	i = 0;
+	while (array[i])
+	{
+		new_array[i] = ft_strdup(array[i]);
+		i++;
+	}
+	new_array[i] = NULL;
+
+	return (new_array);
+}
+
+
 int	main(int argc, char **argv, char **envp)
 {
 	static char			*args_str;
+	char				**env_array;
 	t_arg				*arg_l;
 	t_arg				*func_l;
 	int 				input_fd[2];
 	int 				history_fd;
 
-
 	history_fd = open(".history", O_RDWR | O_APPEND | O_CREAT);
 	ft_read_history(history_fd);
-	//signal(EOF, ft_exit);
+
 	(void) argc;
 	(void) argv;
 	input_fd[0] = 0;
 
+	env_array = ft_char_array_cpy(envp);
 	while (1)
 	{
-		//signal(SIGINT, new_promt);
-		//signal(SIGQUIT, nothing);
 		dup2(input_fd[0], 0);
 //		args_str = "echo \"dasdada\" \'vasya\' 228 \'$PATH\' \"$LOGNAME\" | grep $PWD \"$PATH\"  \'\"31231\"\' \' \" \'";
-//		args_str = "echo 1 2 3 << st 4 5 6";
+//		signal(SIGINT, new_promt);
+//		signal(SIGQUIT, nothing);
 		args_str = readline("minishell$ ");
 		if (!args_str)// ЭТО ПО СУТИ И ЕСТЬ EOF
 			exit(0);
@@ -221,20 +249,24 @@ int	main(int argc, char **argv, char **envp)
 		add_history(args_str);
 		arg_l = NULL;
 		ft_parse_input_str(args_str, &arg_l);
-		ft_handle_quotes(arg_l, envp);
+		ft_handle_quotes(arg_l, env_array);
 		ft_set_funcs_structure(arg_l, &func_l);
 		ft_set_path(func_l, PATH);
 		ft_set_heredoc(func_l);
+
+		if (!ft_strncmp(func_l->content, "export", 6))
+			ft_export(func_l->args, &env_array);
+
+		if (!ft_strncmp(func_l->content, "env", 3))
+			ft_env(env_array);
+
+		if (!ft_strncmp(func_l->content, "unset", 5))
+			ft_unset(func_l->args, &env_array);
 //		ft_show_lst(func_l);
-		ft_exec(func_l, envp);
+//		ft_exec(func_l, env_array);
 		ft_free_lst(&arg_l);
 		ft_free_lst(&func_l);
 		free(args_str);
-
-		//break ;
 	}
 	return 0;
 }
-
-//Добавить проверку на пустоту команд
-//Дописать замену переменных окружения

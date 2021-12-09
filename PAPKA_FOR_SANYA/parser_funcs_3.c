@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:05:32 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/08 13:07:45 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/09 14:15:44 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,16 @@ void	free_all(char **result)
 		j++;
 	}
 	free(result);
+}
+
+void	free_all_exclude_head(char **result)
+{
+	int	j;
+
+	j = 0;
+	while (result[j])
+	{
+		free(result[j]);
+		j++;
+	}
 }

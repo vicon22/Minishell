@@ -1,70 +1,333 @@
-echo $PWD
-echo $PATH
-echo $SHLVL
-echo $PWD
-echo $PWD
-echo $PWD
-yes
-yes
-yes
-dasda
-yes
-yes
-yes
-yes
-yes
-yes
-dada
-yes
-yes
-yes
-yes
-yes
-yes
-bash
-yes
+env
+export
+export A1 = 1
+export AA1 = 1
+export A1 = 1
+export AA1 = 1
+export A1 = 1
+export A1=1
+export AA1=1
+env
+export AAA1=1
+env
+unset AA1
+env
+env
+env
+export A1=1
+export A2=2
+export AA1=3
+export AAA1=4
+unser A2
+unset A2
+env
+env
+env
+env
+env
+env
+env
+env
+export
+export
+env
+export A1=1
+export AA1=2
+export AAA1=3
+env
+unset AA1
+env
+env
+export chlen=228
+export chlen2=228
+export chlen3=228
+unset chlen
+export chlen=228
+export chlen2=228
+export chlen3=228
+env
+export chlen=228
+env
+export chlen=228
+export chlen2=228
+export chlen3=228
+env
+export chlen2=228
+env
+export chlen3=228
+env
+export chlen=228
+env
+unset chlen
+export chlen=228
+export chlen2=228
+export chlen3=228
+env
+unset chlen
+export chlen=228
+export chlen2=228
+export chlen3=228
+env
 
-yes
-yes
-cat 
-grep
-ls | grep
-cat 
-cat
-
-cat 
-inishell$ 
-cat 
-sdasd
-echo $PATH
-dasdas
-echo $PATH
-echo $PATH
-
-
-
-dsadad
+export chlen=228
+export chlen2=228
+export chlen3=228
+env
+export
+unset chlen
+export chlen=228
+export chlen2=228
+export chlen3=228
+env
+export
+export chlen=228
+export chlen2=228
+export chlen3=228
+env
+export chlen=228
+export chlen2=228
+export chlen3=228
+env
+unset chlen3
+export A1=1
+export AA1=2
+export AA3=3
+env
+unset A1
+env
+export A1=1
+export AA1=2
+export AA3=3
+env
+unset A1
+env
+export AA1=2
+export A1=1
+export AA3=3
+env
+unset A1
+env
+export A1=1
+export AA1=2
+export AAA1=3
+env
+export
+unset A1
+env
+export A1=1
+unset AA1=2
+env
+export AA1=2
+export AAA1=3
+env
+unset A1
+env
+env
+env
+export A1=1
+export AA1=2
+export AAA1=3
+env
+unset A1
+env
 ls
-ls >> ls.txt
-ls > ls.txt
-ls | wc
-test |cat -e|cat -e
-echo test |cat -e|cat -e
-ls | wc
+export A
+export A=1
+export AA=1
+env
+export 
+export AAA=1
+env
+export
+unset A
+env
+export A=1
+export AA=2
+export AAA=3
+env
+export
+unset A
+env
 ls
-sdsd
-echo test | cat -e >> r.txt | wc
+export A1=1
+export AA1=1
+export AAA1=1
+env
+unset A1
+env
+env
+export A=1
+export AA=1
+export AAA=1
+env
+export
+env
+export A=1
+export AA=1
+export AAA=1
+env
+export
+unset A
+export A=1
+export AA=1
+export AAA=1
+env
+unset A
+export AAA=1
+export AA=1
+export A=1
+env
+export
+export AA=1
+env
+export AAA=1
+env
+export
+unset A
+export A=1
+export AA=1
+export AAA=1
+env
+unset A
+export A=1
+export AA=1
+export AAA=1
+env
+unset A
+env
+export A=1
+export AA=1
+export AAA=1
+env
+export A=1
+export AA=1
+export AAA=1
+env
+export
+export A=2
+export
+unset A
+export
+export A=1
+export AA=1
+export AAA=1
+env
+env
+export
+export A=1
+export AA=1
+export AAA=1
+env
+unset A
+env
+export A=1
+export AA=1
+export AAA=1
+env
+unset A
+env
+export A=1
+export AA=1
+export AAA=1
+env
+unset A
+env
+export A=1
+export AA=1
+export AAA=1
+env
+unset A
+env
+export A=1
+export AA=1
+export AAA=1
+env
+export A=1
+env
 ls
+export A=1
+export A=1
+export A=1
+export A=1
+env
+export 
+export AA=!
+export AAA=1
+export 
+export A=1
+export AA=1
+export AAA=1
+env
+unset A
+export A=1
+export AA=1
+export AAA=1
+ens
+env
+unset A
+env
+export A=1
+export AA=1
+export AAA=1
+env
+unset A
+env
+export A=1
+export AA=1
+export AAA=1
+env
+unset A
+env
+export A=1
+export AA=1
+export AAA=1
+env
+unset A
+env
+export A=1
+export AA=1
+export AAA=1
+env
+unset A
+export A=1
+export AA=1
+export AAA=1
+env
+unset A
+env
+export
+export A=1
+export AA=1
+export AAA=1
+env
+unset A
+env
+export A=1
+export AA=1
+export AAA=1
 ls
-cd ..
-pwd
-ls
-pwd
-cd ..
-pwd
-ls
-ls
-pwd
-cd ..
-ls
-pwd
+env
+unset A
+export A=1
+export AA=1
+export AAA=1
+env
+unset A
+env
+env
+exit
+export A=1
+export AA=1
+export AAA=1
+env
+unset A
+env
+export A=1
+export AA=1
+export AAA=1
+env
+export
+unset A
+env
+exprot
+export

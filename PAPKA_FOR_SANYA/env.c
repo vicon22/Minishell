@@ -10,24 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "evgenii.h"
+#include "../evgenii.h"
+#include "minishell_2.h"
 
-void	ft_env(t_envp	*all_envp)
+void	ft_env(char	**env_array)
 {
-	while (all_envp)
+	int i;
+
+	i = -1;
+	while (env_array[++i])
 	{
-		if (all_envp->value[0] != '\'' && all_envp->value[1] != '\'')
-		{
-			write(1, all_envp->name, ft_strlen(all_envp->name));
-			write(1, "=", 1);
-			write(1, all_envp->value, ft_strlen(all_envp->value));
-			write(1, "\n", 1);
-			all_envp = all_envp->next;
-		}
-//		write(1, all_envp->name, ft_strlen(all_envp->name));
-//		write(1, "=", 1);
-//		write(1, all_envp->value, ft_strlen(all_envp->value));
-//		write(1, "\n", 1);
-		all_envp = all_envp->next;
+		ft_putstr_fd(env_array[i], 0);
+		ft_putchar_fd('\n', 1);
 	}
 }
