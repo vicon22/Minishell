@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/11 17:15:09 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/11 19:04:12 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,16 +248,16 @@ int	main(int argc, char **argv, char **envp)
 		ft_set_path(func_l, PATH);
 		ft_set_heredoc(func_l);
 
-		if (!ft_strncmp(func_l->content, "export", 6))
-			ft_export(func_l->args, &env_array);
+//		if (!ft_strncmp(func_l->content, "export", 6))
+//			ft_export(func_l->args, &env_array);
 
-		if (!ft_strncmp(func_l->content, "env", 3))
-			ft_env(func_l->args, env_array);
-
-		if (!ft_strncmp(func_l->content, "unset", 5))
-			ft_unset(func_l->args, &env_array);
+//		if (!ft_strncmp(func_l->content, "env", 3))
+//			ft_env(func_l->args, env_array);
+//
+//		if (!ft_strncmp(func_l->content, "unset", 5))
+//			ft_unset(func_l->args, &env_array);
 		ft_show_lst(func_l);
-		ft_exec(func_l, env_array);
+		ft_exec(func_l, &env_array);
 		ft_free_lst(&arg_l);
 		ft_free_lst(&func_l);
 		free(args_str);

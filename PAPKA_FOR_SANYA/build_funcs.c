@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 11:38:03 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/11 17:29:48 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/11 18:56:44 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	(*ft_find_buildin(char **argc, char **envp))(char **argc, char **envp)
 	void	(*buildin)(char **argc, char **envp);
 
 	func_name = argc[0];
-	printf("func_name:%s\n", func_name);
+	printf("func_name 111:%s\n", func_name);
 	buildin = NULL;
 	if (!ft_strncmp(func_name, "pwd", 4))
 		buildin = &ft_pwd;
@@ -97,25 +97,28 @@ void	(*ft_find_buildin(char **argc, char **envp))(char **argc, char **envp)
 		buildin = &ft_cd;
 	if (!ft_strncmp(func_name, "echo", 5))
 		buildin = &ft_echo;
-//	if (ft_strncmp(func_name, "unset", 6))
+//	if (!ft_strncmp(func_name, "unset", 6))
 //		buildin = ft_unset;
-//	if (ft_strncmp(func_name, "export", 7))
+//	if (!ft_strncmp(func_name, "export", 7))
 //		buildin = ft_export;
-//	if (ft_strncmp(func_name, "env", 4))
-//		buildin = ft_env;
-//	if (ft_strncmp(func_name, "exit", 5))
-//		buildin = ft_exit;
+	if (!ft_strncmp(func_name, "env", 4))
+		buildin = ft_env;
+	if (!ft_strncmp(func_name, "exit", 5))
+		buildin = ft_exit;
 	return (buildin);
 }
 
-//int	main(int argc, char **argv, char **envp)
-//{
-//	void	(*buildin)(char **argv, char **envp);
-//
-//	buildin = ft_find_buildin(argv, envp);
-//	if (buildin)
-//		buildin(argv, envp);
-//	else
-//		printf("can't find buildin\n");
-//	return (0);
-//}
+void	(*ft_find_buildin2(char **argc, char **envp))(char **argc, char ***envp)
+{
+	char	*func_name;
+	void	(*buildin)(char **argc, char ***envp);
+
+	printf("func_name 222:%s\n", func_name);
+	func_name = argc[0];
+	buildin = NULL;
+	if (!ft_strncmp(func_name, "unset", 6))
+		buildin = ft_unset;
+	if (!ft_strncmp(func_name, "export", 7))
+		buildin = ft_export;
+	return (buildin);
+}

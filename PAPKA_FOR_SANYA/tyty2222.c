@@ -162,9 +162,11 @@ void	ft_pipe(char *path, char **argc, char **envp)
 	int		pid;
 	int		pip[2];
 	void	(*buildin)(char **argc, char **envp);
+	void	(*buildin2)(char **argc, char ***envp);
 
 	errno = 0;
 	buildin = ft_find_buildin(argc, envp);
+	buildin2 = ft_find_buildin2(argc, envp);
 	pipe(pip);
 	pid = fork();
 	if (!pid)
@@ -174,6 +176,8 @@ void	ft_pipe(char *path, char **argc, char **envp)
 		close(pip[1]);
 		if (buildin)
 			buildin(argc, envp);
+		else if (buildin2)
+			buildin2(argc, &envp);
 		else
 			execve(path, argc, envp);
 		write(2, "bash: ", 6);
@@ -304,21 +308,25 @@ void	ft_rewrite(char *file_name)
 	//		//waitpid(pid, NULL, 0);
 }
 
-void	ft_return_one_command(char *path, char **argv, char **envp)
+void	ft_return_one_command(char *path, char **argv, char ***envp)
 {
 	int		pid;
-	void	(*buildin)(char **argv, char **envp);
+	void	(*buildin)(char **argc, char **envp);
+	void	(*buildin2)(char **argc, char ***envp);
 
 	errno = 0;
-	buildin = ft_find_buildin(argv, envp);
+	buildin = ft_find_buildin(argv, *envp);
+	buildin2 = ft_find_buildin2(argv, *envp);
 	if (buildin)
-		buildin(argv, envp);
+		buildin(argv, *envp);
+	else if (buildin2)
+		buildin2(argv, envp);
 	else
 	{
 		pid = fork();
 		if (pid == 0)
 		{
-			execve(path, argv, envp);
+			execve(path, argv, *envp);
 			printf("---\n");
 			printf("errno:%d\n", errno);
 			write(2, "bash: ", 6);
@@ -332,7 +340,7 @@ void	ft_return_one_command(char *path, char **argv, char **envp)
 	}
 }
 
-void	ft_exec(t_arg *lst, char **envp)
+void	ft_exec(t_arg *lst, char ***envp)
 {
 	int		in_out[2];
 	t_arg	*needful;
@@ -345,14 +353,14 @@ void	ft_exec(t_arg *lst, char **envp)
 	lst_saver = lst;
 	needful = ft_find_heredoc(lst);
 	if (needful)
-		ft_heredoc(needful->next->content, envp);
+		ft_heredoc(needful->next->content, *envp);
 	if (lst->next == NULL)
 	{
 		ft_return_one_command(lst->path, lst->args, envp);
 	}
 	else
 	{
-		ft_pipe(lst->path, lst->args, envp);
+		ft_pipe(lst->path, lst->args, *envp);
 		logic_flag = ft_lstcmp(lst);
 		//printf("                                  logic_flag: %d\n", logic_flag);
 		needful = lst;
@@ -367,7 +375,7 @@ void	ft_exec(t_arg *lst, char **envp)
 						ft_rewrite(needful->next->content);
 					if (ft_strlen(needful->content) == 2)
 						ft_add(needful->next->content);
-					ft_full_return_2(envp);
+					ft_full_return_2(*envp);
 					dup2(in_out[1], 1);
 				}
 			}
@@ -380,13 +388,13 @@ void	ft_exec(t_arg *lst, char **envp)
 				if (needful_next)
 				{
 					//printf("pipe!\n");
-					ft_pipe(needful->next->path, needful->next->args, envp);
+					ft_pipe(needful->next->path, needful->next->args, *envp);
 				}
 				else
 				{
 					//printf("return!\n");
 					//printf("++++\n");
-					ft_return(needful->next->path, needful->next->args, envp);
+					ft_return(needful->next->path, needful->next->args, *envp);
 					//printf("++++\n");
 				}
 			}
@@ -395,7 +403,7 @@ void	ft_exec(t_arg *lst, char **envp)
 			//printf("                                  logic_flag: %d\n", logic_flag);
 		}
 		//printf("---\n");
-		ft_full_return(envp);
+		ft_full_return(*envp);
 		//printf("---\n");
 	}
 	dup2(in_out[0], 0);

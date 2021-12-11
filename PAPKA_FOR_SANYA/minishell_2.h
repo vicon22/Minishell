@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:03:02 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/11 17:04:06 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/11 18:55:00 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,13 @@ void 	ft_set_heredoc(t_arg *func_l);
 int		ft_arr_len(char **array);
 char 	**ft_char_array_cpy(char **array);
 /*evgenii's shit*/
-void	ft_exec(t_arg *lst, char **argv);
+void	ft_exec(t_arg *lst, char ***argv);
 void	ft_pwd(char **argc, char **envp);
 void	ft_cd(char **argc, char **envp);
 void	ft_echo(char **argv, char **envp);
 void	ft_exit(char **argv, char **envp);
 void	(*ft_find_buildin(char **argc, char **envp))(char **argc, char **envp);
+void	(*ft_find_buildin2(char **argc, char **envp))(char **argc, char ***envp);
 void	ft_env(char **argc, char **env_array);
 void	ft_export(char **args, char ***env_array);
 void	ft_unset(char **args, char ***env_array);

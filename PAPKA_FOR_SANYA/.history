@@ -448,3 +448,264 @@ export aaa=1
 env
 unset a
 env
+ls
+env
+export aaa=a
+env
+export
+export A=1
+export
+unset aaa
+export
+cat $A
+echo $A
+env
+echo $A
+export A=1
+env
+echo ---
+exit
+exit
+echo ---
+env
+en
+env
+export
+export
+export A=3
+export B=3
+export a=1
+export aa=1
+export aaa=1
+env
+export
+export aaa=1
+export aaa=1
+env
+env
+export aaa=1
+export
+env
+export
+export a=222
+export
+export
+env
+export a=222
+env
+export a=1
+env
+env
+env
+export a=123123
+env
+export
+env
+env
+export
+export a=1
+export aa=1
+export a=1
+export aa=1
+export a=1
+export aa=1
+export a=1
+export a=2
+export a=1
+export a=2
+export a=1
+export a=2
+export a=1
+export a=2
+export a=1
+export a=2
+export a=1
+export a=2
+export a=1
+export a=2
+export a=1
+export a=2
+export a=2
+export a=1
+export a=1
+export a=2
+export a=4
+export a=6
+env
+export aa=6
+export aa12=6
+export aa1212=6
+env
+unset aa
+env
+export
+export
+export
+export
+export
+export
+export
+export
+export
+export
+export
+export
+export t=4
+env
+export
+ls
+export a=2
+export aa=2
+export a=2
+export a=1
+env
+export a=1
+env
+export A=1
+env
+env
+env
+export A=CHLEN
+env
+env
+env
+export A=CHLEN
+env
+export A=ZALUPA
+env
+export A=1
+export 
+env
+env
+env
+env
+env
+env
+env
+export A=1
+export 
+export A=1
+env
+export A=1
+env
+export a=1
+env
+export A=1
+env
+export A=1
+env
+export A=1
+env
+export A=1
+export
+env
+env
+env
+export
+export
+export A=1
+env
+export
+env
+export A=1
+env
+export
+export A=1
+env
+export chlen=228
+export chlen=228
+export chlen=228
+export chlen=228
+export chlen=228
+export chlen=228
+export chlen=228
+export chlen=228
+export chlen=228
+export chlen=228
+export chlen=228
+export chlen=228
+export chlen=228
+export chlen2=229
+export chlen3=230
+export
+env
+env
+export
+export c=229
+env
+export A=22997
+ls
+export
+export chlen=228
+env
+export
+export chlen=228
+export
+export chlen=228
+export
+export chlen=228
+env
+export chlen2=229
+env
+unset chlen
+env
+env
+env
+env
+echo $chlen2
+echo $chlen2
+env
+echo $PATH
+echo $chlen
+
+echo $chlen
+echo $chlen
+export chlen=228
+env
+echo $chlen
+export $chlen2
+echo $chlen
+export $chlen2=228
+export chlen=229
+env
+export chlen2=229
+env
+echo $chlen2
+ls
+env
+unset chlen
+env
+echo $chlen2
+export chlen=228
+export chlen2=229
+env
+echo $chlen2
+echo $chlen
+echo $chl
+echo $chl
+echo $ch
+echo $c
+echo $
+echo $
+echo $
+echo $
+echo $
+echo $
+echo $
+echo $
+echo $
+echo $
+echo $
+echo $
+echo $
+echo $
+echo $
+echo $PATH
+echo $P
+echo $P
+echo $P
+echo $P
+echo $1
+echo $?
+echo $
+echo $A
