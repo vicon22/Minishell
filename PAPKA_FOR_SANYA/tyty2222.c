@@ -354,7 +354,7 @@ void	ft_exec(t_arg *lst, char **envp)
 	{
 		ft_pipe(lst->path, lst->args, envp);
 		logic_flag = ft_lstcmp(lst);
-		printf("                                  logic_flag: %d\n", logic_flag);
+		//printf("                                  logic_flag: %d\n", logic_flag);
 		needful = lst;
 		while (logic_flag >= 0)
 		{
@@ -379,24 +379,24 @@ void	ft_exec(t_arg *lst, char **envp)
 					needful_next = ft_find_output(needful);
 				if (needful_next)
 				{
-					printf("pipe!\n");
+					//printf("pipe!\n");
 					ft_pipe(needful->next->path, needful->next->args, envp);
 				}
 				else
 				{
-					printf("return!\n");
-					printf("++++\n");
+					//printf("return!\n");
+					//printf("++++\n");
 					ft_return(needful->next->path, needful->next->args, envp);
-					printf("++++\n");
+					//printf("++++\n");
 				}
 			}
 			needful = needful->next;
 			logic_flag = ft_lstcmp(needful);
-			printf("                                  logic_flag: %d\n", logic_flag);
+			//printf("                                  logic_flag: %d\n", logic_flag);
 		}
-		printf("---\n");
+		//printf("---\n");
 		ft_full_return(envp);
-		printf("---\n");
+		//printf("---\n");
 	}
 	dup2(in_out[0], 0);
 	dup2(in_out[1], 1);

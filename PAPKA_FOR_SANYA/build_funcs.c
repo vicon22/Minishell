@@ -103,8 +103,8 @@ void	(*ft_find_buildin(char **argc, char **envp))(char **argc, char **envp)
 //		buildin = ft_export;
 //	if (ft_strncmp(func_name, "env", 4))
 //		buildin = ft_env;
-	if (ft_strncmp(func_name, "exit", 5))
-		buildin = ft_exit;
+//	if (ft_strncmp(func_name, "exit", 5))
+//		buildin = ft_exit;
 	return (buildin);
 }
 
