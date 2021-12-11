@@ -20,7 +20,7 @@ void	ft_env(char **argc, char **env_array)
 	(void)argc;
 	while (env_array[++i])
 	{
-		ft_putstr_fd(env_array[i], 0);
+		ft_putstr_fd(env_array[i], 1);
 		ft_putchar_fd('\n', 1);
 	}
 }

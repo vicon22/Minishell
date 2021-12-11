@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:03:02 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/11 18:55:00 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/11 19:33:32 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,4 @@ void	(*ft_find_buildin2(char **argc, char **envp))(char **argc, char ***envp);
 void	ft_env(char **argc, char **env_array);
 void	ft_export(char **args, char ***env_array);
 void	ft_unset(char **args, char ***env_array);
-
 #endif

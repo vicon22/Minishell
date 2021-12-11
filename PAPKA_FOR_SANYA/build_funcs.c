@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 11:38:03 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/11 18:56:44 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/11 19:48:47 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,23 @@ void	ft_echo(char **argv, char **envp)
 	flag = 0;
 	(void)envp;
 	argc = count_argv(argv);
-	if (!ft_strncmp(argv[1], "-n", 3))
+	if (ft_arr_len(argv) > 1)
 	{
-		i = 2;
-		flag = 1;
+		if (!ft_strncmp(argv[1], "-n", 3))
+		{
+			i = 2;
+			flag = 1;
+		}
+		while (i != argc) {
+			write(1, argv[i], ft_strlen(argv[i]));
+			i++;
+			if (i != argc)
+				write(1, " ", 1);
+		}
+		if (flag != 1)
+			write(1, "\n", 1);
 	}
-	while (i != argc)
-	{
-		write(1, argv[i], ft_strlen(argv[i]));
-		i++;
-		if (i != argc)
-			write(1, " ", 1);
-	}
-	if (flag != 1)
+	else
 		write(1, "\n", 1);
 }
 
@@ -100,7 +104,6 @@ void	(*ft_find_buildin(char **argc, char **envp))(char **argc, char **envp)
 //	if (!ft_strncmp(func_name, "unset", 6))
 //		buildin = ft_unset;
 //	if (!ft_strncmp(func_name, "export", 7))
-//		buildin = ft_export;
 	if (!ft_strncmp(func_name, "env", 4))
 		buildin = ft_env;
 	if (!ft_strncmp(func_name, "exit", 5))

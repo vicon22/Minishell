@@ -709,3 +709,129 @@ echo $1
 echo $?
 echo $
 echo $A
+export A=1
+export A=2
+env
+unset A
+ls
+echo $PATH
+echo $PA
+echo $PATH $PATH
+echo $PAT
+echo $PA
+echo $PA
+echo $PATH
+echo $PATH
+echo $PAT
+echo $PATH
+echo $PATH
+echo $PATH2
+echo $PATH3
+echo $PATH3
+echo $PATH3
+echo $PATH3
+echo $PATH3
+echo $PATH3
+echo $PATH3
+echo $PATH3
+echo $PATH
+echo $PATH
+echo $PATH
+echo $PATH3
+echo $PATH3
+echo $PATH3
+echo $PATH3
+echo $PATH4
+echo $PATH
+export
+ls
+echo $PATH
+echo $PATH3
+echo $PATH3
+echo $PATH3
+echo $PATH
+echo $PATH
+echo $PATH#
+echo $PATH#
+echo $PATH3
+echo $PATH3
+echo $PWD
+export chlen=228
+export chlen2=229
+env
+echo $chlen
+echo $chlen2
+echo $ch
+echo $chlen2
+env
+echo $chlen2
+export chlen=228
+export chlen2=229
+env
+env
+unset chlen
+env
+env | sort | grep -v SHLVL | grep -v _=
+env | sort | grep -v SHLVL | grep -v _=
+env | sort | grep -v SHLVL | grep -v _=
+env | sort | grep -v SHLVL | grep -v _=
+env | sort | grep -v SHLVL | grep -v _=
+env | sort | grep -v SHLVL | grep -v _=
+env | sort | grep -v SHLVL | grep -v _=
+env | sort | grep -v SHLVL | grep -v 
+env | sort 
+env | sort 
+env 
+env | sort
+env | sort 
+env | sort | grep -v SHLVL | grep -v _=
+env | sort | grep -v SHLVL | grep -v _=
+export | sort | grep -v SHLVL | grep -v _= | grep -v OLDPWD
+export =
+env
+export TEST=LOL
+$ENV_SHOW
+echo $ENV_SHOW
+echo $TEST
+export TEST=LOL
+echo $TEST
+echo $TEST$TEST$TEST=lol$TEST
+export TEST+=LOL
+echo $TEST
+export TEST+=LOL
+echo $TEST+
+echo $TEST+
+env
+exit 42
+exit 42
+exit 42
+echo -n -n -n test tout
+echo -n -n -n test tout
+echo -n -n -n test tout
+echo -n -n -n test tout
+echo -n -n -n test tout
+echo -n -n -n test tout
+echo -n -n -n test tout
+echo -n -n -n test tout
+echo -n -n -n test tout
+echo -n -n -n test tout
+echo -n -n -n test tout
+echo -n -n -n test tout
+eda
+dasd
+123123
+echo -n -n -n test tout
+echo -n -n -n test tout
+echo -n -n -n test tout
+echo -n -n -n test tout
+echo -n -n -n test tout
+echo -n -n -n test tout
+
+echo -n -n -n test tout
+echo -n -n -n test tout
+echo $PATH
+echo $PATHlol
+echo $PATHl=ol
+echo $PATHl=lol
+echo $PATH=lol
+echo $PATH=lol

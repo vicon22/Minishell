@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 18:10:30 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/11 18:59:23 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/11 19:38:44 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	ft_exp(char	**env_array)
 	i = -1;
 	while (env_array[++i])
 	{
-		ft_putstr_fd(env_array[i], 0);
+		ft_putstr_fd(env_array[i], 1);
 		ft_putchar_fd('\n', 1);
 	}
 	free_all(env_array);
@@ -49,7 +49,6 @@ void	ft_export(char **args, char ***env_array)
 	int 	arg_len;
 	int 	envp_len;
 
-	printf("-!-\n");
 	if (ft_arr_len(args) == 1)
 		ft_exp(ft_char_array_cpy(*env_array));
 	else
@@ -73,8 +72,7 @@ void	ft_export(char **args, char ***env_array)
 			}
 			if (!is_added)
 				(*env_array)[i++] = ft_strdup(args[1]);
-			printf("Last elem:  %s\n", (*env_array)[i-1]);
 			(*env_array)[i] = NULL;
-//			free_all(tmp);
+			free_all(tmp);
 		}
 }

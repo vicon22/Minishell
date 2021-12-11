@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:04:36 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/11 19:14:11 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/11 19:29:15 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,7 @@ void	ft_remove_quotes(void *content)
 char	*ft_end_of_var(char *content)
 {
 	content++;
-	while (*content && !ft_is_space(*content) && *content != '\'' && *content != '\"' && *content != '$' && (ft_isalpha(*content) ||
-			ft_isdigit(*content)))
+	while (*content && !ft_is_space(*content) && *content != '\'' && *content != '\"' && (ft_isalpha(*content) || ft_isdigit(*content)))
 	{
 		content++;
 	}
@@ -112,19 +111,17 @@ void ft_replace_by_envp(char **content, char**envp)
 	int		post_len;
 
 	i = -1;
+	pre_len = ft_strlen(*content) - ft_strlen(ft_strchr(*content, '$'));
+	post_len = ft_strlen(ft_end_of_var(ft_strchr(*content, '$')));
+	var_len = ft_strlen(*content) - pre_len - post_len - 1;
 	while (envp[++i] && ft_strchr(*content, '$'))
 	{
-		pre_len = ft_strlen(*content) - ft_strlen(ft_strchr(*content, '$'));
-		post_len = ft_strlen(ft_end_of_var(ft_strchr(*content, '$')));
-		var_len = ft_strlen(*content) - pre_len - post_len - 1;
-
-		if (ft_strchr(*content, '$') && !ft_strncmp(envp[i], ft_strchr(*content, '$') + 1, var_len))
+		if (ft_strchr(*content, '$') && !ft_strncmp(envp[i], ft_strchr(*content, '$') + 1, var_len) && var_len == (ft_strlen(envp[i]) -
+				ft_strlen(ft_strchr(envp[i], '='))))
 		{
 			pre_len = ft_strlen(*content) - ft_strlen(ft_strchr(*content, '$'));
 			post_len = ft_strlen(ft_end_of_var(ft_strchr(*content, '$')));
 			var_len = ft_strlen(*content) - pre_len - post_len - 1;
-//			var_len = len;
-
 			new_content = ft_calloc(pre_len + 1, sizeof (char));
 			new_content = ft_memcpy(new_content, *content, pre_len);
 			new_content = ft_strjoin2(&new_content, ft_strchr(envp[i], '=') + 1);
@@ -136,11 +133,6 @@ void ft_replace_by_envp(char **content, char**envp)
 			return ;
 		}
 	}
-		pre_len = ft_strlen(*content) - ft_strlen(ft_strchr(*content, '$'));
-		post_len = ft_strlen(ft_end_of_var(ft_strchr(*content, '$')));
-		var_len = ft_strlen(*content) - pre_len - post_len - 1;
-//		var_len = len;
-
 		new_content = ft_calloc(pre_len + 1, sizeof (char));
 		new_content = ft_memcpy(new_content, *content, pre_len);
 		new_content = ft_strjoin2(&new_content, *content + pre_len + var_len + 1);
