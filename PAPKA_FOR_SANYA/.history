@@ -331,3 +331,8 @@ unset A
 env
 exprot
 export
+ls
+echo test
+ls
+echo test
+echo test |cat -e|cat -e

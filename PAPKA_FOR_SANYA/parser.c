@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/09 16:04:32 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/11 17:15:09 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,12 +165,6 @@ void	new_promt(int signal)
 	rl_redisplay();
 }
 
-void	ft_exit(int signal)
-{
-	(void) signal;
-	exit (0);
-}
-
 void ft_read_history(int history_fd)
 {
 	char *history_line;
@@ -258,12 +252,12 @@ int	main(int argc, char **argv, char **envp)
 			ft_export(func_l->args, &env_array);
 
 		if (!ft_strncmp(func_l->content, "env", 3))
-			ft_env(env_array);
+			ft_env(func_l->args, env_array);
 
 		if (!ft_strncmp(func_l->content, "unset", 5))
 			ft_unset(func_l->args, &env_array);
-//		ft_show_lst(func_l);
-//		ft_exec(func_l, env_array);
+		ft_show_lst(func_l);
+		ft_exec(func_l, env_array);
 		ft_free_lst(&arg_l);
 		ft_free_lst(&func_l);
 		free(args_str);

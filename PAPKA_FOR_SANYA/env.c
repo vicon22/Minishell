@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../evgenii.h"
 #include "minishell_2.h"
 
-void	ft_env(char	**env_array)
+void	ft_env(char **argc, char **env_array)
 {
 	int i;
 
 	i = -1;
+	(void)argc;
 	while (env_array[++i])
 	{
 		ft_putstr_fd(env_array[i], 0);

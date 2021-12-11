@@ -6,24 +6,23 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 18:36:25 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/09 17:33:33 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/11 17:04:39 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../evgenii.h"
 #include "minishell_2.h"
 
-int	count_argv(char **argv)
-{
-	int	size;
-	char	**save;
-
-	save = argv;
-	size = 0;
-	while (save[size])
-		size++;
-	return (size);
-}
+//int	count_argv(char **argv)
+//{
+//	int	size;
+//	char	**save;
+//
+//	save = argv;
+//	size = 0;
+//	while (save[size])
+//		size++;
+//	return (size);
+//}
 
 void	ft_unset(char **args, char ***env_array)
 {

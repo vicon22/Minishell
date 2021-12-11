@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../evgenii.h"
 #include "minishell_2.h"
+
 static void	ft_exp(char	**env_array)
 {
 	int i;
