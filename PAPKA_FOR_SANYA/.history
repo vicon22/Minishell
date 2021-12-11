@@ -345,3 +345,106 @@ ls
 ls
 ls | cat -e
 ls | cat -e
+ls
+env
+export a=1
+export a=1
+env
+export aa=1
+env
+export a=2
+env
+export a23=2
+env
+unset a
+env
+export a=1
+unset a
+export a=1
+export aa=1
+export aaa=1
+env
+unset a
+env
+export a=1
+export aa=1
+export aaa=1
+env
+unset a
+export a=1
+export aa=1
+export aaa=1
+env
+unset a
+env
+export a=1
+export aa=1
+export aaa=1
+env
+unset a
+export a=1
+export aa=1
+export aaa=1
+env
+unset a
+export
+export a=1
+export aa=1
+export aaa=1
+env
+export
+unset a
+export a=1
+export aa=1
+export aaa=1
+env
+unset a
+export a=1
+export aa=1
+export aaa=1
+env
+unset a
+export a=1
+export aa=1
+export aaa=1
+env
+unset a
+export a=1
+export aa=1
+export aaa=1
+env
+unset a
+env
+export a=1
+export aa=1
+export aaa=1
+env
+unset a
+env
+export
+export a=1
+export aa=1
+export aaa=1
+env
+unset a
+env
+export a=1
+export aa=1
+export aaa=1
+env
+unset a
+env
+export a=1
+export aa=1
+export aaa=1
+env
+unset a
+env
+unset aa
+env
+export a=1
+export aa=1
+export aaa=1
+env
+unset a
+env
