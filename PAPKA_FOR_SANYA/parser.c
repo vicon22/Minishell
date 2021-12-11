@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/11 19:29:50 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/11 20:13:03 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,7 +256,7 @@ int	main(int argc, char **argv, char **envp)
 //
 //		if (!ft_strncmp(func_l->content, "unset", 5))
 //			ft_unset(func_l->args, &env_array);
-		ft_show_lst(func_l);
+//		ft_show_lst(func_l);
 		ft_exec(func_l, &env_array);
 		ft_free_lst(&arg_l);
 		ft_free_lst(&func_l);

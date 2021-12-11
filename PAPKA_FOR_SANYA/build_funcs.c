@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 11:38:03 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/11 19:48:47 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/11 20:09:00 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,14 @@ void	ft_pwd(char **argc, char **envp)
 		write(1, "\n", 1);
 	}
 	else
-	{
-		//perror("getcwd() error");
 		write(1, "getcwd error\n", 13);
-	}
 }
 
 void	ft_cd(char **argc, char **envp)
 {
 	(void)envp;
-	printf("(in ft_cd)argc[1]:%s\n", argc[1]);
-	chdir(argc[1]);
+	if (chdir(argc[1]) == -1)
+		perror(argc[1]);
 }
 
 void	ft_echo(char **argv, char **envp)
@@ -93,7 +90,6 @@ void	(*ft_find_buildin(char **argc, char **envp))(char **argc, char **envp)
 	void	(*buildin)(char **argc, char **envp);
 
 	func_name = argc[0];
-	printf("func_name 111:%s\n", func_name);
 	buildin = NULL;
 	if (!ft_strncmp(func_name, "pwd", 4))
 		buildin = &ft_pwd;
@@ -116,7 +112,6 @@ void	(*ft_find_buildin2(char **argc, char **envp))(char **argc, char ***envp)
 	char	*func_name;
 	void	(*buildin)(char **argc, char ***envp);
 
-	printf("func_name 222:%s\n", func_name);
 	func_name = argc[0];
 	buildin = NULL;
 	if (!ft_strncmp(func_name, "unset", 6))
