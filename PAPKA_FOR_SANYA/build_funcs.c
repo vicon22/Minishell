@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 11:38:03 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/11 20:09:00 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/12 15:39:42 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,12 @@ int	count_argv(char **argv)
 	return (size);
 }
 
-void	ft_pwd(char **argc, char **envp)
+void	ft_pwd(char **argc, char ***envp)
 {
 	char	dir[200];
 
 	(void)argc;
 	(void)envp;
-	printf("in ft_pwd\n");
 	if (getcwd(dir, 200) != NULL)
 	{
 		write(1, dir, ft_strlen(dir));
@@ -40,14 +39,27 @@ void	ft_pwd(char **argc, char **envp)
 		write(1, "getcwd error\n", 13);
 }
 
-void	ft_cd(char **argc, char **envp)
+void ft_call_export(char **argc, char ***envp)
+{
+	char *export[2];
+
+	export[0] = "export";
+	export[1] = "?=1";
+	ft_export(export, envp);
+}
+
+void	ft_cd(char **argc, char ***envp)
 {
 	(void)envp;
 	if (chdir(argc[1]) == -1)
+	{
+		ft_putstr_fd("minishell$: ", 2);
 		perror(argc[1]);
+		ft_call_export(argc, envp);
+	}
 }
 
-void	ft_echo(char **argv, char **envp)
+void	ft_echo(char **argv, char ***envp)
 {
 	int	flag;
 	int	i;
@@ -77,46 +89,73 @@ void	ft_echo(char **argv, char **envp)
 		write(1, "\n", 1);
 }
 
-void	ft_exit(char **argv, char **envp)
+void	ft_exit(char **argv, char ***envp)
 {
 	(void)argv;
 	(void)envp;
-	exit(0);
+
+	ft_putstr_fd("exit\n", 1);
+	if (argv[1] != NULL)
+	{
+		if (ft_correct_number(argv[1]) ==  0)
+			exit(ft_atoi(argv[1]) % 256);
+		else
+		{
+			ft_putstr_fd("minishell$: ", 2);
+			ft_putstr_fd("exit: ", 2);
+			ft_putstr_fd(argv[1], 2);
+			ft_putstr_fd(": ", 2);
+			ft_putstr_fd("numeric argument required\n", 2);
+			exit (255);
+		}
+	}
+	else
+		exit(0);
 }
 
-void	(*ft_find_buildin(char **argc, char **envp))(char **argc, char **envp)
-{
-	char	*func_name;
-	void	(*buildin)(char **argc, char **envp);
+//void	(*ft_find_buildin(char **argc, char **envp))(char **argc, char **envp)
+//{
+//	char	*func_name;
+//	void	(*buildin)(char **argc, char **envp);
+//
+//	func_name = argc[0];
+//	buildin = NULL;
+//	if (!ft_strncmp(func_name, "pwd", 4))
+//		buildin = &ft_pwd;
+//	if (!ft_strncmp(func_name, "cd", 3))
+//		buildin = &ft_cd;
+//	if (!ft_strncmp(func_name, "echo", 5))
+//		buildin = &ft_echo;
+////	if (!ft_strncmp(func_name, "unset", 6))
+////		buildin = ft_unset;
+////	if (!ft_strncmp(func_name, "export", 7))
+//	if (!ft_strncmp(func_name, "env", 4))
+//		buildin = ft_env;
+//	if (!ft_strncmp(func_name, "exit", 5))
+//		buildin = ft_exit;
+//	return (buildin);
+//}
 
-	func_name = argc[0];
-	buildin = NULL;
-	if (!ft_strncmp(func_name, "pwd", 4))
-		buildin = &ft_pwd;
-	if (!ft_strncmp(func_name, "cd", 3))
-		buildin = &ft_cd;
-	if (!ft_strncmp(func_name, "echo", 5))
-		buildin = &ft_echo;
-//	if (!ft_strncmp(func_name, "unset", 6))
-//		buildin = ft_unset;
-//	if (!ft_strncmp(func_name, "export", 7))
-	if (!ft_strncmp(func_name, "env", 4))
-		buildin = ft_env;
-	if (!ft_strncmp(func_name, "exit", 5))
-		buildin = ft_exit;
-	return (buildin);
-}
-
-void	(*ft_find_buildin2(char **argc, char **envp))(char **argc, char ***envp)
+void	(*ft_find_buildin(char **argc, char **envp))(char **argc, char ***envp)
 {
 	char	*func_name;
 	void	(*buildin)(char **argc, char ***envp);
 
 	func_name = argc[0];
 	buildin = NULL;
+	if (!ft_strncmp(func_name, "pwd", 4))
+		buildin = ft_pwd;
+	if (!ft_strncmp(func_name, "cd", 3))
+		buildin = ft_cd;
+	if (!ft_strncmp(func_name, "echo", 5))
+		buildin = ft_echo;
 	if (!ft_strncmp(func_name, "unset", 6))
 		buildin = ft_unset;
 	if (!ft_strncmp(func_name, "export", 7))
 		buildin = ft_export;
+	if (!ft_strncmp(func_name, "env", 4))
+		buildin = ft_env;
+	if (!ft_strncmp(func_name, "exit", 5))
+		buildin = ft_exit;
 	return (buildin);
 }

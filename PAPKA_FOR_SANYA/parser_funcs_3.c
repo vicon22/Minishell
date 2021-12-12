@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:05:32 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/09 14:15:44 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/12 15:17:50 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,4 +119,20 @@ void	free_all_exclude_head(char **result)
 		free(result[j]);
 		j++;
 	}
+}
+
+int ft_correct_number(char *number)
+{
+	char        *saver;
+	saver = number;
+
+	if (*saver == '-' || *saver == '+')
+		saver++;
+	while (*saver)
+	{
+		if (ft_isdigit(*saver) == 0)
+			return (1);
+		saver++;
+	}
+	return (0);
 }

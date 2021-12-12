@@ -157,16 +157,14 @@ int	ft_lstcmp(t_arg *lst)
 	}
 }
 
-void	ft_pipe(char *path, char **argc, char **envp)
+void	ft_pipe(char *path, char **argc, char ***envp)
 {
 	int		pid;
 	int		pip[2];
-	void	(*buildin)(char **argc, char **envp);
-	void	(*buildin2)(char **argc, char ***envp);
+	void	(*buildin)(char **argc, char ***envp);
 
 	errno = 0;
-	buildin = ft_find_buildin(argc, envp);
-	buildin2 = ft_find_buildin2(argc, envp);
+	buildin = ft_find_buildin(argc, *envp);
 	pipe(pip);
 	pid = fork();
 	if (!pid)
@@ -176,10 +174,8 @@ void	ft_pipe(char *path, char **argc, char **envp)
 		close(pip[1]);
 		if (buildin)
 			buildin(argc, envp);
-		else if (buildin2)
-			buildin2(argc, &envp);
 		else
-			execve(path, argc, envp);
+			execve(path, argc, *envp);
 		write(2, "bash: ", 6);
 		perror(argc[0]);
 		exit(0);
@@ -192,13 +188,13 @@ void	ft_pipe(char *path, char **argc, char **envp)
 	}
 }
 
-void	ft_return(char *path, char **argc, char **envp)
+void	ft_return(char *path, char **argc, char ***envp)
 {
 	int		pid;
 	int		pip[2];
-	void	(*buildin)(char **argc, char **envp);
+	void	(*buildin)(char **argc, char ***envp);
 
-	buildin = ft_find_buildin(argc, envp);
+	buildin = ft_find_buildin(argc, *envp);
 	pipe(pip);
 	pid = fork();
 	if (!pid)
@@ -206,7 +202,7 @@ void	ft_return(char *path, char **argc, char **envp)
 		if (buildin)
 			buildin(argc, envp);
 		else
-			execve(path, argc, envp);
+			execve(path, argc, *envp);
 		exit(0);
 	}
 	else
@@ -311,16 +307,13 @@ void	ft_rewrite(char *file_name)
 void	ft_return_one_command(char *path, char **argv, char ***envp)
 {
 	int		pid;
-	void	(*buildin)(char **argc, char **envp);
-	void	(*buildin2)(char **argc, char ***envp);
+	void	(*buildin)(char **argc, char ***envp);
+	int status;
 
 	errno = 0;
 	buildin = ft_find_buildin(argv, *envp);
-	buildin2 = ft_find_buildin2(argv, *envp);
 	if (buildin)
-		buildin(argv, *envp);
-	else if (buildin2)
-		buildin2(argv, envp);
+		buildin(argv, envp);
 	else
 	{
 		pid = fork();
@@ -333,10 +326,18 @@ void	ft_return_one_command(char *path, char **argv, char ***envp)
 			perror(argv[0]);
 			//ft_puterror_all(argv[0]);
 			printf("---\n");
-			exit (errno);
+			exit (1);
 		}
 		else
-			waitpid(0, NULL, 0);
+		{
+			waitpid(0, &status, 0);
+			ft_putnbr_fd(status, 2);
+			if (WIFEXITED(status))
+				printf("%d", WEXITSTATUS(status));
+			if (status != 0)
+				ft_call_export(argv, envp);
+		}
+
 	}
 }
 
@@ -360,7 +361,7 @@ void	ft_exec(t_arg *lst, char ***envp)
 	}
 	else
 	{
-		ft_pipe(lst->path, lst->args, *envp);
+		ft_pipe(lst->path, lst->args, envp);
 		logic_flag = ft_lstcmp(lst);
 		//printf("                                  logic_flag: %d\n", logic_flag);
 		needful = lst;
@@ -388,13 +389,13 @@ void	ft_exec(t_arg *lst, char ***envp)
 				if (needful_next)
 				{
 					//printf("pipe!\n");
-					ft_pipe(needful->next->path, needful->next->args, *envp);
+					ft_pipe(needful->next->path, needful->next->args, envp);
 				}
 				else
 				{
 					//printf("return!\n");
 					//printf("++++\n");
-					ft_return(needful->next->path, needful->next->args, *envp);
+					ft_return(needful->next->path, needful->next->args, envp);
 					//printf("++++\n");
 				}
 			}

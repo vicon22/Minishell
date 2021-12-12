@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/11 20:13:03 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/12 14:43:44 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ void	nothing(int signal)
 
 void	new_promt(int signal)
 {
-	write(1, "\n", 1);
+	write(0, "\n", 1);
 	rl_on_new_line();
 	rl_replace_line("", 0);
 	rl_redisplay();
@@ -234,10 +234,10 @@ int	main(int argc, char **argv, char **envp)
 	{
 		dup2(input_fd[0], 0);
 //		args_str = "echo \"dasdada\" \'vasya\' 228 \'$PATH\' \"$LOGNAME\" | grep $PWD \"$PATH\"  \'\"31231\"\' \' \" \'";
-//		signal(SIGINT, new_promt);
-//		signal(SIGQUIT, nothing);
+		signal(SIGINT, new_promt);
+		signal(SIGQUIT, nothing);
 		args_str = readline("minishell$ ");
-		if (!args_str)// ЭТО ПО СУТИ И ЕСТЬ EOF
+		if (!args_str)
 			exit(0);
 		ft_write_history(history_fd, args_str);
 		add_history(args_str);
