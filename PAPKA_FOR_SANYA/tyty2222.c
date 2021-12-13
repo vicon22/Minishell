@@ -331,9 +331,16 @@ void	ft_return_one_command(char *path, char **argv, char ***envp)
 		else
 		{
 			waitpid(0, &status, 0);
-			ft_putnbr_fd(status, 2);
-			if (WIFEXITED(status))
-				printf("%d", WEXITSTATUS(status));
+			if (WIFSIGNALED(status)) {
+				WIFEXITED(status);
+				{
+				if (WTERMSIG(status) == SIGINT)
+					ft_putstr_fd("130\n", 2);
+				if (WTERMSIG(status) == SIGQUIT)
+					ft_putstr_fd("131\n", 2);
+				}
+			}
+			ft_putnbr_fd(WEXITSTATUS(status), 2);
 			if (status != 0)
 				ft_call_export(argv, envp);
 		}

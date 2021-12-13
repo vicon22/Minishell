@@ -153,7 +153,7 @@ void	nothing(int signal)
 {
 	(void) signal;
 	rl_on_new_line();
-	rl_replace_line("", 0);
+	rl_replace_line("", 1);
 	rl_redisplay();
 }
 
