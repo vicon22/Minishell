@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 11:38:03 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/13 15:31:17 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/13 16:48:54 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ void	ft_echo(char **argv, char ***envp)
 	argc = count_argv(argv);
 	if (ft_arr_len(argv) > 1)
 	{
-		if (!ft_strncmp(argv[1], "-n", 3))
+		while (!ft_strncmp(argv[i], "-n", 3))
 		{
-			i = 2;
-			flag = 1;
+			i++;
+			flag++;
 		}
 		while (i != argc) {
 			write(1, argv[i], ft_strlen(argv[i]));
@@ -89,7 +89,7 @@ void	ft_echo(char **argv, char ***envp)
 			if (i != argc)
 				write(1, " ", 1);
 		}
-		if (flag != 1)
+		if (flag == 0)
 			write(1, "\n", 1);
 	}
 	else
