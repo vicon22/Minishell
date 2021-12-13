@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 11:38:03 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/13 15:18:34 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/13 15:24:40 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_pwd(char **argc, char ***envp)
 	}
 	else
 		write(1, "getcwd error\n", 13);
-	ft_call_export(argv, envp, 0);
+	ft_call_export(argc, envp, 0);
 }
 
 void ft_call_export(char **argc, char ***envp, int status)
@@ -64,7 +64,7 @@ void	ft_cd(char **argc, char ***envp)
 		perror(argc[1]);
 		ft_call_export(argc, envp, 1);
 	}
-	ft_call_export(argv, envp, 0);
+	ft_call_export(argc, envp, 0);
 }
 
 void	ft_echo(char **argv, char ***envp)
