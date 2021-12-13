@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 11:38:03 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/12 15:39:42 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/13 15:18:34 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,22 @@ void	ft_pwd(char **argc, char ***envp)
 	}
 	else
 		write(1, "getcwd error\n", 13);
+	ft_call_export(argv, envp, 0);
 }
 
-void ft_call_export(char **argc, char ***envp)
+void ft_call_export(char **argc, char ***envp, int status)
 {
-	char *export[2];
+	char *export[3];
+	char *error;
 
+	error = ft_itoa(status);
+	printf("error:%s\n", error);
 	export[0] = "export";
-	export[1] = "?=1";
+	export[1] = ft_strjoin("?=", error);
+	export[2] = NULL;
 	ft_export(export, envp);
+	free(error);
+	free(export[1]);
 }
 
 void	ft_cd(char **argc, char ***envp)
@@ -55,8 +62,9 @@ void	ft_cd(char **argc, char ***envp)
 	{
 		ft_putstr_fd("minishell$: ", 2);
 		perror(argc[1]);
-		ft_call_export(argc, envp);
+		ft_call_export(argc, envp, 1);
 	}
+	ft_call_export(argv, envp, 0);
 }
 
 void	ft_echo(char **argv, char ***envp)
@@ -87,6 +95,7 @@ void	ft_echo(char **argv, char ***envp)
 	}
 	else
 		write(1, "\n", 1);
+	ft_call_export(argv, envp, 0);
 }
 
 void	ft_exit(char **argv, char ***envp)

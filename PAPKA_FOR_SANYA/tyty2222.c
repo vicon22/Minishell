@@ -320,29 +320,26 @@ void	ft_return_one_command(char *path, char **argv, char ***envp)
 		if (pid == 0)
 		{
 			execve(path, argv, *envp);
-			printf("---\n");
-			printf("errno:%d\n", errno);
-			write(2, "bash: ", 6);
 			perror(argv[0]);
-			//ft_puterror_all(argv[0]);
-			printf("---\n");
 			exit (1);
 		}
 		else
 		{
 			waitpid(0, &status, 0);
+			WIFEXITED(status);
 			if (WIFSIGNALED(status)) {
-				WIFEXITED(status);
 				{
-				if (WTERMSIG(status) == SIGINT)
-					ft_putstr_fd("130\n", 2);
-				if (WTERMSIG(status) == SIGQUIT)
-					ft_putstr_fd("131\n", 2);
+					if (WTERMSIG(status) == SIGINT)
+						ft_call_export(argv, envp, 130);;
+					if (WTERMSIG(status) == SIGQUIT)
+						ft_call_export(argv, envp, 131);
 				}
 			}
-			ft_putnbr_fd(WEXITSTATUS(status), 2);
+			//ft_putnbr_fd(WEXITSTATUS(status), 2);
 			if (status != 0)
-				ft_call_export(argv, envp);
+				ft_call_export(argv, envp, 1);
+			if (status == 0)
+				ft_call_export(argv, envp, 0);
 		}
 
 	}

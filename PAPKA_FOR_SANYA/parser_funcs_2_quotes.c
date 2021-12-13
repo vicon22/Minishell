@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:04:36 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/12 15:22:01 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/13 14:46:22 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_remove_quotes(void *content)
 char	*ft_end_of_var(char *content)
 {
 	content++;
-	while (*content && !ft_is_space(*content) && *content != '\'' && *content != '\"' && (ft_isalpha(*content) || ft_isdigit(*content)))
+	while (*content && !ft_is_space(*content) && *content != '\'' && *content != '\"' && (ft_isalpha(*content) || ft_isdigit(*content) || *content == '_' || *content == '?'))
 	{
 		content++;
 	}

@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 18:36:25 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/11 17:47:48 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/13 14:39:41 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ void	ft_unset(char **args, char ***env_array)
 		(*env_array)[i] = NULL;
 		free_all(tmp);
 	}
+	ft_call_export(argv, envp, 0);
 }
