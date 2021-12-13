@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 18:10:30 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/13 15:25:15 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/13 15:26:07 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell_2.h"
@@ -99,5 +99,4 @@ void    ft_export(char **args, char ***env_array)
 			}
 		}
 	}
-	ft_call_export(args, env_array, 0);
 }

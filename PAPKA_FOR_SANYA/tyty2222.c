@@ -327,21 +327,21 @@ void	ft_return_one_command(char *path, char **argv, char ***envp)
 		{
 			waitpid(0, &status, 0);
 			WIFEXITED(status);
-			if (WIFSIGNALED(status)) {
-				{
+			if (WIFSIGNALED(status))
+			{
 					if (WTERMSIG(status) == SIGINT)
 						ft_call_export(argv, envp, 130);;
 					if (WTERMSIG(status) == SIGQUIT)
 						ft_call_export(argv, envp, 131);
-				}
 			}
-			//ft_putnbr_fd(WEXITSTATUS(status), 2);
-			if (status != 0)
-				ft_call_export(argv, envp, 1);
-			if (status == 0)
-				ft_call_export(argv, envp, 0);
+			else
+			{
+				if (status != 0)
+					ft_call_export(argv, envp, 1);
+				else
+					ft_call_export(argv, envp, 0);
+			}
 		}
-
 	}
 }
 
