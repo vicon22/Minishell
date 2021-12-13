@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/13 16:13:03 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/13 17:03:56 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,25 @@ char	*ft_find_path(void *content, char *path)
 	return (NULL);
 }
 
+int ft_is_built_int(char *func_name)
+{
+	if (!ft_strncmp(func_name, "pwd", 4))
+		return (1);
+	if (!ft_strncmp(func_name, "cd", 3))
+		return (1);
+	if (!ft_strncmp(func_name, "echo", 5))
+		return (1);
+	if (!ft_strncmp(func_name, "unset", 6))
+		return (1);
+	if (!ft_strncmp(func_name, "export", 7))
+		return (1);
+	if (!ft_strncmp(func_name, "env", 4))
+		return (1);
+	if (!ft_strncmp(func_name, "exit", 5))
+		return (1);
+	return (0);
+}
+
 int    ft_set_path(t_arg *func_l, char *path, char ***envp)
 {
 	int flag;
@@ -77,7 +96,7 @@ int    ft_set_path(t_arg *func_l, char *path, char ***envp)
 	while (func_l)
 	{
 		func_l->path = ft_find_path(func_l->content, path);
-		if (!func_l->path && !ft_is_pipe_or_redir(func_l->content))
+		if (!func_l->path && !ft_is_pipe_or_redir(func_l->content) && !ft_is_built_int(func_l->content))
 		{
 			ft_call_export(func_l->args, envp, 127);
 			ft_putstr_fd("minishell: ", 2);
@@ -106,8 +125,13 @@ void	ft_parse_input_str(char *args_str, t_arg **arg_l)
 		{
 			if (*(args_str + 1) == *args_str)
 				args_str += ft_pull_str(args_str, &arg, 2);
-			else
+			else if (*args_str == '>')
 				args_str += ft_pull_str(args_str, &arg, 1);
+			else
+			{
+				args_str++;
+				continue;
+			}
 		}
 		else if ((*args_str == '\'' || *args_str == '\"'))
 			args_str += ft_pull_str(args_str, &arg, ft_next_space_or_pipe(args_str));

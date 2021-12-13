@@ -327,7 +327,7 @@ void	ft_return_one_command(char *path, char **argv, char ***envp)
 		else
 		{
 			waitpid(0, &status, 0);
-			printf("status:%d\n", status);
+//			printf("status:%d\n", status);
 			WIFEXITED(status);
 			if (WIFSIGNALED(status))
 			{
@@ -369,7 +369,7 @@ void	ft_exec(t_arg *lst, char ***envp)
 	else {
 		ft_pipe(lst->path, lst->args, envp);
 		logic_flag = ft_lstcmp(lst);
-		printf("                                  logic_flag: %d\n", logic_flag);
+//		printf("                                  logic_flag: %d\n", logic_flag);
 		needful = lst;
 		while (logic_flag >= 0) {
 			if (logic_flag == 0) {
@@ -400,7 +400,7 @@ void	ft_exec(t_arg *lst, char ***envp)
 			}
 			needful = needful->next;
 			logic_flag = ft_lstcmp(needful);
-			printf("                                  logic_flag: %d\n", logic_flag);
+//			printf("                                  logic_flag: %d\n", logic_flag);
 		}
 		//printf("---\n");
 		ft_full_return(*envp);

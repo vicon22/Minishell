@@ -44,7 +44,6 @@ void ft_call_export(char **argc, char ***envp, int status)
 	char *error;
 
 	error = ft_itoa(status);
-	printf("error:%s\n", error);
 	export[0] = "export";
 	export[1] = ft_strjoin("?=", error);
 	export[2] = NULL;
