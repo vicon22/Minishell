@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/12 14:43:44 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/13 16:13:03 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,25 @@ char	*ft_find_path(void *content, char *path)
 	return (NULL);
 }
 
-void	ft_set_path(t_arg *func_l, char *path)
+int    ft_set_path(t_arg *func_l, char *path, char ***envp)
 {
+	int flag;
+
+	flag = 0;
 	while (func_l)
 	{
 		func_l->path = ft_find_path(func_l->content, path);
+		if (!func_l->path && !ft_is_pipe_or_redir(func_l->content))
+		{
+			ft_call_export(func_l->args, envp, 127);
+			ft_putstr_fd("minishell: ", 2);
+			ft_putstr_fd(func_l->content, 2);
+			ft_putstr_fd(" : command not found\n", 2);
+			flag = 1;
+		}
 		func_l = func_l->next;
 	}
+	return (flag);
 }
 
 void	ft_parse_input_str(char *args_str, t_arg **arg_l)
@@ -245,19 +257,9 @@ int	main(int argc, char **argv, char **envp)
 		ft_parse_input_str(args_str, &arg_l);
 		ft_handle_quotes(arg_l, env_array);
 		ft_set_funcs_structure(arg_l, &func_l);
-		ft_set_path(func_l, PATH);
 		ft_set_heredoc(func_l);
-
-//		if (!ft_strncmp(func_l->content, "export", 6))
-//			ft_export(func_l->args, &env_array);
-
-//		if (!ft_strncmp(func_l->content, "env", 3))
-//			ft_env(func_l->args, env_array);
-//
-//		if (!ft_strncmp(func_l->content, "unset", 5))
-//			ft_unset(func_l->args, &env_array);
-//		ft_show_lst(func_l);
-		ft_exec(func_l, &env_array);
+		if (!ft_set_path(func_l, PATH, &env_array))
+			ft_exec(func_l, &env_array);
 		ft_free_lst(&arg_l);
 		ft_free_lst(&func_l);
 		free(args_str);
