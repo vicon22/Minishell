@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/14 15:26:36 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/14 16:03:47 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -298,7 +298,7 @@ int	main(int argc, char **argv, char **envp)
 		ft_handle_quotes(arg_l, env_array);
 		ft_set_funcs_structure(arg_l, &func_l);
 		ft_set_heredoc(func_l);
-		if (!ft_set_path(func_l, PATH, &env_array))
+		if (func_l && !ft_set_path(func_l, PATH, &env_array))
 			ft_exec(func_l, &env_array);
 		ft_free_lst(&arg_l);
 		ft_free_lst(&func_l);

@@ -344,3 +344,20 @@ cat a.out
 
 ls -la
 exit
+ls
+
+
+
+
+
+
+yes
+echo test > ls
+echo > ls
+echo > ls
+echo > ls
+echo > ls 
+cat ls
+cat ls
+yes
+ls
