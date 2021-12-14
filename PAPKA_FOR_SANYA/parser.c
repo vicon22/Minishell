@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/14 16:03:47 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/14 18:09:09 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ void	ft_parse_input_str(char *args_str, t_arg **arg_l)
 		else if (*args_str == '|')
 			args_str += ft_pull_str(args_str, &arg, 1);
 		else
-			args_str += ft_pull_str(args_str, &arg, ft_next_space_or_quote_or_pipe(args_str));
+			args_str += ft_pull_str(args_str, &arg, ft_next_space_or_quote_or_other(args_str));
 		ft_lst2add_back(arg_l, ft_lst2_new(arg));
 	}
 }
@@ -253,13 +253,15 @@ char **ft_char_array_cpy(char **array)
 	char **new_array;
 	int i;
 
-	new_array = ft_calloc(ft_arr_len(array) + 1, sizeof (char *));
+	new_array = ft_calloc(ft_arr_len(array) + 2, sizeof (char *));
 	i = 0;
 	while (array[i])
 	{
 		new_array[i] = ft_strdup(array[i]);
 		i++;
 	}
+	new_array[i] = ft_strdup("?=0");
+	i++;
 	new_array[i] = NULL;
 
 	return (new_array);
@@ -298,11 +300,14 @@ int	main(int argc, char **argv, char **envp)
 		ft_handle_quotes(arg_l, env_array);
 		ft_set_funcs_structure(arg_l, &func_l);
 		ft_set_heredoc(func_l);
+//		ft_show_lst(func_l);
 		if (func_l && !ft_set_path(func_l, PATH, &env_array))
 			ft_exec(func_l, &env_array);
 		ft_free_lst(&arg_l);
 		ft_free_lst(&func_l);
 		free(args_str);
+		dup2(0, 0);
+		dup2(1, 1);
 	}
 	return 0;
 }

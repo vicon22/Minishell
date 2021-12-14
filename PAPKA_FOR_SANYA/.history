@@ -451,3 +451,123 @@ yes
 yes
 yes
 ls
+cat < ls > ls
+cat ls
+cat < lss > ls
+cat < ls > ls
+;; test
+| test
+echo > <
+echo | |
+ls
+<
+exit 42
+ls -Z
+echo $
+echo $?
+ls
+echo $?
+echo $?
+echo $?
+echo $A
+ls
+yes
+echo $?
+yes
+echo $?
+cd gdhahahad
+exit -9223372036854775810
+exit 259
+<
+ls
+ls -la
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+export TEST="ls       -l     - a"
+export TEST="ls       -l     - a"
+export TEST="ls       -l     - a"
+export TEST="ls       -l     - a"
+export TEST="ls       -l     - a"
+export TEST="ls"
+export TEST="ls"
+export TEST="ls"
+env
+export TEST=ls
+export TEST="ls"
+export =
+export 1TEST= ;
+export | sort | grep -v SHLVL | grep -v _= | grep -v OLDPWD
+ls
+env | sort | grep -v SHLVL | grep -v _=
+ls
+env | sort
+env | sort
+ls
+export | sort
+ls
+echo test > ls >> ls >> ls
+echo test > ls >> ls >> ls
+ls
+ls -la
+env
+ls -lsa
+ls -lsa
+ls -lsa
+pwd
+echo test > ls >> ls >> ls
+ls
+echo test > ls >> ls >> ls
+echo test > ls >> ls >> ls
+echo test > ls >> ls >> ls
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+> lol echo test lol
+echo test >> ls
+echo zalupa > ls >> ls >> ls
+yes
+yes
+yes
+yes
+ls
+ls
+yes
+yes
+yes
+echo | |
+echo | |
+echo > <
+| test
+| test
+mkdir test_dir
+ls
+cd test_dir/
+ls
+pwd
+echo $OLD_PWD
+echo $OLDPWD
+ls
+mkdir 228
+cd 228
+ls
+echo $OLDPWD
+ls -la
+;; test
+| test
+export =
+export TEST+=LOL
+ls -lsa
+yes
+yes
+ls
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+export 
+env
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+>lol echo > test>lol>test>>lol>test
+>lol echo > test>lol>test>>lol>test
+>lol echo > test>lol>test>>lol>test
+>lol echo > test>lol>test>>lol>test
+>lol echo > test>lol>test>>lol>test
+ls
+ls -la
+yes

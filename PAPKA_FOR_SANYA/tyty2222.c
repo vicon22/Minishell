@@ -232,6 +232,7 @@ void	ft_full_return(char **envp)
 		//		close(pip[0]);
 		//		close(pip[1]);
 		execve(cat[0], cat, envp);
+		exit(0);
 	}
 	else
 	{
@@ -259,6 +260,7 @@ void	ft_full_return_2(char **envp)
 			write (1, &ch, 1);
 			i = read(0, &ch, 1);
 		}
+		exit(0);
 	}
 	else
 	{

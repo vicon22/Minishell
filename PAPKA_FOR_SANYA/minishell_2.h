@@ -41,7 +41,7 @@ int		ft_is_space(char c);
 void	ft_show_lst(t_arg *lst);
 void	ft_free_lst(t_arg **lst);
 int		ft_closed_quote(char *arg_str);
-int		ft_next_space_or_quote_or_pipe(char *arg_str);
+int		ft_next_space_or_quote_or_other(char *arg_str);
 int		ft_next_space_or_pipe(char *arg_str);
 int		ft_pull_str(char *args_str, char **cur_arg, int n);
 void	ft_remove_quotes(void *content);

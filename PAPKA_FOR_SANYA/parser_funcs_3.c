@@ -65,7 +65,7 @@ int	ft_is_space(char c)
 		return (0);
 }
 
-int	ft_next_space_or_quote_or_pipe(char *arg_str)
+int	ft_next_space_or_quote_or_other(char *arg_str)
 {
 	int	i;
 
@@ -73,7 +73,7 @@ int	ft_next_space_or_quote_or_pipe(char *arg_str)
 	while (arg_str[++i])
 	{
 		if ((arg_str[i] == ' ' || arg_str[i] == '\''
-				|| arg_str[i] == '\"' || arg_str[i] == '|') && i != 0)
+				|| arg_str[i] == '\"' || arg_str[i] == '|' || arg_str[i] == '<' || arg_str[i] == '>') && i != 0)
 		{
 			return (i);
 		}
