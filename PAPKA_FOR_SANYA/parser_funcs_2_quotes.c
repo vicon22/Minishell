@@ -6,11 +6,22 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:04:36 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/13 14:46:22 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/14 17:27:54 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell_2.h"
+
+int ft_is_valid_dollar(char *content)
+{
+	while (*content)
+	{
+		if (*content == '$' && (ft_isalpha(*(content + 1)) || ft_isdigit(*(content + 1)) || *(content + 1) == '_' || *(content + 1) == '?'))
+			return (1);
+		content++;
+	}
+	return (0);
+}
 
 void	ft_handle_quotes(t_arg *arg_l, char**envp)
 {
@@ -19,9 +30,9 @@ void	ft_handle_quotes(t_arg *arg_l, char**envp)
 	while (arg_l != NULL)
 	{
 		content = &(arg_l->content);
-		while (ft_strchr(*content, '\"') && ft_closed_quote(ft_strchr(*content, '\"')) && ft_strchr(*content, '$'))
+		while (ft_strchr(*content, '\"') && ft_closed_quote(ft_strchr(*content, '\"')) && ft_is_valid_dollar(*content))
 			ft_replace_by_envp(content, envp);
-		while (!(ft_strchr(*content, '\'') && ft_closed_quote(ft_strchr(*content, '\''))) && ft_strchr(*content, '$'))
+		while (!(ft_strchr(*content, '\'') && ft_closed_quote(ft_strchr(*content, '\''))) && ft_is_valid_dollar(*content))
 			ft_replace_by_envp(content, envp);
 		if (**content == '\"' && ft_closed_quote(ft_strchr(*content, '\"')))
 			ft_remove_quotes(ft_strchr(*content, '\"'));
@@ -73,10 +84,12 @@ void	ft_remove_quotes(void *content)
 char	*ft_end_of_var(char *content)
 {
 	content++;
-	while (*content && !ft_is_space(*content) && *content != '\'' && *content != '\"' && (ft_isalpha(*content) || ft_isdigit(*content) || *content == '_' || *content == '?'))
+	while (*content && !ft_is_space(*content) && *content != '\'' && *content != '\"' && (ft_isalpha(*content) || ft_isdigit(*content) || *content == '_'))
 	{
 		content++;
 	}
+	if (*content == '?')
+		content++;
 	return (content);
 }
 
@@ -133,11 +146,14 @@ void ft_replace_by_envp(char **content, char**envp)
 			return ;
 		}
 	}
-		new_content = ft_calloc(pre_len + 1, sizeof (char));
+	if (ft_is_valid_dollar(*content))
+	{
+		new_content = ft_calloc(pre_len + 1, sizeof(char));
 		new_content = ft_memcpy(new_content, *content, pre_len);
 		new_content = ft_strjoin2(&new_content, *content + pre_len + var_len + 1);
 
 		ft_bzero(*content, ft_strlen(*content) + 1);
 		*content = ft_strjoin2(content, new_content);
 		free(new_content);
+	}
 }

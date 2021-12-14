@@ -361,3 +361,93 @@ cat ls
 cat ls
 yes
 ls
+ls
+ls
+echo $
+echo $?
+echo $A
+echo $dasda
+echo $dasda
+echo $
+echo $A
+echo $PATH
+echo $PATH $PATH
+echo $}
+echo ${
+echo $}
+env
+export TEST=228
+env
+echo test     \    test
+echo \"test
+echo "$TEST"
+echo '$TEST'
+echo "$TEST$TEST$TEST"
+echo "$TEST$TEST=lol$TEST"
+echo "   $TEST lol $TEST"
+echo $TEST$TEST$TEST
+echo "$"
+echo "$?TEST"
+echo "$?
+echo $?
+ls
+echo "$?TEST"
+echo $?
+echo $?
+env
+echo $
+echo ?
+echo $?
+echo $?
+echo $A
+echo $PATH
+env
+echo $_
+ls
+echo test
+echo $PATH
+echo $_
+echo ${
+echo $}
+echo $?
+echo $A
+echo $PATH
+echo $?
+echo $?
+echo $?
+echo $?
+echo $?
+echo $?
+echo $?
+echo $?
+echo $?
+echo $}
+echo $?$?
+echo $?$PATH
+ls
+ls
+ls
+echo $TEST $TEST
+export TEST=LOL
+echo $TEST $TEST
+echo "$T1TEST"
+echo "$?TEST"
+echo "$"
+echo "$=TEST"
+echo "\$TEST"
+echo "\$TEST"
+echo $TEST$TEST=lol$TEST""lol
+echo $TEST$TEST=lol$TEST""lol
+echo "   $TEST lol $TEST"
+yes
+yes
+ls
+ls -la
+echo test > ls >> ls >> ls
+ls
+echo test > ls >> ls >> ls
+ls
+yes
+yes
+yes
+ls

@@ -253,11 +253,11 @@ void	ft_full_return_2(char **envp)
 	if (pid == 0)
 	{
 		ft_sig_child();
-		i = 1;
+		i = read(0, &ch, 1);
 		while (i == 1)
 		{
-			i = read(0, &ch, 1);
 			write (1, &ch, 1);
+			i = read(0, &ch, 1);
 		}
 	}
 	else
