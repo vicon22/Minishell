@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:03:02 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/13 14:09:20 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/14 13:23:22 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,13 @@ void 	ft_set_heredoc(t_arg *func_l);
 int		ft_arr_len(char **array);
 char 	**ft_char_array_cpy(char **array);
 int 	ft_correct_number(char *number);
+
+void	nothing(int signal);
+void	new_promt(int signal);
+void 	ft_sig_parent();
+void 	ft_sig_child();
+void 	ft_sig_ignore();
+void	sig_quit(int signal);
 /*evgenii's*/
 void	ft_exec(t_arg *lst, char ***argv);
 void	ft_pwd(char **argc, char ***envp);
