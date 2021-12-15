@@ -695,3 +695,81 @@ ls
 ><><>
 AAA
 echo "dadad" | grep d > abc
+ls
+ls
+ls
+ls
+echo test > abc
+ls
+echo test |grep t> abc
+ls
+
+cat abc 
+
+cat abc
+cat abc
+echo test |grep t> abc
+ls
+ls
+pwd
+yes
+ls
+echo test |grep t> abc
+echo test333 |grep t> abc
+ls
+
+ls
+echo test333 |grep t> abc
+ls
+echo test333 |grep t> abc
+ls
+yes
+yes
+exit
+ls
+yes
+yes
+yes
+ls -la
+exit
+> lol echo test lol
+env
+ls
+yes
+ls
+cd ..
+pwd
+env
+echo $?
+echo $A
+echo ${
+echo $}
+echo $A $? $}  $PATH $
+yes
+ls
+ls -la
+||
+exit
+export A=1 B={ C=4
+env
+env
+env
+export
+ls
+echo test |cat -e|cat -e|cat -e
+export TEST=LOL
+echo $TEST$TEST=lol$TEST""lol
+echo "$T1TEST"
+gdagadgag
+env
+echo test > ls
+cat ls
+echo test > ls
+cat ls
+echo test > ls
+git status
+
+ls
+ls
+ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls
+ls

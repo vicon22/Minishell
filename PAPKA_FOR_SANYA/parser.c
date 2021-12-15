@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/15 14:20:59 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/15 14:28:38 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -331,8 +331,6 @@ int	main(int argc, char **argv, char **envp)
 		ft_free_lst(&arg_l);
 		ft_free_lst(&func_l);
 		free(args_str);
-		dup2(0, 0);
-		dup2(1, 1);
 	}
 	return 0;
 }
