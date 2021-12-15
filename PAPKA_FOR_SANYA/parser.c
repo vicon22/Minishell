@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/14 18:09:09 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/15 12:32:44 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,13 +185,21 @@ void ft_set_heredoc(t_arg *func_l)
 	}
 }
 
+void sig_quit_par(int signal)
+{
+	ft_putstr_fd("Quit: 3\n", 2);
+//	rl_on_new_line();
+//	rl_replace_line("", 0);
+//	rl_redisplay();
+}
+
 void ft_sig_parent()
 {
-	signal(SIGINT, new_promt);
+	signal(SIGINT, sig_int_par);
 	signal(SIGQUIT,	SIG_IGN);
 }
 
-void	sig_quit(int signal)
+void	sig_quit_ch(int signal)
 {
 	write(0, "\n", 2);
 	ft_putstr_fd("Quit: 3\n", 2);
@@ -201,16 +209,16 @@ void	sig_quit(int signal)
 void ft_sig_child()
 {
 	signal(SIGINT, SIG_DFL);
-	signal(SIGQUIT, sig_quit);
+	signal(SIGQUIT, sig_quit_ch);
 }
 
-void ft_sig_ignore()
+void ft_sig_par_ignore()
 {
 	signal(SIGINT, SIG_IGN);
-	signal(SIGQUIT, SIG_IGN);
+	signal(SIGQUIT, sig_quit_par);
 }
 
-void	new_promt(int signal)
+void	sig_int_par(int signal)
 {
 	write(0, "\n", 1);
 	rl_on_new_line();

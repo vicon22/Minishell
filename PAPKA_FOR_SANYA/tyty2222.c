@@ -54,7 +54,7 @@ void	ft_heredoc(char *stop, char **envp)
 	}
 	else
 	{
-		ft_sig_ignore();
+		ft_sig_par_ignore();
 		close(pip[1]);
 		dup2(pip[0], 0);
 		close(pip[0]);
@@ -185,7 +185,7 @@ void	ft_pipe(char *path, char **argc, char ***envp)
 	}
 	else
 	{
-		ft_sig_ignore();
+		ft_sig_par_ignore();
 		close(pip[1]);
 		dup2(pip[0], 0);
 		close(pip[0]);
@@ -212,7 +212,7 @@ void	ft_return(char *path, char **argc, char ***envp)
 	}
 	else
 	{
-		ft_sig_ignore();
+		ft_sig_par_ignore();
 		waitpid(pid, NULL, 0);
 	}
 }
@@ -236,7 +236,7 @@ void	ft_full_return(char **envp)
 	}
 	else
 	{
-		ft_sig_ignore();
+		ft_sig_par_ignore();
 		waitpid(pid, NULL, 0);
 	}
 }
@@ -264,7 +264,7 @@ void	ft_full_return_2(char **envp)
 	}
 	else
 	{
-		ft_sig_ignore();
+		ft_sig_par_ignore();
 		waitpid(pid, NULL, 0);
 	}
 }
@@ -343,7 +343,7 @@ void	ft_return_one_command(char *path, char **argv, char ***envp)
 		}
 		else
 		{
-			ft_sig_ignore();
+			ft_sig_par_ignore();
 			waitpid(0, &status, 0);
 //			printf("status:%d\n", status);
 			WIFEXITED(status);
