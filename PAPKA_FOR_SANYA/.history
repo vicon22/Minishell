@@ -644,3 +644,13 @@ env
 cd ..
 ls
 env
+ls -la | wtf
+cd gdhahahad
+ls -Z
+gdagadgag
+gdagadgag
+exit -4
+exit -9223372036854775810
+exit wrong
+exit wrong_command
+gdagadgag

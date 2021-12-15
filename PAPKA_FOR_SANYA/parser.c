@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/15 12:32:44 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/15 14:13:19 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,15 @@ int    ft_set_path(t_arg *func_l, char *path, char ***envp)
 	while (func_l)
 	{
 		func_l->path = ft_find_path(func_l->content, path);
-//		if (!func_l->path && !ft_is_pipe_or_redir(func_l->content) && !ft_is_built_int(func_l->content))
-//		{
-//			ft_call_export(func_l->args, envp, 127);
-//			ft_putstr_fd("minishell: ", 2);
-//			ft_putstr_fd(func_l->content, 2);
-//			ft_putstr_fd(" : command not found\n", 2);
-//			flag = 1;
-//		}
+		if (!func_l->path && !ft_is_pipe_or_redir(func_l->content) && !ft_is_built_int(func_l->content) &&
+				!ft_is_pipe_or_redir(func_l->content))
+		{
+			ft_call_export(func_l->args, envp, 127);
+			ft_putstr_fd("minishell: ", 2);
+			ft_putstr_fd(func_l->content, 2);
+			ft_putstr_fd(" : command not found\n", 2);
+			flag = 1;
+		}
 		func_l = func_l->next;
 	}
 	return (flag);
@@ -313,7 +314,6 @@ int	main(int argc, char **argv, char **envp)
 	{
 		ft_sig_parent();
 		dup2(input_fd[0], 0);
-//		args_str = "echo \"dasdada\" \'vasya\' 228 \'$PATH\' \"$LOGNAME\" | grep $PWD \"$PATH\"  \'\"31231\"\' \' \" \'";
 		args_str = readline("minishell$ ");
 		if (!args_str)
 			exit(0);
