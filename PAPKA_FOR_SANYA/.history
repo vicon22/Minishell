@@ -654,3 +654,14 @@ exit -9223372036854775810
 exit wrong
 exit wrong_command
 gdagadgag
+echo dada
+echo "dada"
+echo "dada" | chlen
+echo "dada" | grep d
+echo "dada" | grep d > ls
+cat ls
+cat ls
+cat ls
+
+cat
+ls
