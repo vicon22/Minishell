@@ -46,7 +46,7 @@ int		ft_next_space_or_pipe(char *arg_str);
 int		ft_pull_str(char *args_str, char **cur_arg, int n);
 void	ft_remove_quotes(void *content);
 void    ft_replace_by_envp(char **content, char**envp);
-void	ft_handle_quotes(t_arg *arg_l, char**envp);
+void	ft_handle_envps(t_arg *arg_l, char**envp);
 int		ft_is_pipe_or_redir(void *cont);
 char	*ft_strjoin2(char **s1, char *s2);
 void	ft_lst2add_args(t_arg **lst, char **line);

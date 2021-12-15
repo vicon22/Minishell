@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:05:32 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/13 14:01:36 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/15 18:00:30 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	ft_is_pipe_or_redir(void *cont)
 			return (1);
 		else if (!ft_strncmp(content, ">", 1) && ft_strlen(content) == 1)
 			return (2);
-		else if (!ft_strncmp(content, "<", 1) && ft_strlen(content) == 1)
-			return (3);
+//		else if (!ft_strncmp(content, "<", 1) && ft_strlen(content) == 1)
+//			return (3);
 		else if (!ft_strncmp(content, ">>", 1) && ft_strlen(content) == 2)
 			return (4);
 		else if (!ft_strncmp(content, "<<", 1) && ft_strlen(content) == 2)

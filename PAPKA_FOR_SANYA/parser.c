@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/15 14:28:38 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/15 18:14:21 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,24 @@ void	ft_set_funcs_structure(t_arg *arg_l, t_arg **func_l)
 	{
 		if (arg_l->content)
 			ft_lst2add_back(func_l, ft_lst2_new(ft_strdup(arg_l->content)));
-		if (!ft_is_pipe_or_redir(arg_l->content))
+		if (!ft_is_pipe_or_redir(arg_l->content) && ft_strncmp(arg_l->prev->content, ">", 2))
 		{
 			line = ft_strjoin(" ", arg_l->content);
 			arg_l = arg_l->next;
 			while (arg_l && !ft_is_pipe_or_redir(arg_l->content))
 			{
-				line = ft_strjoin2(&line, " ");
-				line = ft_strjoin2(&line, arg_l->content);
-				arg_l = arg_l->next;
+				if (!ft_strncmp(arg_l->content, "<", 2))
+					arg_l = arg_l->next;
+				else
+				{
+					if (*arg_l->content == '\"' && ft_closed_quote(ft_strchr(arg_l->content, '\"')))
+						ft_remove_quotes(ft_strchr(arg_l->content, '\"'));
+					else if (*arg_l->content == '\'' && ft_closed_quote(ft_strchr(arg_l->content, '\'')))
+						ft_remove_quotes(ft_strchr(arg_l->content, '\''));
+					line = ft_strjoin2(&line, " ");
+					line = ft_strjoin2(&line, arg_l->content);
+					arg_l = arg_l->next;
+				}
 			}
 			ft_lst2add_args(func_l, ft_split(line, ' '));
 			free(line);
@@ -126,13 +135,8 @@ void	ft_parse_input_str(char *args_str, t_arg **arg_l)
 		{
 			if (*(args_str + 1) == *args_str)
 				args_str += ft_pull_str(args_str, &arg, 2);
-			else if (*args_str == '>')
-				args_str += ft_pull_str(args_str, &arg, 1);
 			else
-			{
-				args_str++;
-				continue;
-			}
+				args_str += ft_pull_str(args_str, &arg, 1);
 		}
 		else if ((*args_str == '\'' || *args_str == '\"'))
 			args_str += ft_pull_str(args_str, &arg, ft_next_space_or_pipe(args_str));
@@ -280,7 +284,7 @@ int ft_check_syntax_errors(t_arg *func_l)
 {
 	while (func_l)
 	{
-		if (ft_is_pipe_or_redir(func_l->content) && (!func_l->next || ft_is_pipe_or_redir(func_l->next->content)))
+		if (!ft_strncmp(func_l->content, "<", 2) || (ft_is_pipe_or_redir(func_l->content) && (!func_l->next || ft_is_pipe_or_redir(func_l->next->content)  || (!ft_strncmp(func_l->content, "|", 2) && !func_l->prev))))
 		{
 			ft_putstr_fd("minishell: ", 2);
 			ft_putstr_fd("syntax error near unexpected token '", 2);
@@ -291,6 +295,50 @@ int ft_check_syntax_errors(t_arg *func_l)
 		func_l = func_l->next;
 	}
 	return (0);
+}
+
+//void ft_remove_newline(t_arg *func_l)
+//{
+//	t_arg *tmp;
+//
+//	while (func_l)
+//	{
+//		if (!ft_strncmp(func_l->content,  "<", 2))
+//		{
+//			tmp = func_l;
+//			if (func_l->next && func_l->prev)
+//				func_l->prev->next = func_l->next;
+//			else if (func_l->next)
+//				func_l = func_l->next;
+//			else if (func_l->prev)
+//				func_l->prev->next = NULL;
+//			free(tmp->content);
+//			free(tmp);
+//		}
+//
+//		func_l=func_l->next;
+//	}
+//}
+
+void ft_handle_quotes(t_arg *func_l)
+{
+	int i;
+
+	while(func_l)
+	{
+		i = 0;
+		if (func_l->args)
+		{
+			while (func_l->args[i]) {
+				if (*func_l->args[i] == '\"' && ft_closed_quote(ft_strchr(func_l->args[i], '\"')))
+					ft_remove_quotes(ft_strchr(func_l->args[i], '\"'));
+				else if (*func_l->args[i] == '\'' && ft_closed_quote(ft_strchr(func_l->args[i], '\'')))
+					ft_remove_quotes(ft_strchr(func_l->args[i], '\''));
+				i++;
+			}
+		}
+		func_l=func_l->next;
+	}
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -321,10 +369,11 @@ int	main(int argc, char **argv, char **envp)
 		add_history(args_str);
 		arg_l = NULL;
 		ft_parse_input_str(args_str, &arg_l);
-		ft_handle_quotes(arg_l, env_array);
+		ft_handle_envps(arg_l, env_array);
 		ft_set_funcs_structure(arg_l, &func_l);
+		ft_handle_quotes(func_l);
 		ft_set_heredoc(func_l);
-//		ft_show_lst(func_l);
+		ft_show_lst(func_l);
 		if (!ft_check_syntax_errors(func_l))
 			if (func_l && !ft_set_path(func_l, PATH, &env_array))
 				ft_exec(func_l, &env_array);

@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:04:36 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/14 17:27:54 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/15 16:50:15 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int ft_is_valid_dollar(char *content)
 	return (0);
 }
 
-void	ft_handle_quotes(t_arg *arg_l, char**envp)
+void	ft_handle_envps(t_arg *arg_l, char**envp)
 {
 	char	**content;
 
@@ -34,10 +34,10 @@ void	ft_handle_quotes(t_arg *arg_l, char**envp)
 			ft_replace_by_envp(content, envp);
 		while (!(ft_strchr(*content, '\'') && ft_closed_quote(ft_strchr(*content, '\''))) && ft_is_valid_dollar(*content))
 			ft_replace_by_envp(content, envp);
-		if (**content == '\"' && ft_closed_quote(ft_strchr(*content, '\"')))
-			ft_remove_quotes(ft_strchr(*content, '\"'));
-		else if (**content == '\'' && ft_closed_quote(ft_strchr(*content, '\'')))
-			ft_remove_quotes(ft_strchr(*content, '\''));
+//		if (**content == '\"' && ft_closed_quote(ft_strchr(*content, '\"')))
+//			ft_remove_quotes(ft_strchr(*content, '\"'));
+//		else if (**content == '\'' && ft_closed_quote(ft_strchr(*content, '\'')))
+//			ft_remove_quotes(ft_strchr(*content, '\''));
 		arg_l = arg_l->next;
 	}
 }

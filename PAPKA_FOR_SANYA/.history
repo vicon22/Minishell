@@ -773,3 +773,549 @@ ls
 ls
 ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls
 ls
+ls
+ls
+ls -la
+cat ls
+echo chlen | grep c > ls2
+ls
+echo chlen | grep c > ls2
+ls
+ls
+
+yes
+\\
+yes
+\\
+ls
+yes
+echo chlen | grep c > ls2
+ls
+
+ls
+ls
+ls
+ls
+echo chlen | grep c > ls2
+ls
+ls
+echo chlen | grep c > ls2
+ls
+echo chlen | grep c > ls2
+ls
+echo chlen | grep c > ls2
+ls
+echo chlen | grep c > ls2
+ls
+echo chlen | grep c 
+ls
+echo chlen | grep c > ls2
+ls
+echo chlen | grep c >> ls2
+ls
+ls
+echo chlen | grep c >> ls2
+ls
+ls
+echo chlen | grep c >> ls2
+ls
+ls
+echo chlen | grep c >> ls2
+yes | head | wc
+ls
+ls
+ls
+echo chlen | grep c >> ls2
+ls
+ls
+echo chlen | grep c >> ls2
+ls
+ls
+echo chlen | grep c >> ls2
+ls
+yes
+ls
+echo chlen | grep c >> ls2
+yes
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+echo test > ls >> ls >> ls
+cat ls
+echo test > ls >> ls >> ls
+ls
+echo test > ls >> ls >> ls
+ls
+echo chlen | grep c > ls2
+ls
+ls
+echo chlen | grep c > ls2
+export A="dasdadadda"
+env
+ls
+echo chlen | grep c > ls2
+cat -e ls | grep c > ls2
+cat -e ls
+cat -e ls | grep c > ls2
+cat -e ls | grep c > ls2
+
+cat -e ls | grep c > ls2
+cat -e ls | grep c > ls2
+ls
+ls
+cat -e ls | grep c > ls2
+ls
+cat -e ls | grep c > ls2
+ls
+cat -e ls | grep c > ls2
+cat -e ls | grep c > ls2
+ls
+cat -e ls | grep c > ls2
+ls
+cat -e ls | cat -e | cat -e | grep c > ls2
+ls
+ls
+cat -e ls | cat -e | cat -e | grep c > ls2
+ls
+ls
+cat -e ls | cat -e | cat -e | grep c > ls2
+ls
+cat -e ls | cat -e | cat -e | grep c > ls2
+ls
+cat -e ls | cat -e | cat -e | grep c > ls2
+cat -e ls | cat -e | cat -e | grep c > ls2
+cat -e ls | cat -e | cat -e | grep c > ls2
+cat -e ls | cat -e | cat -e | grep c > ls2
+cat -e ls | cat -e | cat -e | grep c > ls2
+ls
+pwd
+env
+cd ..
+env
+bash
+env
+bash
+env
+echo $?
+bash
+bash
+bash
+bash
+bash
+ls
+ls
+bash
+echo $?
+env
+$?
+echo $?
+echo $?
+echo $?
+echo $?
+$?
+echo $?
+$?
+$?
+$?
+$?
+$?
+$?
+env
+'<
+<
+echo | |
+echo > <
+| test
+| test
+| test
+echo > <
+echo | |
+<
+<
+cat <
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+| test
+;; test
+<
+echo "<"
+echo "<"
+echo "<"
+echo "<"
+cat < 1 2 3
+echo <
+echo "<"
+echo "<"
+echo "<"
+echo "<"
+cat < 1 2 3
+cat < 1 2 3
+echo "<"
+echo <
+echo <
+cat < 1 2 3
+cat < 1 2 3
+cat < 1 2 3
+cat "<"
+cat "|"
+echo "|"
+echo "|"
+"ls -la"
+echo "|"
+echo "|"
+echo "|"
+echo "|"
+echo "|"
+echo "|"
+echo "|"
+echo "|"
+echo "|"
+echo "|"
+echo "|"
+echo "|"
+echo "|"
+echo "|"
+echo "|"
+echo "|"
+echo "|"
+
+
+echo "|"
+echo |
+echo 1 2 3
+echo "1 2 3"
+echo "1 2 3" 4 5 6
+"echo" "1 2 3" 4 5 6
+"echo" "1 2 3" 4 5 6
+echo "1 2 3" 4 5 6
+echo "1 2 3" 4 5 6
+echo "1 2 3" 4 5 6
+echo "|"
+echo |
+echo |
+echo "|"
+echo "1 2 3" 4 5 6
+echo <
+echo "<"
+echo | |
+echo > <
+;; test
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+ls
+pwd
+echo "|"
+echo |
+cat < ls > ls
+cat < ls > ls
+ls
+echo "|"
+vim parser
+vim parser.c
+exit
+echo "|"
+echo |
+ls -la
+yes
+ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+echo "echo cd pwd |||"
+echo 'echo cd pwd |||'
+echo "$PWD cd pwd |||"
+echo '$PWD cd pwd |||'
+
+
+
+
+
+
+ls -la
+ls -l
+ls -l
+echo <
+echo "<"
+cat < 1 2 3
+echo < 1 2 3
+echo "<" 1 2 3
+<
+"<"
+<
+|
+<
+|
+echo "<"
+echo "<"
+|
+<
+echo <
+echo <
+echo <
+echo "<"
+cat < 1 2 3
+<
+<
+<
+<
+<
+< 1 2 3
+<
+<
+< 1 2 3
+echo "13123"
+echo 13123
+cat < 1 2 3
+<
+>
+||
+| grep
+echo dasda
+echo "||||| $PATH"
+echo "||||| $PATH"
+echo "|||||"
+echo "|||||
+echo "|||||
+echo "|||||"
+echo "$PATH"
+echo "||$PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "1 2 3"
+echo 1 2 3
+echo "1 2 3"
+echo "1 2 3"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+ls
+ls -la
+echo "1 2 3"
+echo 1 2 3
+echo "|| $PATH"
+echo "|| $PATH"
+echo "|| $PATH"
+ls -chlen
+echo "1" "2" "3"
+echo "1" "2" "3"
+echo "1 " "2" "3"
+echo "1" "2" "3"
+echo "1" "2" "3"
+echo "1 " "2" "3"
+echo "1 " "2" "3"
+echo "|| $PATH"
+echo "<"
+echo <
+echo <
+
+echo <
+echo <
+echo <
+echo <
+echo <
+echo <
+echo <
+echo <
+echo <
+echo <
+echo <
+echo <
+echo "<"
+echo <
+echo <
+||
+<
+echo <
+echo <
+echo <
+echo <
+echo <
+echo <
+echo "<"
+echo |
+<
+|
+>
+<
+<
+echo <
+echo "<"
+echo "|| $PATH"
+<
+>
+||
+;;
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+echo <
+echo "<"
+echo <
+<
+>
+cat 1 2 3
+cat < ls > ls
+echo <
+<
+echo <
+echo <
+echo <
+echo "<"
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+echo 1 2 3 < 4 5 6
+echo 1 2 3 < 4 5 6
+echo 1 2 3 < 4 5 6
+echo 1 2 3 < 4 5 6
+echo 1 2 3 < 4 5 6
+echo 1 2 3 < 4 5 6
+echo <
+<
+<
+echo <
+echo "<"
+echo <
+echo >
+>
+>
+<
+cat < ls > ls
+cat ls
+cat < ls > ls
+echo < 1 2 3 <
+echo < 1 2 3 
+ls
+ls -la
+cat < ls > ls 
+yes
+ls
+|
+echo "$PATH"   $?
+echo "$PATH"   $? + 1
+echo "$PATH"   $? + 1 "$PWD"
+echo "$PATH"   $? + 1 "$PWD" $A
+echo "$PATH"   $? + 1 "$PWD" $A $}
+echo "$PATH"   $? + 1 "$PWD" $A $} $+
+echo "$PATH"   $? + 1 "$PWD" $A $} $
+cat < ls > ls
+echo test > ls2
+cat ls2
+echo test > ls >> ls >> ls3
+cat ls3
+cat ls3
+echo test > ls >> ls >> ls
+cat ls
+rm ls
+ls
+echo test > ls >> ls >> ls
+cat ls
+> lol echo test lol
+> lol echo test lol
+ echo test lol > lol
+> lol echo test lol
+ls
+ls -la
+> lol echo test lol
+> lol echo test lol
+> lol echo test lol
+> lol echo test lol
+> lol echo test lol
+> lol echo test lol
+> lol echo test lol
+> lol echo test lol
+> lol echo test lol
+> lol echo test lol
