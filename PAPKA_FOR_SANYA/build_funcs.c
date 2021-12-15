@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 11:38:03 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/13 16:48:54 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/15 14:10:10 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,23 @@ int	count_argv(char **argv)
 		size++;
 	return (size);
 }
+
+//void ft_set_oldpwd(char *old_pwd, char ***envp)
+//{
+//	int i;
+//	char *tmp;
+//
+//	i = -1;
+//	while ((*envp)[++i])
+//	{
+//		if (!ft_strncmp((*envp)[i], "OLDPWD", 6) && (ft_strlen((*envp)[i]) - ft_strlen(ft_strchr((*envp)[i], '=')) == 6))
+//		{
+//			tmp = (*envp)[i];
+//			(*envp)[i] = ft_strdup(old_pwd);
+//			free(tmp);
+//		}
+//	}
+//}
 
 void	ft_pwd(char **argc, char ***envp)
 {
@@ -55,6 +72,7 @@ void ft_call_export(char **argc, char ***envp, int status)
 void	ft_cd(char **argc, char ***envp)
 {
 	(void)envp;
+
 	if (chdir(argc[1]) == -1)
 	{
 		ft_putstr_fd("minishell$: ", 2);
