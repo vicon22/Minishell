@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/15 18:14:21 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/15 18:29:26 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	ft_set_funcs_structure(t_arg *arg_l, t_arg **func_l)
 	{
 		if (arg_l->content)
 			ft_lst2add_back(func_l, ft_lst2_new(ft_strdup(arg_l->content)));
-		if (!ft_is_pipe_or_redir(arg_l->content) && ft_strncmp(arg_l->prev->content, ">", 2))
+		//if (!ft_is_pipe_or_redir(arg_l->content) && ft_strncmp(arg_l->prev->content, ">", 2))
+		if (!ft_is_pipe_or_redir(arg_l->content))
 		{
 			line = ft_strjoin(" ", arg_l->content);
 			arg_l = arg_l->next;

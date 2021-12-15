@@ -1319,3 +1319,63 @@ ls -la
 > lol echo test lol
 > lol echo test lol
 > lol echo test lol
+> lol echo test lol
+echo test lol > lol
+cat lol
+> lol echo test lol
+cat lol
+echo 8 7 6 
+cat
+cat
+echo 8 7 6 
+cat lol
+> lol echo test lol
+echo test lol > lol2
+cat << st
+cat << st
+cat << st
+cat << st
+ls
+echo test > lol3 >> lol3
+cat lol3
+cat --- > tt1
+cat "---" > tt1
+echo "---" > tt1
+cat tt1
+echo +++ >> tt1 >> tt2 | wc
+cat tt1
+cat tt2
+echo oo > oo >> oo >> oo
+cat oo
+> lol echo test lol
+> lol echo test lol
+./a.out 
+> lol echo test lol
+> lol echo test lol
+> lol echo test lol
+> lol echo test lol
+> lol echo test lol
+> lol echo test lol
+> lol
+> lol
+> lol
+ls
+echo test > lol > lol2 > lol6
+echo test > lol > lol2 > lol6
+
+
+echo test > lol > lol2 > lol6
+echo test > lol > lol2 > lol6
+echo test > lol > lol2 > lol6
+echo test > lol > lol2 > lol6
+> lol > lol2 > lol6 echo test 
+> lol > lol2 > lol6 echo test 
+echo test > lol > lol2 > lol6
+echo test > lal
+echo test > lal
+echo test > lal
+echo test >> lal
+echo test > lol9 wc test
+echo test > lol9 сфе test
+echo test > lol9 cat test
+ls
