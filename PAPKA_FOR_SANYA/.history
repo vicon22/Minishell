@@ -606,3 +606,31 @@ ls
 yes
 ls
 exit
+<>
+||
+<
+>
+||
+ls
+ls -la
+yes
+cd ..
+ls
+pwd
+cd PAPKA_FOR_SANYA/
+ls
+pwd
+ls -la
+
+
+
+
+
+
+
+
+
+
+
+
+

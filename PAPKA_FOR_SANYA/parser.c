@@ -275,6 +275,22 @@ char **ft_char_array_cpy(char **array)
 	return (new_array);
 }
 
+int ft_check_syntax_errors(t_arg *func_l)
+{
+	while (func_l)
+	{
+		if (ft_is_pipe_or_redir(func_l->content) && (!func_l->next || ft_is_pipe_or_redir(func_l->next->content)))
+		{
+			ft_putstr_fd("minishell: ", 2);
+			ft_putstr_fd("syntax error near unexpected token '", 2);
+			ft_putstr_fd(func_l->content, 2);
+			ft_putstr_fd("'\n", 2);
+			return (1);
+		}
+		func_l = func_l->next;
+	}
+	return (0);
+}
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -309,8 +325,9 @@ int	main(int argc, char **argv, char **envp)
 		ft_set_funcs_structure(arg_l, &func_l);
 		ft_set_heredoc(func_l);
 //		ft_show_lst(func_l);
-		if (func_l && !ft_set_path(func_l, PATH, &env_array))
-			ft_exec(func_l, &env_array);
+		if (!ft_check_syntax_errors(func_l))
+			if (func_l && !ft_set_path(func_l, PATH, &env_array))
+				ft_exec(func_l, &env_array);
 		ft_free_lst(&arg_l);
 		ft_free_lst(&func_l);
 		free(args_str);
