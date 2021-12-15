@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/15 14:13:19 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/15 14:20:59 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int    ft_set_path(t_arg *func_l, char *path, char ***envp)
 	{
 		func_l->path = ft_find_path(func_l->content, path);
 		if (!func_l->path && !ft_is_pipe_or_redir(func_l->content) && !ft_is_built_int(func_l->content) &&
-				!ft_is_pipe_or_redir(func_l->content))
+				!ft_is_pipe_or_redir(func_l->content) && !func_l->prev)
 		{
 			ft_call_export(func_l->args, envp, 127);
 			ft_putstr_fd("minishell: ", 2);

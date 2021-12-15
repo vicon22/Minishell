@@ -665,3 +665,33 @@ cat ls
 
 cat
 ls
+echo "dada" | grep d > ls
+ls
+
+ls
+echo "dada" | grep d > ls
+ls
+
+ls
+ls
+ls
+ls
+ls
+l
+ls
+echo test > aaa
+echo test > aaa
+echo test > aaa
+echo test > aaa
+cat aaa
+echo "dadad"
+ls
+echo "dadad" | grep d
+ls
+echo "dadad" | grep d > abc
+ls
+
+|||||
+><><>
+AAA
+echo "dadad" | grep d > abc
