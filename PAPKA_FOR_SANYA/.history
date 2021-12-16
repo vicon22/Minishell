@@ -33,3 +33,116 @@ yes
 yes
 echo $?
 echo $?
+pwd
+env
+export
+env
+export
+env
+export
+ls -la
+env
+export
+pwd
+export
+env
+clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pwd
+env
+cd ..
+cd ..
+cd ..
+ls
+cd ..
+cd ..
+ls
+env
+echo $?
+echo "adada LOL =}}][" $PATH + 1 $
+ls -la
+pwd
+cd ..
+ls
+cd ..
+ls
+cd ..
+ls
+pwd
+cd Applications/
+;s
+ls
+open Clion.app
+open -a Clion.app
+open -a VSCode
+open -a VS
+open -a CLion
+open -a CLion.app
+open -a mail.app
+open -a clion.app
+open -a home.app
+exit
