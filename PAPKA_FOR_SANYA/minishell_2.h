@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:03:02 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/15 12:30:22 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/16 16:38:36 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 #include "get_next_line.h"
 # include <readline/readline.h>
 # include <readline/history.h>
-# define PATH "/Users/kmercy/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki"
 # include <signal.h>
 # include <unistd.h>
 # include <sys/wait.h>

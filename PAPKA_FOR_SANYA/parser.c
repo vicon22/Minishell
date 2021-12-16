@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/16 15:02:08 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/16 16:36:01 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -352,6 +352,19 @@ void ft_handle_quotes(t_arg *func_l)
 	}
 }
 
+char *ft_return_path(char **envp)
+{
+	int i;
+
+	i =-1;
+	while (envp[++i])
+	{
+		if(!ft_strncmp(envp[i], "PATH", 4))
+			return (ft_strchr(envp[i], '=') + 1);
+	}
+	return (NULL);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	static char			*args_str;
@@ -386,7 +399,7 @@ int	main(int argc, char **argv, char **envp)
 		ft_set_heredoc(func_l);
 //		ft_show_lst(func_l);
 		if (!ft_check_syntax_errors(func_l))
-			if (func_l && !ft_set_path(func_l, PATH, &env_array))
+			if (func_l && !ft_set_path(func_l, ft_return_path(envp), &env_array))
 				ft_exec(func_l, &env_array);
 		ft_free_lst(&arg_l);
 		ft_free_lst(&func_l);

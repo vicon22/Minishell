@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 11:38:03 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/15 15:43:03 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/16 16:29:59 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,13 @@ void	ft_exit(char **argv, char ***envp)
 	ft_putstr_fd("exit\n", 1);
 	if (argv[1] != NULL)
 	{
+		if (ft_arr_len(argv) > 2)
+		{
+			ft_putstr_fd("minishell$: ", 2);
+			ft_putstr_fd("exit: ", 2);
+			ft_putstr_fd("too many arguments\n", 2);
+			exit (1);
+		}
 		if (ft_correct_number(argv[1]) ==  0)
 			exit(ft_atoi(argv[1]) % 256);
 		else
@@ -167,7 +174,6 @@ void	ft_exit(char **argv, char ***envp)
 			exit (255);
 		}
 	}
-	else
 		exit(0);
 }
 
