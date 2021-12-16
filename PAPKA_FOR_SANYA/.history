@@ -1400,3 +1400,76 @@ ls
 ls
 yes
 ls -la
+env
+export A=11
+env
+export
+export
+env
+env
+env
+env
+env
+env
+env
+env
+env
+
+
+
+
+env
+env
+export
+export
+export
+export
+export
+env
+env
+env
+env
+env
+env
+env
+env
+env
+env
+env
+env
+env
+env
+env
+env
+env
+env
+env
+env
+env
+env
+env
+env
+export A=1
+env
+export
+env
+export A=1
+env
+export
+env
+export
+env
+export c=2
+env
+export
+env
+export
+export
+export
+env
+env
+env
+export c=3
+export b=4
+export
+env

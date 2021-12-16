@@ -10,36 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell_2.h"
-static void ft_exp(char **env_array)
-{
-	int i;
-	int j;
-	char *tmp;
-	i = -1;
-	while (env_array[++i])
-	{
-		j = i - 1;
-		while (env_array[++j])
-		{
-			if (ft_strncmp(env_array[i], env_array[j], ft_strlen(env_array[i])) > 0)
-			{
-				tmp = env_array[i];
-				env_array[i] = env_array[j];
-				env_array[j] = tmp;
-			}
-		}
-	}
-	i = -1;
-	while (env_array[++i])
-	{
-		if (env_array[i][0] != '?')
-		{
-			ft_putstr_fd(env_array[i], 1);
-			ft_putchar_fd('\n', 1);
-		}
-	}
-	free_all(env_array);
-}
+
 static int ft_arg_contains_only_valid_c(char *arg)
 {
 	int i;
@@ -65,7 +36,7 @@ void    ft_export(char **args, char ***env_array)
 	int     envp_len;
 	j = 0;
 	if (ft_arr_len(args) == 1)
-		ft_exp(ft_char_array_cpy(*env_array));
+		ft_env(args, env_array);
 	else if (ft_arr_len(args) > 1)
 	{
 		while (args[++j])
