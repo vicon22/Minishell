@@ -1944,3 +1944,38 @@ unset cc
 env
 ls
 << st
+ls
+export TEST="ls       -l     - a"
+env
+export TEST="ls       -l     - a"
+export TEST="ls       -l     - a"
+export TEST="ls       -l     - a"
+export="adada dasdad"
+export b="adada dasdad"
+env
+export b="adada dasdad"
+export b="adada   dasdadasdad"
+env
+export b="ls - la"
+env
+export b="ls - la"
+env
+export b="ls - la"
+exit
+export b="ls - la"
+env
+export b="ls -     la"
+env
+export b="ls -     la"
+export b="ls -     la"
+export b="ls -     la"
+env
+export b="ls -     la"
+env
+export b="ls -     la 777"
+env
+export b="ls -  ///   la 777"
+env
+env
+ls
+ls -la

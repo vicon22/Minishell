@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 18:10:30 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/16 15:46:17 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/16 16:17:34 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell_2.h"
@@ -56,7 +56,10 @@ void    ft_export(char **args, char ***env_array)
 					{
 						(*env_array)[i] = ft_strdup(args[j++]);
 						while (args[j] && !ft_strchr(args[j], '='))
+						{
 							(*env_array)[i] = ft_strjoin2(&(*env_array)[i], args[j++]);
+							(*env_array)[i] = ft_strjoin2(&(*env_array)[i], " ");
+						}
 						j--;
 						is_added = 1;
 					}
@@ -65,7 +68,10 @@ void    ft_export(char **args, char ***env_array)
 				{
 					(*env_array)[i] = ft_strdup(args[j++]);
 					while (args[j] && !ft_strchr(args[j], '='))
+					{
 						(*env_array)[i] = ft_strjoin2(&(*env_array)[i], args[j++]);
+						(*env_array)[i] = ft_strjoin2(&(*env_array)[i], " ");
+					}
 					j--;
 				}
 				(*env_array)[++i] = NULL;

@@ -384,7 +384,7 @@ int	main(int argc, char **argv, char **envp)
 		ft_set_funcs_structure(arg_l, &func_l);
 //		ft_handle_quotes(func_l);
 		ft_set_heredoc(func_l);
-		ft_show_lst(func_l);
+//		ft_show_lst(func_l);
 		if (!ft_check_syntax_errors(func_l))
 			if (func_l && !ft_set_path(func_l, PATH, &env_array))
 				ft_exec(func_l, &env_array);
