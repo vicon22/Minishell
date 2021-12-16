@@ -64,6 +64,8 @@ void 	ft_sig_child();
 void 	ft_sig_par_ignore();
 void 	sig_quit_par(int signal);
 void	sig_quit_ch(int signal);
+void 	ft_sig_child_heredoc();
+void 	ft_sig_ignore();
 /*evgenii's*/
 void	ft_exec(t_arg *lst, char ***argv);
 void	ft_pwd(char **argc, char ***envp);

@@ -1379,3 +1379,24 @@ echo test > lol9 wc test
 echo test > lol9 сфе test
 echo test > lol9 cat test
 ls
+ls
+> lol9
+exit
+<< st
+<< st
+<< st
+<< st
+<< st
+<< st
+ls
+ls -la
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+yes
+ls -la

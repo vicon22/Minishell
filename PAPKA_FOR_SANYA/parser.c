@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/15 18:29:26 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/16 12:33:54 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,9 +194,6 @@ void ft_set_heredoc(t_arg *func_l)
 void sig_quit_par(int signal)
 {
 	ft_putstr_fd("Quit: 3\n", 2);
-//	rl_on_new_line();
-//	rl_replace_line("", 0);
-//	rl_redisplay();
 }
 
 void ft_sig_parent()
@@ -210,6 +207,18 @@ void	sig_quit_ch(int signal)
 	write(0, "\n", 2);
 	ft_putstr_fd("Quit: 3\n", 2);
 	exit(131);
+}
+
+void ft_sig_ignore()
+{
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
+}
+
+void ft_sig_child_heredoc()
+{
+	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_IGN);
 }
 
 void ft_sig_child()

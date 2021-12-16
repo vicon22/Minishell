@@ -36,7 +36,7 @@ void	ft_heredoc(char *stop, char **envp)
 	pid = fork();
 	if (!pid)
 	{
-		ft_sig_child();
+		ft_sig_child_heredoc();
 		args_str = readline("> ");
 		while (ft_strncmp2(args_str, stop, ft_strlen(stop)))
 		{
@@ -54,7 +54,7 @@ void	ft_heredoc(char *stop, char **envp)
 	}
 	else
 	{
-		ft_sig_par_ignore();
+		ft_sig_ignore();
 		close(pip[1]);
 		dup2(pip[0], 0);
 		close(pip[0]);
