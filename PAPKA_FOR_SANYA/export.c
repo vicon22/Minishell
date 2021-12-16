@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 18:10:30 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/13 15:26:07 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/16 15:46:17 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell_2.h"
@@ -33,13 +33,13 @@ void    ft_export(char **args, char ***env_array)
 	char    **tmp;
 	int     is_added;
 	int     arg_len;
-	int     envp_len;
+//	int     envp_len;
 	j = 0;
 	if (ft_arr_len(args) == 1)
 		ft_env(args, env_array);
 	else if (ft_arr_len(args) > 1)
 	{
-		while (args[++j])
+		while (args[j] && args[++j])
 		{
 			if (ft_arg_contains_only_valid_c(args[j]))
 			{
@@ -48,18 +48,27 @@ void    ft_export(char **args, char ***env_array)
 				is_added = 0;
 				i = -1;
 				while ((tmp)[++i]) {
-					envp_len = ft_strlen(tmp[i]) - ft_strlen(ft_strchr(tmp[i], '='));
+//					envp_len = ft_strlen(tmp[i]) - ft_strlen(ft_strchr(tmp[i], '='));
 					arg_len = ft_strlen(args[j]) - ft_strlen(ft_strchr(args[j], '='));
-					if (ft_strncmp(tmp[i], args[j], arg_len) || arg_len != envp_len)
+					if (ft_strncmp(tmp[i], args[j], arg_len + 1))
 						(*env_array)[i] = ft_strdup(tmp[i]);
-					else {
-						(*env_array)[i] = ft_strdup(args[j]);
+					else
+					{
+						(*env_array)[i] = ft_strdup(args[j++]);
+						while (args[j] && !ft_strchr(args[j], '='))
+							(*env_array)[i] = ft_strjoin2(&(*env_array)[i], args[j++]);
+						j--;
 						is_added = 1;
 					}
 				}
 				if (!is_added)
-					(*env_array)[i++] = ft_strdup(args[j]);
-				(*env_array)[i] = NULL;
+				{
+					(*env_array)[i] = ft_strdup(args[j++]);
+					while (args[j] && !ft_strchr(args[j], '='))
+						(*env_array)[i] = ft_strjoin2(&(*env_array)[i], args[j++]);
+					j--;
+				}
+				(*env_array)[++i] = NULL;
 				free_all(tmp);
 			}
 			else

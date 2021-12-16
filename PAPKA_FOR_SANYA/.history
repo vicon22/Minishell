@@ -1473,3 +1473,474 @@ export c=3
 export b=4
 export
 env
+<< st
+ls
+echo >
+echo ">"
+echo >
+cat < 1 2 3
+>
+">"
+echo >
+echo ">"
+echo ">"
+echo >
+echo <
+echo <
+echo <
+echo <
+echo <
+echo "<"
+cat < 1 2 3
+cat < 1 2 3
+echo <
+echo >
+echo <
+echo <
+echo >
+echo <
+echo >
+echo <
+echщ 1 2 3
+echo 1 2 3
+ls
+yes
+yes
+ls
+echo <
+echo >
+echo 1 2 3
+echo <
+<
+>
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+
+
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+ls
+cat < lol
+cat < lol lol2
+ls -la
+> 1 2 3
+> 1 2 3
+echo > 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo > 1 2 3
+echo < 1 2 3
+echo < 
+echo < 
+echo <
+echo <
+echo <
+echo <
+echo <
+echo <
+echo < ls
+echo < ls
+echo < a.txt
+echo > a.txt
+;;
+<>
+||
+||
+<<
+dsada >> a.txt
+ls >> a.txt
+cat a.txt
+< >
+< <
+< >
+echo <
+echo <
+echo < >
+echo "<"
+echo <<
+echo "<"
+echo ">"
+echo ">>"
+echo ">> $PATH"
+echo ">> $PATH"
+ls
+ls
+ls -la
+ls
+ls -la
+pwd
+env
+pwd
+cd ..
+pwd
+env
+ls
+cd PAPKA_FOR_SANYA/
+ls
+<< st
+<< st
+ls
+<< st
+< echo
+> echo
+| echo
+chlen | echo
+< <
+> >
+>> >>
+echo >
+echo ">"
+<< st
+ls -la
+a.txt < b.txt
+ls
+ls
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+ls
+ls -la
+> lol8 echo test > lol9 cat test
+ls
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+ls
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+ls
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+> >
+cat < 1 2 3
+< <
+< cat <
+ls -la
+ls -la | grep 
+> >
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+echo test > ls >> ls >> ls
+cat ls
+cat ls
+echo test > ls >> ls >> ls
+cat ls
+echo <
+echo >
+<
+>
+echo |
+echo ||
+echo | |
+ls -ls
+cat < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+echo < 1 2 3
+cat < 1 2 3
+cd gdhahahad
+export A="dada"
+export A="dada"
+export A="dada"
+export A="dada"
+export A="dada"
+export A="dada"
+export A="dada"
+export A="dada"
+export A="dada"
+export A="dada"
+export A="dada"
+export A="dada"
+export A="dada"
+export A="dada"
+export A=dada
+env
+echo < 1 2 3
+ls
+echo < 1 2 3
+ls
+echo < 1 2 3
+echo < a.txt 1 2 3
+echo < a.txt > 1 2 3
+ls -la
+echo < a.txt > 1 2 3
+ls
+echo a="dasda  dasda"
+env
+echo a="dasda  dasda"
+env
+echo a="dasda  dasda"
+echo a="dasda  dasda"
+echo a="dasda  dasda"
+export a="dasda  dasda"
+export a="dasda  dasda"
+export a=dasda  dasd
+export a=dasda
+env
+pwd
+pwd
+env
+unset a
+env
+cat << st | wc << st2
+ls
+ls
+export a="dada dasdad adsa"
+export a="dada dasdad adsa"
+export a="dada dasdad adsa"
+export a="dada dasdad adsa"
+ls
+export a="dada dasdad adsa"
+export a="dada dasdad adsa"
+export a="dada dasdad adsa"
+export a="dada dasdad adsa"
+export a="dada dasdad adsa"
+export a="dada dasdad adsa"
+export a="dada dasdad adsa"
+export a="dada dasdad adsa"
+export a="dada dasdad adsa"
+echo =
+echo 
+export a="dada dasdad adsa"
+export a=dada
+export a=dadaBDJKasbdkajBDjkABDjk
+env
+export
+env
+echo >
+echo "dda "
+echo "dda $PATH"
+echo '"dda $PATH"'
+echo ""dda $PATH""
+echo ""dda $PATH""
+echo ""dda $PATH""
+echo """dda $PATH"""
+echo """dda $PATH"""
+echo ''dda $PATH''
+env | sort | grep -v SHLVL | grep -v _=
+export a="dadaBDJKasbdkajBDjkABDjk"
+export a="dadaBDJKasbdkajBDjkABDjk"
+env | sort | grep -v SHLVL | grep -v _=
+export a="dadaBDJKasbdkajBDjkABDjk"
+export a="dadaBDJKasbdkajBDjkABDjk"
+export a="dadaBDJKasbdkajBDjkABDjk"
+env
+export a="dadaBDJKasbdkajBDjkABDjk"
+env
+export a="dadaBDJKasbdkajBDjkABDjk"
+env
+export a="dadaBDJKasbdkajBDjkABDjk"
+env
+export a="dadaBDJKasbdkajBDjkABDjk"
+env
+export a="dadaBDJKasbdkajBDjkABDjk"
+env
+export a="dadaBDJKasbdkajBDjkABDjk"
+env
+export a="dadaBDJKasbdkajBDjkABDjk"
+export ""=""
+export ""=""
+export a="dadaBDJKasbdkajBDjkABDjk"
+export a=dadaBDJKasbdkajBDjkABDjk
+env
+export a=dadaBDJKasbdkajBDjkABDjk
+env
+export a=dadaBDJKasbdkajBDjkABDjk
+env
+export a=dadaBDJKasbdkajBDjkABDjk
+env
+export a=dadaBDJKas bdkajBDjkABDjk
+export a=dadaBDJKas bdkajBDjkABDjk
+export a=dadaBDJKasbdkajBDjkABDjk
+ls
+env
+env
+export a=dadaBDJKas bdkajBDjkABDjk
+export a=dadaBDJKas bdkajBDjkABDjk
+export a=dadaBDJKas bdkajBDjkABDjk
+export a=dadaBDJKas bdkajBDjkABDjk
+export a=dadaBDJKas bdkajBDjkABDjk
+env
+export z=dadaBDJKas bdkajBDjkABDjk
+export z=dadaBDJKas bdkajBDjkABDjk
+ ls
+export z=dadaBDJKas bdkajBDjkABDjk
+export z=dadaBDJKas bdkajBDjkABDjk
+export z=dadaBDJKas bdkajBDjkABDjk
+export a=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+env
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+env
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+export P=dadaBDJKas bdkajBDjkABDjk
+env
+export P=dadaBDJKas bdkajBDjkABDjk
+ls
+export P=dadaBDJKas bdkajBDjkABDjk
+env
+export P=dadaBDJKas bdkajBDjkABDjk
+env
+export P=dadaBDJKas bdkajBDjkABDjk cdefg
+env
+export P=dadaBDJKas bdkajBDjkABDjk cdefg
+export P=dadaBDJKas bdkajBDjkABDjk cdefg
+env
+export P=dadaBDJKas bdkajBDjkABDjk cdefg
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+env
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+env
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 789
+env
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 788
+env
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 788
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 788
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 788
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 788
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 788
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 788
+export P=dadaBDJKas bdkajBDjkABDjk cdefg c= 456 788
+env
+export P="dadaBDJKas bdkajBDjkABDjk cdefg" c= 456 788
+env
+export P="dadaBDJKas bdkajBDjkABDjk cdefg1" c={ 456 788
+env
+env
+export TEST=3
+env
+export {TEST=3
+export TEST=34
+export TEST=34 =
+env
+export TEST=34 =
+env
+export TEST=3453 =
+env
+export TEST=3453 =
+export TEST=3453 =
+export TEST=3453 =
+export TEST=3453 =
+export TEST=3453 =
+export TEST=3453 =
+export TEST=3453 =
+export TEST=3453 =
+export TEST=3453 =
+export TEST=3453 =
+export TEST=3453 =
+export TEST=3453 =
+export TEST=3453 =
+export TEST=3453 =
+export TEST=3453 =
+export TEST=3453 =
+export TEST=3453 =
+export TEST=3453 =
+export TEST=3453 
+env
+export TES=T=""
+env
+export TEST=LOL
+echo $TEST$TEST=lol$TEST""lol
+echo $TEST $TEST
+export c=3
+export c=4
+env
+export cc=3
+env
+export ccc=3
+env
+unset ccc=3
+env
+unset ccc
+env
+unset ccc=3
+env
+unset c
+env
+unset cc
+export
+env
+env
+unset cc
+env
+ls
+<< st

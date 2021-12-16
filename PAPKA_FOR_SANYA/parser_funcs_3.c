@@ -23,8 +23,8 @@ int	ft_is_pipe_or_redir(void *cont)
 			return (1);
 		else if (!ft_strncmp(content, ">", 1) && ft_strlen(content) == 1)
 			return (2);
-//		else if (!ft_strncmp(content, "<", 1) && ft_strlen(content) == 1)
-//			return (3);
+		else if (!ft_strncmp(content, "<", 1) && ft_strlen(content) == 1)
+			return (3);
 		else if (!ft_strncmp(content, ">>", 1) && ft_strlen(content) == 2)
 			return (4);
 		else if (!ft_strncmp(content, "<<", 1) && ft_strlen(content) == 2)

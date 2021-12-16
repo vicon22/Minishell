@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/16 12:33:54 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/16 15:02:08 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,38 +19,39 @@ void	ft_set_funcs_structure(t_arg *arg_l, t_arg **func_l)
 
 	while (arg_l)
 	{
+		if (!ft_strncmp(arg_l->content, ">", 2) && arg_l->next)
+		{
+			ft_lst2add_back(func_l, ft_lst2_new(ft_strdup(arg_l->content)));
+			ft_lst2add_back(func_l, ft_lst2_new(ft_strdup(arg_l->next->content)));
+			arg_l = arg_l->next->next;
+			continue;
+		}
 		if (arg_l->content)
 			ft_lst2add_back(func_l, ft_lst2_new(ft_strdup(arg_l->content)));
-		//if (!ft_is_pipe_or_redir(arg_l->content) && ft_strncmp(arg_l->prev->content, ">", 2))
 		if (!ft_is_pipe_or_redir(arg_l->content))
 		{
 			line = ft_strjoin(" ", arg_l->content);
 			arg_l = arg_l->next;
 			while (arg_l && !ft_is_pipe_or_redir(arg_l->content))
 			{
-				if (!ft_strncmp(arg_l->content, "<", 2))
-					arg_l = arg_l->next;
-				else
-				{
-					if (*arg_l->content == '\"' && ft_closed_quote(ft_strchr(arg_l->content, '\"')))
-						ft_remove_quotes(ft_strchr(arg_l->content, '\"'));
-					else if (*arg_l->content == '\'' && ft_closed_quote(ft_strchr(arg_l->content, '\'')))
-						ft_remove_quotes(ft_strchr(arg_l->content, '\''));
-					line = ft_strjoin2(&line, " ");
-					line = ft_strjoin2(&line, arg_l->content);
-					arg_l = arg_l->next;
-				}
+				if (*arg_l->content == '\"' && ft_closed_quote(ft_strchr(arg_l->content, '\"')))
+					ft_remove_quotes(ft_strchr(arg_l->content, '\"'));
+				else if (*arg_l->content == '\'' && ft_closed_quote(ft_strchr(arg_l->content, '\'')))
+					ft_remove_quotes(ft_strchr(arg_l->content, '\''));
+				line = ft_strjoin2(&line, " ");
+				line = ft_strjoin2(&line, arg_l->content);
+				arg_l = arg_l->next;
 			}
 			ft_lst2add_args(func_l, ft_split(line, ' '));
 			free(line);
 		}
 		else
 			arg_l = arg_l->next;
-		if (arg_l && ft_is_pipe_or_redir(arg_l->content))
-		{
-			ft_lst2add_back(func_l, ft_lst2_new(ft_strdup(arg_l->content)));
-			arg_l = arg_l->next;
-		}
+//		if (arg_l && ft_is_pipe_or_redir(arg_l->content))
+//		{
+//			ft_lst2add_back(func_l, ft_lst2_new(ft_strdup(arg_l->content)));
+//			arg_l = arg_l->next;
+//		}
 	}
 }
 
@@ -294,7 +295,7 @@ int ft_check_syntax_errors(t_arg *func_l)
 {
 	while (func_l)
 	{
-		if (!ft_strncmp(func_l->content, "<", 2) || (ft_is_pipe_or_redir(func_l->content) && (!func_l->next || ft_is_pipe_or_redir(func_l->next->content)  || (!ft_strncmp(func_l->content, "|", 2) && !func_l->prev))))
+		if (ft_is_pipe_or_redir(func_l->content) && ((!func_l->prev && (!ft_strncmp(func_l->content, "<", 2)  || !ft_strncmp(func_l->content, "|", 2))) || (!func_l->next || ft_is_pipe_or_redir(func_l->next->content))))
 		{
 			ft_putstr_fd("minishell: ", 2);
 			ft_putstr_fd("syntax error near unexpected token '", 2);
@@ -337,7 +338,7 @@ void ft_handle_quotes(t_arg *func_l)
 	while(func_l)
 	{
 		i = 0;
-		if (func_l->args)
+		if (func_l->args && ft_strncmp(func_l->content, "export", 7))
 		{
 			while (func_l->args[i]) {
 				if (*func_l->args[i] == '\"' && ft_closed_quote(ft_strchr(func_l->args[i], '\"')))
@@ -381,7 +382,7 @@ int	main(int argc, char **argv, char **envp)
 		ft_parse_input_str(args_str, &arg_l);
 		ft_handle_envps(arg_l, env_array);
 		ft_set_funcs_structure(arg_l, &func_l);
-		ft_handle_quotes(func_l);
+//		ft_handle_quotes(func_l);
 		ft_set_heredoc(func_l);
 		ft_show_lst(func_l);
 		if (!ft_check_syntax_errors(func_l))
