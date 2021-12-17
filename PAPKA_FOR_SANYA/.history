@@ -146,3 +146,205 @@ open -a mail.app
 open -a clion.app
 open -a home.app
 exit
+> lol cat << st | wc << st2
+cat << st << ww
+cat << st << ww
+cat << st << ww
+cat << st << ww
+cat << st << ww
+cat << st << ww
+cat << st << ww
+cat << st << ww
+cat << st << ww
+cat << st << ww
+cat << st << ww
+cat << st << ww
+cat << st << ww > lol > lol2
+cat < lol2 << st
+cat << st < lol2
+cat << st tt1
+>> st
+cat << st << ww
+cat << st << ww
+cat << st << ww < lol2
+cat << st << ww < lol2
+cat << st < lol2 << ww
+cat << st < lol2 << ww
+cat << st < lol2 << ww
+cat << st < lol2 << ww
+cat << st < lol2 << ww
+cat << s
+dd
+cat << s
+cat << s
+cat << st < lol2 << ww
+cat << s
+cat << s
+cat << st < lol2 << ww
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+ee
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+rr
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww
+cat << st < lol2 << ww
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww
+
+
+ctt < st
+cat > ls
+cat > ls
+cat > ls ls
+cat > ls da
+< ls cat
+cat << st < lol2 << ww lol2
+cat << st < lol2 << ww lol2
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+!ft_is_pipe_or_redir(lst->content) && 
+<< st < lol2 << ww lol2 cat
+!ft_is_pipe_or_redir(lst->content) && 
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww lol2 cat
+<< st < lol2 << ww cat
+cat << st < lol2 << ww
+cat << st < lol2 << ww
+echo > ls
+echo 555 > ls
+cat ls
+cat > ls << st
+echo rrr > ls
+cat ls
+echo test | wc
+echo test | wc
+echo test | wc
+echo test | wc
+echo test | wc
+echo test > ls
+cat ls
+yes | head
+yes | head | wc
+yes | head | wc
+yes | head | wc
+yes | head | wc
+yes | head
+cat >> st
+cat >> st
+cat >> st
+echo test > ls
+cat ls
+echo test2 > ls
+cat ls
+echo test3 > ls > ls2
+echo test3 > ls > ls2
+echo test3 > ls > ls2
+echo test5 > ls > ls2 > ls3 > ls4 > ls5
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+yes | head
+yes | head | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+yes | head | wc
+yes | head
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5
+echo test5 > ls > ls2 > ls3 > ls4 > ls5
+echo test5 > ls > ls2 > ls3 > ls4 > ls5
+echo test5 > ls > ls2 > ls3 > ls4 > ls5
+echo test5 > ls > ls2 > ls3 > ls4 > ls5
+echo test5 > ls > ls2 > ls3 > ls4 > ls5
+echo test5 > ls > ls2 > ls3 > ls4 > ls5
+echo test5 > ls > ls2 > ls3 > ls4 > ls5
+echo test5 > ls > ls2 > ls3 > ls4 > ls5
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc ls
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+yes | head | wc
+yes | head
+yes | head -5
+yes | head > ls
+yes | head > ls
+yes | head
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc tt1
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc tt1
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc tt1
+echo test5 > ls > ls2 > ls3 > ls4 > ls5 | wc 
+yes | head | wc
+yes | head
+echo test | cat -e
+echo test > ls | cat -e
+git add .

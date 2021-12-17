@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:03:02 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/16 16:38:36 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/17 15:27:19 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,11 @@ void	ft_env(char **argc, char ***env_array);
 void	ft_export(char **args, char ***env_array);
 void	ft_unset(char **args, char ***env_array);
 void 	ft_call_export(char **argc, char ***envp, int status);
+t_arg	*ft_find_heredoc(t_arg *lst);
+t_arg	*ft_find_redirect(t_arg *lst);
+char **ft_binding_args(char **args_first, char **args_second, int flag);
+void 	show_args(char **args);
+void 	ft_free(char **array);
+int 	ft_array_cpm(char **args_first, char **args_second);
+int 	ft_is_built_int(char *func_name);
 #endif

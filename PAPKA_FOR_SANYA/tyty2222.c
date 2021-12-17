@@ -26,7 +26,7 @@ int	ft_strncmp2(const char *s1, const char *s2, size_t n)
 	return ((unsigned char)0);
 }
 
-void	ft_heredoc(char *stop, char **envp)
+void ft_heredoc(t_arg *heredoc, char *stop, char **envp)
 {
 	int		pip[2];
 	int		pid;
@@ -55,9 +55,11 @@ void	ft_heredoc(char *stop, char **envp)
 	else
 	{
 		ft_sig_ignore();
-		close(pip[1]);
-		dup2(pip[0], 0);
-		close(pip[0]);
+		if (!ft_find_redirect(heredoc->next)) {
+			close(pip[1]);
+			dup2(pip[0], 0);
+			close(pip[0]);
+		}
 		waitpid(0, NULL, 0);
 	}
 }
@@ -75,18 +77,6 @@ void	ft_heredoc(char *stop, char **envp)
 //		waitpid(pid, NULL, 0);
 //}
 
-t_arg	*ft_find_heredoc(t_arg *lst)
-{
-	t_arg	*heredoc;
-
-	heredoc = lst;
-	while (heredoc && ft_strncmp2(heredoc->content, "<<", 3))
-	{
-		heredoc = heredoc->next;
-	}
-	return (heredoc);
-}
-
 t_arg	*ft_find_output(t_arg *lst)
 {
 	t_arg	*output;
@@ -94,9 +84,34 @@ t_arg	*ft_find_output(t_arg *lst)
 	output = lst;
 	while (output && ft_strncmp2(output->content, ">>", 3) && ft_strncmp2(output->content, ">", 2))
 	{
+		if (!ft_strncmp2(output->content, "|", 2))
+		{
+			output = NULL;
+			break;
+		}
 		output = output->next;
 	}
 	return (output);
+}
+
+int	ft_find_output_int(t_arg *lst)
+{
+	t_arg	*output;
+
+	output = lst;
+	while (output && ft_strncmp2(output->content, ">>", 3) && ft_strncmp2(output->content, ">", 2))
+	{
+		if (!ft_strncmp2(output->content, "|", 2))
+		{
+			output = NULL;
+			break;
+		}
+		output = output->next;
+	}
+	if (output)
+		return (0);
+	else
+		return (1);
 }
 
 t_arg	*ft_find_pipe(t_arg *lst)
@@ -109,6 +124,21 @@ t_arg	*ft_find_pipe(t_arg *lst)
 		pipe = pipe->next;
 	}
 	return (pipe);
+}
+
+int	ft_find_pipe_int(t_arg *lst)
+{
+	t_arg	*pipe;
+
+	pipe = lst;
+	while (pipe && ft_strncmp2(pipe->content, "|", 2))
+	{
+		pipe = pipe->next;
+	}
+	if (pipe)
+		return (0);
+	else
+		return (1);
 }
 
 int	ft_lstcmp(t_arg *lst)
@@ -204,7 +234,8 @@ void	ft_pipe(char *path, char **argc, char ***envp)
 	}
 }
 
-void	ft_return(char *path, char **argc, char ***envp)
+void
+ft_return(char *path, char **argc, char ***envp)
 {
 	int		pid;
 	int		pip[2];
@@ -405,6 +436,189 @@ int ft_wait_all_child_processes(t_arg *lst)
 	return (status);
 }
 
+t_arg	*ft_find_heredoc(t_arg *lst)
+{
+	t_arg	*heredoc;
+
+	heredoc = lst;
+	while (heredoc && ft_strncmp2(heredoc->content, "<<", 3))
+	{
+		heredoc = heredoc->next;
+	}
+	return (heredoc);
+}
+
+t_arg	*ft_find_redirect(t_arg *lst)
+{
+	t_arg	*redirect;
+
+	redirect = lst;
+	while (redirect && ft_strncmp2(redirect->content, "<<", 3)
+		&& ft_strncmp2(redirect->content, "<", 2))
+	{
+		if (ft_strncmp2(redirect->content, "|", 2))
+		{
+			redirect = NULL;
+			break ;
+		}
+		redirect = redirect->next;
+	}
+	return (redirect);
+}
+
+void ft_redirect(t_arg *redirect, char *file, char **envp)
+{
+	int fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return;
+	else
+		if (!ft_find_redirect(redirect->next))
+			dup2(fd, 0);
+}
+
+char **ft_redirect_in_command(t_arg *lst, char ***envp)
+{
+	t_arg	*needful;
+	char 	**args;
+
+	args = NULL;
+	needful = ft_find_redirect(lst);
+	while (needful)
+	{
+		write(2, needful->content, ft_strlen(needful->content));
+		write(2, "\n", 1);
+		if (!ft_strncmp2(needful->content, "<<", 3))
+			ft_heredoc(needful, needful->next->content, *envp);
+		else
+			ft_redirect(needful, needful->next->content, *envp);
+		args = ft_binding_args(args, needful->next->args, 0);
+		if (args)
+		{
+			write(2, "+++\n", 4);
+			show_args(args);
+		}
+		needful = ft_find_redirect(needful->next);
+	}
+	return (args);
+}
+
+void ft_redirect_in_file(t_arg *lst, char ***envp)
+{
+	t_arg	*needful;
+
+	needful = ft_find_output(lst);
+	while (needful) {
+		if (ft_strlen(needful->content) == 1)
+			ft_rewrite(needful->next->content);
+		if (ft_strlen(needful->content) == 2)
+			ft_add(needful->next->content);
+		needful = ft_find_output(needful->next);
+	}
+}
+
+t_arg	*ft_find_command(t_arg *lst, char ***envp)
+{
+	while(lst)
+	{
+		if (!ft_is_pipe_or_redir(lst->content) && (!lst->prev || (ft_strncmp2(lst->prev->content, "<", 2)
+			&& ft_strncmp2(lst->prev->content, "<<", 3))) && ft_strncmp2(lst->content, "|", 2))
+			break ;
+		lst = lst->next;
+	}
+	return (lst);
+}
+
+int ft_is_a_command(t_arg *lst)
+{
+	if (!lst->path)
+	{
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(lst->content, 2);
+		ft_putstr_fd(" : command not found\n", 2);
+		return (1);
+	}
+	return (0);
+}
+
+void	ft_exec(t_arg *lst, char ***envp)
+{
+	int		in_out[2];
+	t_arg	*needful;
+	t_arg	*command;
+	t_arg	*needful_next;
+	t_arg	*lst_saver;
+	int		logic_flag;
+	int 	status;
+	char 	**args;
+
+	in_out[0] = dup(0);
+	in_out[1] = dup(1);
+	lst_saver = lst;
+	needful = ft_find_heredoc(lst);
+	if (lst->next == NULL)
+	{
+		ft_return_one_command(lst->path, lst->args, envp);
+	}
+	else
+	{
+		needful = lst;
+		while (needful) {
+			//все это делается в каждом pipe
+			args = ft_redirect_in_command(needful, envp);
+			ft_redirect_in_file(needful, envp);
+			command = ft_find_command(needful, envp);
+			ft_putstr_fd("find command: ", 2);
+			write(2, command->content, ft_strlen(command->content));
+			write(2, "\n", 1);
+			if (!ft_is_a_command(command))
+			{
+				args = ft_binding_args(command->args, args, 1);
+				//show_args(args);
+				write(2, "needful: ", 9);
+				write(2, needful->content, ft_strlen(needful->content));
+				write(2, "\n", 1);
+				if (!ft_find_output_int(needful) || ft_find_pipe_int(needful->next))
+				{
+					write(2, "return: ", 8);
+					write(2, command->path, ft_strlen(command->path));
+					write(2, "\n", 1);
+					ft_return(command->path, args, envp);
+					write()
+					dup2(in_out[1], 1);
+				}
+				else if (!ft_find_pipe_int(needful->next) && ft_find_output_int(needful))
+				{
+					write(2, "pipe: ", 6);
+					write(2, command->path, ft_strlen(command->path));
+					write(2, "\n", 1);
+					ft_pipe(command->path, args, envp);
+				}
+				if (ft_array_cpm(args, command->args))
+					ft_free(args);
+			}
+			needful = ft_find_pipe(needful->next);
+		}
+		}
+		status = ft_wait_all_child_processes(lst);
+		WIFEXITED(status);
+		if (WIFSIGNALED(status))
+		{
+			if (WTERMSIG(status) == SIGINT)
+				ft_call_export(lst->args, envp, 130);;
+			if (WTERMSIG(status) == SIGQUIT)
+				ft_call_export(lst->args, envp, 131);
+		} else
+		{
+			if (status != 0)
+				ft_call_export(lst->args, envp, 1);
+			else
+				ft_call_export(lst->args, envp, 0);
+		}
+	dup2(in_out[0], 0);
+	dup2(in_out[1], 1);
+}
 
 //void	ft_exec(t_arg *lst, char ***envp)
 //{
@@ -425,23 +639,55 @@ int ft_wait_all_child_processes(t_arg *lst)
 //	{
 //		ft_return_one_command(lst->path, lst->args, envp);
 //	}
-//	else
-//	{
+//	else {
 //		logic_flag = ft_lstcmp(lst);
-//		while (logic_flag == 0)
-//		{
-//			needful = ft_find_output(needful);
-//			if (ft_strlen(needful->content) == 1)
-//				ft_rewrite(needful->next->content);
-//			if (ft_strlen(needful->content) == 2)
-//				ft_add(needful->next->content);
+//		//printf("                                  logic_flag: %d\n", logic_flag);
+//		//printf("before\n");
+//		if (lst->path)
+//			ft_pipe(lst->path, lst->args, envp);
+//		//printf("after\n");
+//		needful = lst;
+//		while (logic_flag >= 0) {
+//			if (logic_flag == 0) {
+//				needful = ft_find_output(needful);
+//				if (needful) {
+//					if (ft_strlen(needful->content) == 1)
+//						ft_rewrite(needful->next->content);
+//					if (ft_strlen(needful->content) == 2)
+//						ft_add(needful->next->content);
+//					//write(2, "---\n", 4);
+//					if (!needful->next->next || !ft_strncmp2(needful->next->next->content, "|", 2)) {
+//						ft_full_return_2(*envp);
+//						//dup2(in_out[1], 1);
+//					}
+//				}
+//			}
+//			if (logic_flag == 1) {
+//				needful = ft_find_pipe(needful);
+//				needful_next = ft_find_pipe(needful->next);
+//				if (!needful_next)
+//					needful_next = ft_find_output(needful);
+////				if (!needful_next && !needful)
+////				{
+////
+////				}
+//				if (needful_next) {
+//					//printf("pipe!\n");
+//					ft_pipe(needful->next->path, needful->next->args, envp);
+//				} else {
+//					//printf("return!\n");
+//					ft_return(needful->next->path, needful->next->args, envp);
+//				}
+//			}
+//			needful = needful->next;
 //			logic_flag = ft_lstcmp(needful);
+//			//printf("                                  logic_flag: %d\n", logic_flag);
 //		}
+//		//printf("---\n");
+//		ft_full_return(*envp);
+//		//printf("---\n");
 //
-//
-//		needful = ft_find_command(lst);
-//	}
-//		status = ft_wait_all_child_processes(lst);
+//		waitpid(0, &status, 0);
 //		WIFEXITED(status);
 //		if (WIFSIGNALED(status)) {
 //			if (WTERMSIG(status) == SIGINT)
@@ -455,93 +701,8 @@ int ft_wait_all_child_processes(t_arg *lst)
 //				ft_call_export(lst->args, envp, 0);
 //		}
 //	}
+//	//waitpid(0, NULL, 0);
+//	ft_wait_all_child_processes(lst);
 //	dup2(in_out[0], 0);
 //	dup2(in_out[1], 1);
 //}
-
-void	ft_exec(t_arg *lst, char ***envp)
-{
-	int		in_out[2];
-	t_arg	*needful;
-	t_arg	*needful_next;
-	t_arg	*lst_saver;
-	int		logic_flag;
-	int 	status;
-
-	in_out[0] = dup(0);
-	in_out[1] = dup(1);
-	lst_saver = lst;
-	needful = ft_find_heredoc(lst);
-	if (needful)
-		ft_heredoc(needful->next->content, *envp);
-	if (lst->next == NULL)
-	{
-		ft_return_one_command(lst->path, lst->args, envp);
-	}
-	else {
-		logic_flag = ft_lstcmp(lst);
-		//printf("                                  logic_flag: %d\n", logic_flag);
-		//printf("before\n");
-		if (lst->path)
-			ft_pipe(lst->path, lst->args, envp);
-		//printf("after\n");
-		needful = lst;
-		while (logic_flag >= 0) {
-			if (logic_flag == 0) {
-				needful = ft_find_output(needful);
-				if (needful) {
-					if (ft_strlen(needful->content) == 1)
-						ft_rewrite(needful->next->content);
-					if (ft_strlen(needful->content) == 2)
-						ft_add(needful->next->content);
-					//write(2, "---\n", 4);
-					if (!needful->next->next || !ft_strncmp2(needful->next->next->content, "|", 2)) {
-						ft_full_return_2(*envp);
-						//dup2(in_out[1], 1);
-					}
-				}
-			}
-			if (logic_flag == 1) {
-				needful = ft_find_pipe(needful);
-				needful_next = ft_find_pipe(needful->next);
-				if (!needful_next)
-					needful_next = ft_find_output(needful);
-//				if (!needful_next && !needful)
-//				{
-//
-//				}
-				if (needful_next) {
-					//printf("pipe!\n");
-					ft_pipe(needful->next->path, needful->next->args, envp);
-				} else {
-					//printf("return!\n");
-					ft_return(needful->next->path, needful->next->args, envp);
-				}
-			}
-			needful = needful->next;
-			logic_flag = ft_lstcmp(needful);
-			//printf("                                  logic_flag: %d\n", logic_flag);
-		}
-		//printf("---\n");
-		ft_full_return(*envp);
-		//printf("---\n");
-
-		waitpid(0, &status, 0);
-		WIFEXITED(status);
-		if (WIFSIGNALED(status)) {
-			if (WTERMSIG(status) == SIGINT)
-				ft_call_export(lst->args, envp, 130);;
-			if (WTERMSIG(status) == SIGQUIT)
-				ft_call_export(lst->args, envp, 131);
-		} else {
-			if (status != 0)
-				ft_call_export(lst->args, envp, 1);
-			else
-				ft_call_export(lst->args, envp, 0);
-		}
-	}
-	//waitpid(0, NULL, 0);
-	ft_wait_all_child_processes(lst);
-	dup2(in_out[0], 0);
-	dup2(in_out[1], 1);
-}
