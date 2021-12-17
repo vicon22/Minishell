@@ -348,3 +348,6 @@ yes | head
 echo test | cat -e
 echo test > ls | cat -e
 git add .
+git commit -m "--"
+git push
+
