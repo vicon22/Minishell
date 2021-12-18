@@ -6,22 +6,22 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/18 19:22:36 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/18 21:41:39 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell_2.h"
 
 int g_flag;
-void	ft_set_funcs_structure(t_arg *arg_l, t_arg **func_l)
+void    ft_set_funcs_structure(t_arg *arg_l, t_arg **func_l)
 {
-	char	*line;
-	int 	command_exists;
+	char   *line;
+	int    command_exists;
 
 	command_exists = 0;
 	while (arg_l)
 	{
-		if (arg_l->next && (!ft_strncmp(arg_l->content, ">", 2) || !ft_strncmp(arg_l->content, "<", 2) || !ft_strncmp(arg_l->content, ">>", 3)))
+		if (arg_l->next && (!ft_strncmp(arg_l->content, ">", 2) || !ft_strncmp(arg_l->content, "<", 2) || !ft_strncmp(arg_l->content, ">>", 3) || !ft_strncmp(arg_l->content, "<<", 3)))
 		{
 			ft_lst2add_back(func_l, ft_lst2_new(ft_strdup(arg_l->content)));
 			if (command_exists == 0)
@@ -36,12 +36,6 @@ void	ft_set_funcs_structure(t_arg *arg_l, t_arg **func_l)
 				arg_l = arg_l->next;
 			}
 
-		}
-		else if (arg_l->next && !ft_strncmp(arg_l->content, "<<", 3))
-		{
-			ft_lst2add_back(func_l, ft_lst2_new(ft_strdup(arg_l->content)));
-			ft_lst2add_back(func_l, ft_lst2_new(ft_strdup(arg_l->next->content)));
-			arg_l = arg_l->next->next;
 		}
 		else if (arg_l->content)
 		{
@@ -310,8 +304,8 @@ int ft_check_syntax_errors(t_arg *func_l)
 {
 	while (func_l)
 	{
-		if (ft_is_pipe_or_redir(func_l->content) && ((!func_l->prev && (!ft_strncmp(func_l->content, "<", 2)  || !ft_strncmp(func_l->content, "|", 2))) || ((!func_l->next &&
-																																									 ft_strncmp(func_l->content, "|", 2))  || ft_is_pipe_or_redir(func_l->next->content))))
+		if (ft_is_pipe_or_redir(func_l->content) && ((!func_l->prev && (!ft_strncmp(func_l->content, "<", 2)
+		|| !ft_strncmp(func_l->content, "|", 2))) || ((!func_l->next && !ft_strncmp(func_l->content, "|", 2))  || (!func_l->next && ft_is_pipe_or_redir(func_l->next->content)))))
 		{
 			ft_putstr_fd("minishell: ", 2);
 			ft_putstr_fd("syntax error near unexpected token '", 2);
@@ -412,11 +406,10 @@ int	main(int argc, char **argv, char **envp)
 		ft_handle_envps(arg_l, env_array);
 		ft_set_funcs_structure(arg_l, &func_l);
 		ft_show_lst(func_l);
-		ft_handle_quotes(func_l);
+//		ft_handle_quotes(func_l);
 //		ft_set_heredoc(func_l);
-		if (!ft_check_syntax_errors(func_l))
-			if (func_l && !ft_set_path(func_l, ft_return_path(envp), &env_array)) {
-				ft_show_lst(func_l);
+//		if (!ft_check_syntax_errors(func_l))
+		if (func_l && !ft_set_path(func_l, ft_return_path(envp), &env_array)) {
 				ft_exec(func_l, &env_array);
 			}
 		ft_free_lst(&arg_l);

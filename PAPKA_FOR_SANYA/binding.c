@@ -58,6 +58,8 @@ char **ft_binding_args(char **args_first, char **args_second, int flag)
 		i++;
 	}
 	j = 1;
+	if (!args_first)
+		j = 0;
 	while (j <  count_second)
 	{
 		bind_args[i] = ft_strdup(args_second[j]);

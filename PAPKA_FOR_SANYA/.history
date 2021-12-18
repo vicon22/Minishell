@@ -498,3 +498,105 @@ echo test --- > ls ttt rr>> ls 545 444>> ls tyy 65
 > ls >> ls 545 444>> ls tyy 65 cat ||
 > ls >> ls 545 444>> ls tyy 65 cat | |
 > ls >> ls 545 444>> ls tyy 65 cat ||
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+cat test
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+cat test
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+cat test
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+cat test
+cat < ls > ls
+cat ls
+cat < ls > ls
+cat -e < ls > ls
+cat ls
+cat -e < ls > ls
+cat -e < ls >> ls
+cat -e < ls >> ls
+cat -e < ls > ls
+ls -la | wtf
+> lol echo test > lol7
+> lol8 echo test > lol9 cat test
+> lol8 echo test > lol9 cat test
+cat << st | wc << st2
+cat << st | wc << st2
+cat << st | wc << st2
+> lol cat << st | wc << st2
+> lol8 echo test > lol9 cat test
+> lol cat << st | wc << st2
+cat << st << ee
+cat << st << ee << ww
+cat << st << ee << wwcat < tt1 tt4 << st tt3 tt2 << ww tt4
+cat < tt1 tt4 << st tt3 tt2 << ww tt4
+cat < tt1 tt4 << st tt3 tt2 << ww tt4
+cat < tt1 tt4 << st tt3 tt2 << ww tt4
+cat < tt1 tt4 << st tt3 tt2 << ww tt4
+cat < tt1 tt4 << st tt3 tt2 << ww tt5
+cat < tt1 tt4 << st tt3 tt2 << ww tt5
+cat < tt1 tt4 << st tt3 tt2 << ww tt5
+> ls cat -e << st lol2 > ls5
+cat ls5
+> ls cat -e << st lol2 > ls5
+cat ls5
+echo test |
+echo test |
+echo test |
+echo test |
+echo test |
+echo test |
+echo test
+echo test |
+echo test |
+echo test |
+echo test |
+echo test |
+echo test |
+echo test |
+echo test |
+echo test |
+echo test |
+echo test |
+echo test |
+echo test |
+echo test |
+echo test |
+echo test |
+echo test444 |
+echo test444 |
+echo test444 |
+echo test444 |
+echo test444 |
+echo test444 |
+echo test444 |
+echo test444 |
+echo test444 |
+echo test444 |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+chlen
+||

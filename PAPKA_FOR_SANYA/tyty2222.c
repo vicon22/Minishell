@@ -1,31 +1,6 @@
 
 #include "minishell_2.h"
 
-int	ft_strncmp2(const char *s1, const char *s2, size_t n)
-{
-	size_t	count;
-
-	count = 0;
-	//printf("s1: %s\n", s1);
-	//printf("s2: %s\n", s2);
-//	if (s1 == NULL)
-//		return (1);
-	while (count < n && *(s1 + count) && *(s2 + count))
-	{
-		if (*(s1 + count) != *(s2 + count))
-			return ((unsigned char)*(s1 + count)
-					- (unsigned char)*(s2 + count));
-		count++;
-	}
-	if (count < n)
-	{
-		if (*(s1 + count) != *(s2 + count))
-			return ((unsigned char)*(s1 + count)
-					- (unsigned char)*(s2 + count));
-	}
-	return ((unsigned char)0);
-}
-
 void ft_heredoc(t_arg *heredoc, char *stop, char **envp)
 {
 	int		pip[2];
@@ -38,7 +13,7 @@ void ft_heredoc(t_arg *heredoc, char *stop, char **envp)
 	{
 		ft_sig_child_heredoc();
 		args_str = readline("> ");
-		while (ft_strncmp2(args_str, stop, ft_strlen(stop)))
+		while (ft_strncmp(args_str, stop, ft_strlen(stop)))
 		{
 			while (ft_strchr(args_str, '\"') && ft_closed_quote(ft_strchr(args_str, '\"')) && ft_strchr(args_str, '$'))
 				ft_replace_by_envp(&args_str, envp);
@@ -84,9 +59,9 @@ t_arg	*ft_find_output(t_arg *lst)
 
 	output = lst;
 	i = 0;
-	while (output && ft_strncmp2(output->content, ">>", 3) && ft_strncmp2(output->content, ">", 2))
+	while (output && ft_strncmp(output->content, ">>", 3) && ft_strncmp(output->content, ">", 2))
 	{
-		if (!ft_strncmp2(output->content, "|", 2) && i != 0)
+		if (!ft_strncmp(output->content, "|", 2) && i != 0)
 		{
 			output = NULL;
 			break;
@@ -104,9 +79,9 @@ int	ft_find_output_int(t_arg *lst)
 
 	output = lst;
 	i = 0;
-	while (output && ft_strncmp2(output->content, ">>", 3) && ft_strncmp2(output->content, ">", 2))
+	while (output && ft_strncmp(output->content, ">>", 3) && ft_strncmp(output->content, ">", 2))
 	{
-		if (!ft_strncmp2(output->content, "|", 2)  && i != 0)
+		if (!ft_strncmp(output->content, "|", 2)  && i != 0)
 		{
 			output = NULL;
 			break;
@@ -125,7 +100,7 @@ t_arg	*ft_find_pipe(t_arg *lst)
 	t_arg	*pipe;
 
 	pipe = lst;
-	while (pipe && ft_strncmp2(pipe->content, "|", 2))
+	while (pipe && ft_strncmp(pipe->content, "|", 2))
 	{
 		pipe = pipe->next;
 	}
@@ -137,7 +112,7 @@ int	ft_find_pipe_int(t_arg *lst)
 	t_arg	*pipe;
 
 	pipe = lst;
-	while (pipe && ft_strncmp2(pipe->content, "|", 2))
+	while (pipe && ft_strncmp(pipe->content, "|", 2))
 	{
 		pipe = pipe->next;
 	}
@@ -161,25 +136,25 @@ int	ft_lstcmp(t_arg *lst)
 //		printf("ft_lstcmp->next: %s\n", lst->next->content);
 	pipe = lst;
 	output = lst;
-	if (output && (!ft_strncmp2(output->content, ">>", 3) || !ft_strncmp2(output->content, ">", 2)))
+	if (output && (!ft_strncmp(output->content, ">>", 3) || !ft_strncmp(output->content, ">", 2)))
 	{
 		//output = output->next;
 		n_output++;
 		//printf("out1\n");
 	}
-	while (output && ft_strncmp2(output->content, ">>", 3) && ft_strncmp2(output->content, ">", 2))
+	while (output && ft_strncmp(output->content, ">>", 3) && ft_strncmp(output->content, ">", 2))
 	{
 		output = output->next;
 		n_output++;
 		//printf("out2\n");
 	}
-	if (pipe && !ft_strncmp2(pipe->content, "|", 2))
+	if (pipe && !ft_strncmp(pipe->content, "|", 2))
 	{
 		//pipe = pipe->next;
 		n_pipe++;
 		//printf("1\n");
 	}
-	while (pipe && ft_strncmp2(pipe->content, "|", 2))
+	while (pipe && ft_strncmp(pipe->content, "|", 2))
 	{
 		pipe = pipe->next;
 		n_pipe++;
@@ -387,45 +362,73 @@ int ft_wait_all_child_processes(t_arg *lst)
 	return (status);
 }
 
-//void	ft_add_command_after_pipe(t_arg	*needful, char ***envp)
-//{
-//	char	*args_str;
-//
-//	args_str = readline("> ");
-//}
+void	ft_add_command_after_pipe(t_arg	*needful, char ***envp)
+{
+	t_arg *arg_l;
+	t_arg *func_l;
+	char	*args_str;
+
+	args_str = readline("> ");
+	if (!args_str)
+		exit(0);
+	arg_l = NULL;
+	ft_parse_input_str(args_str, &arg_l);
+	ft_handle_envps(arg_l, *envp);
+	ft_set_funcs_structure(arg_l, &needful);
+	ft_set_path(needful, ft_return_path(*envp), envp);
+	ft_show_lst(needful);
+	ft_free_lst(&arg_l);
+	free(args_str);
+}
 
 void	ft_exec(t_arg *lst, char ***envp)
 {
 	int		in_out[2];
+	int		in_out_2[2];
 	t_arg	*needful;
 	t_arg	*command;
 	int 	status;
 	char 	**args;
+	char 	**args2;
 
 	in_out[0] = dup(0);
 	in_out[1] = dup(1);
 	if (lst->next == NULL)
+	{
 		ft_return_one_command(lst->path, lst->args, envp);
+	}
 	else
 	{
 		needful = lst;
 		while (needful)
 		{
-//			if (!ft_strncmp2(needful->content, "|", 2) && !needful->next)
-//			{
-//				ft_add_command_after_pipe(needful, envp);
-//			}
-			//все это делается в каждом pipe
+//			write(2, "first:needful: ", 15);
+//			write(2, needful->content, ft_strlen(needful->content));
+//			write(2, "\n", 1);
+			if (!ft_strncmp(needful->content, "|", 2) && !needful->next)
+			{
+				in_out_2[0] = dup(0);
+				in_out_2[1] = dup(1);
+				dup2(in_out[0], 0);
+				dup2(in_out[1], 1);
+				write(2, "second:needful: ", 15);
+				write(2, needful->content, ft_strlen(needful->content));
+				write(2, "\n", 1);
+				ft_add_command_after_pipe(needful, envp);
+				dup2(in_out_2[0], 0);
+				dup2(in_out_2[1], 1);
+			}
 			args = ft_redirect_in_command(needful, envp);
-			ft_redirect_in_file(needful, envp);
+			args2 = ft_redirect_in_file(needful, envp);
 			command = ft_find_command(needful, envp);
 			ft_putstr_fd("find command: ", 2);
 			write(2, command->content, ft_strlen(command->content));
 			write(2, "\n", 1);
+			args = ft_binding_args(args, args2, 0);
 			if (!ft_is_a_command(command))
 			{
 				args = ft_binding_args(command->args, args, 1);
-				//show_args(args);
+				show_args(args);
 				write(2, "needful: ", 9);
 				write(2, needful->content, ft_strlen(needful->content));
 				write(2, "\n", 1);

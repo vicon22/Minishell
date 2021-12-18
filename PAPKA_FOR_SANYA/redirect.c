@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 17:42:00 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/18 18:25:56 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/18 20:55:10 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,17 +73,17 @@ char **ft_redirect_in_command(t_arg *lst, char ***envp)
 		else
 			ft_redirect(needful, needful->next->content, *envp);
 		args = ft_binding_args(args, needful->next->args, 0);
-		if (args)
-		{
-			write(2, "+++\n", 4);
-			show_args(args);
-		}
+//		if (args)
+//		{
+//			write(2, "+++\n", 4);
+//			show_args(args);
+//		}
 		needful = ft_find_redirect(needful->next);
 	}
 	return (args);
 }
 
-void ft_redirect_in_file(t_arg *lst, char ***envp)
+char **ft_redirect_in_file(t_arg *lst, char ***envp)
 {
 	t_arg	*needful;
 	char 	**args;
@@ -96,11 +96,12 @@ void ft_redirect_in_file(t_arg *lst, char ***envp)
 		if (ft_strlen(needful->content) == 2)
 			ft_add(needful->next->content);
 		args = ft_binding_args(args, needful->next->args, 0);
-		if (args)
-		{
-			write(2, "+++\n", 4);
-			show_args(args);
-		}
+//		if (args)
+//		{
+//			write(2, "+++\n", 4);
+//			show_args(args);
+//		}
 		needful = ft_find_output(needful->next);
 	}
+	return (args);
 }
