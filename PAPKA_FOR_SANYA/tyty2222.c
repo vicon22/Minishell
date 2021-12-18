@@ -80,15 +80,18 @@ void ft_heredoc(t_arg *heredoc, char *stop, char **envp)
 t_arg	*ft_find_output(t_arg *lst)
 {
 	t_arg	*output;
+	int 	i;
 
 	output = lst;
+	i = 0;
 	while (output && ft_strncmp2(output->content, ">>", 3) && ft_strncmp2(output->content, ">", 2))
 	{
-		if (!ft_strncmp2(output->content, "|", 2))
+		if (!ft_strncmp2(output->content, "|", 2) && i != 0)
 		{
 			output = NULL;
 			break;
 		}
+		i++;
 		output = output->next;
 	}
 	return (output);
@@ -97,15 +100,18 @@ t_arg	*ft_find_output(t_arg *lst)
 int	ft_find_output_int(t_arg *lst)
 {
 	t_arg	*output;
+	int 	i;
 
 	output = lst;
+	i = 0;
 	while (output && ft_strncmp2(output->content, ">>", 3) && ft_strncmp2(output->content, ">", 2))
 	{
-		if (!ft_strncmp2(output->content, "|", 2))
+		if (!ft_strncmp2(output->content, "|", 2)  && i != 0)
 		{
 			output = NULL;
 			break;
 		}
+		i++;
 		output = output->next;
 	}
 	if (output)
@@ -234,8 +240,7 @@ void	ft_pipe(char *path, char **argc, char ***envp)
 	}
 }
 
-void
-ft_return(char *path, char **argc, char ***envp)
+void ft_return(char *path, char **argc, char ***envp)
 {
 	int		pid;
 	int		pip[2];
@@ -256,6 +261,9 @@ ft_return(char *path, char **argc, char ***envp)
 	else
 	{
 		ft_sig_par_ignore();
+		close(pip[1]);
+		dup2(pip[0], 0);
+		close(pip[0]);
 		waitpid(pid, NULL, 0);
 	}
 }
@@ -312,57 +320,6 @@ void	ft_full_return_2(char **envp)
 	}
 }
 
-void	ft_add(char *file_name)
-{
-	int		pip[2];
-	int		fd;
-	int		pid;
-
-	//write(2, "+++\n", 4);
-	//pipe(pip);
-	fd = open(file_name, O_WRONLY | O_APPEND | O_CREAT, 0777);
-	if (fd == -1)
-	{
-		write(2, "Error with open\n", 16);
-		return ;
-	}
-	//	pid = fork();
-	//	if (!pid)
-	//	{
-	//		dup2(fd, 1);
-	//	}
-	dup2(fd, 1);
-	//close(fd);
-	//	else
-	//		//waitpid(pid, NULL, 0);
-}
-
-void	ft_rewrite(char *file_name)
-{
-	//int		pip[2];
-	int		fd;
-	int		pid;
-
-	//write(2, "---\n", 4);
-	fd = open(file_name, O_WRONLY | O_TRUNC | O_CREAT, 0777);
-	if (fd == -1)
-	{
-		write(2, "Error with open\n", 16);
-		return ;
-	}
-	//	pid = fork();
-	//	if (!pid)
-	//	{
-	//		dup2(fd, 1);
-	//	}
-	dup2(fd, 1);
-	//close(fd);
-	//	else
-	//		//waitpid(pid, NULL, 0);
-	//	else
-	//		//waitpid(pid, NULL, 0);
-}
-
 void	ft_return_one_command(char *path, char **argv, char ***envp)
 {
 	int		pid;
@@ -379,19 +336,13 @@ void	ft_return_one_command(char *path, char **argv, char ***envp)
 		if (pid == 0)
 		{
 			ft_sig_child();
-			//if (!path)
-			//	exit(127);
 			execve(path, argv, *envp);
 			exit (1);
 		}
 		else
 		{
 			ft_sig_par_ignore();
-			//write(2, "@end@\n", 6);
 			waitpid(0, &status, 0);
-			//waitpid(0, &status, 0);
-			//write(2, "-----\n", 6);
-//			printf("status:%d\n", status);
 			WIFEXITED(status);
 			if (WIFSIGNALED(status))
 			{
@@ -436,135 +387,34 @@ int ft_wait_all_child_processes(t_arg *lst)
 	return (status);
 }
 
-t_arg	*ft_find_heredoc(t_arg *lst)
-{
-	t_arg	*heredoc;
-
-	heredoc = lst;
-	while (heredoc && ft_strncmp2(heredoc->content, "<<", 3))
-	{
-		heredoc = heredoc->next;
-	}
-	return (heredoc);
-}
-
-t_arg	*ft_find_redirect(t_arg *lst)
-{
-	t_arg	*redirect;
-
-	redirect = lst;
-	while (redirect && ft_strncmp2(redirect->content, "<<", 3)
-		&& ft_strncmp2(redirect->content, "<", 2))
-	{
-		if (ft_strncmp2(redirect->content, "|", 2))
-		{
-			redirect = NULL;
-			break ;
-		}
-		redirect = redirect->next;
-	}
-	return (redirect);
-}
-
-void ft_redirect(t_arg *redirect, char *file, char **envp)
-{
-	int fd;
-
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		return;
-	else
-		if (!ft_find_redirect(redirect->next))
-			dup2(fd, 0);
-}
-
-char **ft_redirect_in_command(t_arg *lst, char ***envp)
-{
-	t_arg	*needful;
-	char 	**args;
-
-	args = NULL;
-	needful = ft_find_redirect(lst);
-	while (needful)
-	{
-		write(2, needful->content, ft_strlen(needful->content));
-		write(2, "\n", 1);
-		if (!ft_strncmp2(needful->content, "<<", 3))
-			ft_heredoc(needful, needful->next->content, *envp);
-		else
-			ft_redirect(needful, needful->next->content, *envp);
-		args = ft_binding_args(args, needful->next->args, 0);
-		if (args)
-		{
-			write(2, "+++\n", 4);
-			show_args(args);
-		}
-		needful = ft_find_redirect(needful->next);
-	}
-	return (args);
-}
-
-void ft_redirect_in_file(t_arg *lst, char ***envp)
-{
-	t_arg	*needful;
-
-	needful = ft_find_output(lst);
-	while (needful) {
-		if (ft_strlen(needful->content) == 1)
-			ft_rewrite(needful->next->content);
-		if (ft_strlen(needful->content) == 2)
-			ft_add(needful->next->content);
-		needful = ft_find_output(needful->next);
-	}
-}
-
-t_arg	*ft_find_command(t_arg *lst, char ***envp)
-{
-	while(lst)
-	{
-		if (!ft_is_pipe_or_redir(lst->content) && (!lst->prev || (ft_strncmp2(lst->prev->content, "<", 2)
-			&& ft_strncmp2(lst->prev->content, "<<", 3))) && ft_strncmp2(lst->content, "|", 2))
-			break ;
-		lst = lst->next;
-	}
-	return (lst);
-}
-
-int ft_is_a_command(t_arg *lst)
-{
-	if (!lst->path)
-	{
-		ft_putstr_fd("minishell: ", 2);
-		ft_putstr_fd(lst->content, 2);
-		ft_putstr_fd(" : command not found\n", 2);
-		return (1);
-	}
-	return (0);
-}
+//void	ft_add_command_after_pipe(t_arg	*needful, char ***envp)
+//{
+//	char	*args_str;
+//
+//	args_str = readline("> ");
+//}
 
 void	ft_exec(t_arg *lst, char ***envp)
 {
 	int		in_out[2];
 	t_arg	*needful;
 	t_arg	*command;
-	t_arg	*needful_next;
-	t_arg	*lst_saver;
-	int		logic_flag;
 	int 	status;
 	char 	**args;
 
 	in_out[0] = dup(0);
 	in_out[1] = dup(1);
-	lst_saver = lst;
-	needful = ft_find_heredoc(lst);
 	if (lst->next == NULL)
-	{
 		ft_return_one_command(lst->path, lst->args, envp);
-	}
 	else
 	{
 		needful = lst;
-		while (needful) {
+		while (needful)
+		{
+//			if (!ft_strncmp2(needful->content, "|", 2) && !needful->next)
+//			{
+//				ft_add_command_after_pipe(needful, envp);
+//			}
 			//все это делается в каждом pipe
 			args = ft_redirect_in_command(needful, envp);
 			ft_redirect_in_file(needful, envp);
@@ -585,7 +435,6 @@ void	ft_exec(t_arg *lst, char ***envp)
 					write(2, command->path, ft_strlen(command->path));
 					write(2, "\n", 1);
 					ft_return(command->path, args, envp);
-					write()
 					dup2(in_out[1], 1);
 				}
 				else if (!ft_find_pipe_int(needful->next) && ft_find_output_int(needful))
@@ -600,109 +449,23 @@ void	ft_exec(t_arg *lst, char ***envp)
 			}
 			needful = ft_find_pipe(needful->next);
 		}
-		}
-		status = ft_wait_all_child_processes(lst);
-		WIFEXITED(status);
-		if (WIFSIGNALED(status))
-		{
-			if (WTERMSIG(status) == SIGINT)
-				ft_call_export(lst->args, envp, 130);;
-			if (WTERMSIG(status) == SIGQUIT)
-				ft_call_export(lst->args, envp, 131);
-		} else
-		{
-			if (status != 0)
-				ft_call_export(lst->args, envp, 1);
-			else
-				ft_call_export(lst->args, envp, 0);
-		}
+	}
+	status = ft_wait_all_child_processes(lst);
+	WIFEXITED(status);
+	if (WIFSIGNALED(status))
+	{
+		if (WTERMSIG(status) == SIGINT)
+			ft_call_export(lst->args, envp, 130);
+		if (WTERMSIG(status) == SIGQUIT)
+			ft_call_export(lst->args, envp, 131);
+	}
+	else
+	{
+		if (status != 0)
+			ft_call_export(lst->args, envp, 1);
+		else
+			ft_call_export(lst->args, envp, 0);
+	}
 	dup2(in_out[0], 0);
 	dup2(in_out[1], 1);
 }
-
-//void	ft_exec(t_arg *lst, char ***envp)
-//{
-//	int		in_out[2];
-//	t_arg	*needful;
-//	t_arg	*needful_next;
-//	t_arg	*lst_saver;
-//	int		logic_flag;
-//	int 	status;
-//
-//	in_out[0] = dup(0);
-//	in_out[1] = dup(1);
-//	lst_saver = lst;
-//	needful = ft_find_heredoc(lst);
-//	if (needful)
-//		ft_heredoc(needful->next->content, *envp);
-//	if (lst->next == NULL)
-//	{
-//		ft_return_one_command(lst->path, lst->args, envp);
-//	}
-//	else {
-//		logic_flag = ft_lstcmp(lst);
-//		//printf("                                  logic_flag: %d\n", logic_flag);
-//		//printf("before\n");
-//		if (lst->path)
-//			ft_pipe(lst->path, lst->args, envp);
-//		//printf("after\n");
-//		needful = lst;
-//		while (logic_flag >= 0) {
-//			if (logic_flag == 0) {
-//				needful = ft_find_output(needful);
-//				if (needful) {
-//					if (ft_strlen(needful->content) == 1)
-//						ft_rewrite(needful->next->content);
-//					if (ft_strlen(needful->content) == 2)
-//						ft_add(needful->next->content);
-//					//write(2, "---\n", 4);
-//					if (!needful->next->next || !ft_strncmp2(needful->next->next->content, "|", 2)) {
-//						ft_full_return_2(*envp);
-//						//dup2(in_out[1], 1);
-//					}
-//				}
-//			}
-//			if (logic_flag == 1) {
-//				needful = ft_find_pipe(needful);
-//				needful_next = ft_find_pipe(needful->next);
-//				if (!needful_next)
-//					needful_next = ft_find_output(needful);
-////				if (!needful_next && !needful)
-////				{
-////
-////				}
-//				if (needful_next) {
-//					//printf("pipe!\n");
-//					ft_pipe(needful->next->path, needful->next->args, envp);
-//				} else {
-//					//printf("return!\n");
-//					ft_return(needful->next->path, needful->next->args, envp);
-//				}
-//			}
-//			needful = needful->next;
-//			logic_flag = ft_lstcmp(needful);
-//			//printf("                                  logic_flag: %d\n", logic_flag);
-//		}
-//		//printf("---\n");
-//		ft_full_return(*envp);
-//		//printf("---\n");
-//
-//		waitpid(0, &status, 0);
-//		WIFEXITED(status);
-//		if (WIFSIGNALED(status)) {
-//			if (WTERMSIG(status) == SIGINT)
-//				ft_call_export(lst->args, envp, 130);;
-//			if (WTERMSIG(status) == SIGQUIT)
-//				ft_call_export(lst->args, envp, 131);
-//		} else {
-//			if (status != 0)
-//				ft_call_export(lst->args, envp, 1);
-//			else
-//				ft_call_export(lst->args, envp, 0);
-//		}
-//	}
-//	//waitpid(0, NULL, 0);
-//	ft_wait_all_child_processes(lst);
-//	dup2(in_out[0], 0);
-//	dup2(in_out[1], 1);
-//}

@@ -351,3 +351,68 @@ git add .
 git commit -m "--"
 git push
 
+cat -e tt1 | cat -e
+cat -e tt1 | cat -e > ls6
+cat -e tt1 > ls6
+cat -e tt1 | cat -e > ls6
+cat -e tt1 | cat -e > ls7
+cat -e tt1 | cat -e > ls7
+
+cat -e tt1 | cat -e > ls7
+echo test > ls7 | wc
+echo test > ls7 | wc
+echo test > ls7 | wc
+echo test |
+echo test > ls7 | wc
+echo test > ls7 | wc
+echo test > ls7 | wc
+echo test > ls7 | wc
+echo test > ls7 | wc ls7
+close(pip[1]);
+dup2(pip[0], 0);
+close(pip[0]);
+ls
+ls | wc
+ls -la | wc 
+echo test > ls8 | wc > ls9
+echo test > ls8 | wc > ls9
+echo test | cat -e
+echo test | cat -e > ls5
+echo test | cat -e > ls5 > ls6
+echo test | cat -e > ls5 > ls6 | wc
+echo test | cat -e > ls5 > ls6 | wc ls5
+echo test | cat -e > ls5 > ls6 | wc ls5 >> ls7
+> ls 2 echo test | cat -e > ls5 > ls6 | wc ls5 >> ls7
+> ls2 echo test | cat -e > ls5 > ls6 | wc ls5 >> ls7
+> ls2 echo test
+> ls2 echo test
+> ls2 echo test
+> ls2 echo test22
+echo test > ls
+cat ls
+echo test > ls >> ls >> ls
+cat ls
+> lol echo test lol
+cat lol
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+cat test
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+cat test
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+cat test
+cat > ls << st
+cat > ls << st
+<< st < lol2 << ww cat
+<< st < lol2 << ww cat
+<< st < lol2 << ww cat
+<< st < lol2 << ww cat
+cat << st ls2
+cat << st ls2
+cat << st ls2
+cat << st ls2
+cat << st ls2
+cat << st ls2
+cat << st ls2
+cat << st ls2

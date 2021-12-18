@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:03:02 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/17 15:27:19 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/18 17:51:11 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,15 @@ void 	show_args(char **args);
 void 	ft_free(char **array);
 int 	ft_array_cpm(char **args_first, char **args_second);
 int 	ft_is_built_int(char *func_name);
+t_arg	*ft_find_command(t_arg *lst, char ***envp);
+int 	ft_is_a_command(t_arg *lst);
+t_arg	*ft_find_heredoc(t_arg *lst);
+t_arg	*ft_find_redirect(t_arg *lst);
+void 	ft_redirect(t_arg *redirect, char *file, char **envp);
+char 	**ft_redirect_in_command(t_arg *lst, char ***envp);
+void 	ft_redirect_in_file(t_arg *lst, char ***envp);
+void	ft_add(char *file_name);
+void	ft_rewrite(char *file_name);
+void 	ft_heredoc(t_arg *heredoc, char *stop, char **envp);
+t_arg	*ft_find_output(t_arg *lst);
 #endif
