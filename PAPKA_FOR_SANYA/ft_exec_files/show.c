@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell_2.h"
+#include "../minishell.h"
 
 void	show_args(char **args)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell_2.h"
+#include "../minishell.h"
 
 t_arg	*ft_find_redirect(t_arg *lst)
 {

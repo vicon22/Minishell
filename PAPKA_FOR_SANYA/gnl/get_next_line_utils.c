@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "get_next_line.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_bzero_gnl(void *s, size_t n)
 {
 	size_t	i;
 
@@ -26,7 +26,7 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen_gnl(const char *s)
 {
 	size_t	size;
 
@@ -39,7 +39,7 @@ size_t	ft_strlen(const char *s)
 	return (size);
 }
 
-char	*ft_strchr(const char *str, int ch)
+char	*ft_strchr_gnl(const char *str, int ch)
 {
 	while (*str != '\0')
 	{

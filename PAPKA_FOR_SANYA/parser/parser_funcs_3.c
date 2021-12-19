@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell_2.h"
+#include "../minishell.h"
 
 int	ft_is_pipe_or_redir(void *cont)
 {

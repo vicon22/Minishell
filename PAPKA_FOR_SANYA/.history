@@ -621,3 +621,56 @@ env
 export TEST="ls -l - a"
 export TEST="ls -l - a"
 ||
+echo -n -n 444
+echo 444
+echo -n 444
+echo -n -n 444
+echo -n 444
+echo 444
+echo 444
+echo -n 444
+echo -n 444
+echo -n -n 444
+echo -n -n 444
+echo -n -n 444
+echo -n -n 444
+echo -n 444
+echo 444
+echo -n -n -n 444
+echo -n -n -n 444 ghfgh
+echo -n -n -n5 444 ghfgh
+echo -n -n -n5 444 ghfgh
+echo -n -n -n 444
+echo -n 444
+echo 444
+echo 444 gdffh dfgh dfg
+< echo
+echo ||
+echo |
+echo test |>
+echo test |<
+echo test <>
+<>
+<
+<>
+<>
+<>
+echo test |<
+echo test |<
+echo test ||
+echo test <>
+echo test ||
+echo test $PATH
+echo "test $PATH"
+echo '"test $PATH"'
+echo '$PATH'
+echo "$PATH"
+echo '"$PATH"'
+echo '"$PATH"'
+echo '"$PATH"'
+echo "$PATH"
+echo "'$PATH'"
+echo "'$PATH'"
+echo "'$PATH'"
+echo '$PATH'
+echo "'$PATH'"

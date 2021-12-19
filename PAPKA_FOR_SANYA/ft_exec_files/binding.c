@@ -10,14 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell_2.h"
+#include "../minishell.h"
 
 void	ft_free(char **array)
 {
 	int	i;
 
 	i = 0;
-	//write(2, "free\n", 5);
 	while (array[i])
 	{
 		free(array[i]);

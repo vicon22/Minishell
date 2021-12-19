@@ -6,11 +6,11 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/19 13:50:37 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/19 14:41:10 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell_2.h"
+#include "../minishell.h"
 
 int g_flag;
 void    ft_set_funcs_structure(t_arg *arg_l, t_arg **func_l)
@@ -305,11 +305,14 @@ int ft_check_syntax_errors(t_arg *func_l)
 	while (func_l)
 	{
 		if (ft_is_pipe_or_redir(func_l->content) && ((!func_l->prev && (!ft_strncmp(func_l->content, "<", 2)
-		|| !ft_strncmp(func_l->content, "|", 2))) || ((!func_l->next && !ft_strncmp(func_l->content, "|", 2))  || (!func_l->next && ft_is_pipe_or_redir(func_l->next->content)))))
+		|| !ft_strncmp(func_l->content, "|", 2))) || (!func_l->next && ft_strncmp(func_l->content, "|", 2)) || (func_l->next && ft_is_pipe_or_redir(func_l->next->content))))
 		{
 			ft_putstr_fd("minishell: ", 2);
 			ft_putstr_fd("syntax error near unexpected token '", 2);
-			ft_putstr_fd(func_l->content, 2);
+			if (func_l->next->content)
+				ft_putstr_fd(func_l->next->content, 2);
+			else
+				ft_putstr_fd(func_l->content, 2);
 			ft_putstr_fd("'\n", 2);
 			return (1);
 		}
@@ -408,8 +411,8 @@ int	main(int argc, char **argv, char **envp)
 		ft_show_lst(func_l);
 //		ft_handle_quotes(func_l);
 //		ft_set_heredoc(func_l);
-//		if (!ft_check_syntax_errors(func_l))
-		if (func_l && !ft_set_path(func_l, ft_return_path(envp), &env_array)) {
+		if (!ft_check_syntax_errors(func_l))
+			if (func_l && !ft_set_path(func_l, ft_return_path(envp), &env_array)) {
 				ft_exec(func_l, &env_array);
 			}
 		ft_free_lst(&arg_l);

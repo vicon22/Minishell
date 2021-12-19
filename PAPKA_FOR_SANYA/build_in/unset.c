@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell_2.h"
+#include "../minishell.h"
 
 void	ft_unset(char **args, char ***env_array)
 {
 	int		i;
-	int 	j;
+	int		j;
 	char	**tmp;
 
 	if (ft_arr_len(args) <= 1)
@@ -32,8 +32,10 @@ void	ft_unset(char **args, char ***env_array)
 		j = -1;
 		while ((tmp)[++j])
 		{
-			if (!(ft_strncmp(tmp[j], args[1], ft_strlen(tmp[j]) - ft_strlen(ft_strchr(tmp[j], '='))) == 0
-			&& ft_strlen(tmp[j]) - ft_strlen(ft_strchr(tmp[j], '=')) == ft_strlen(args[1])))
+			if (!(ft_strncmp(tmp[j], args[1], ft_strlen(tmp[j])
+						- ft_strlen(ft_strchr(tmp[j], '='))) == 0
+					&& ft_strlen(tmp[j]) - ft_strlen(ft_strchr(tmp[j], '='))
+					== ft_strlen(args[1])))
 				(*env_array)[i++] = ft_strdup(tmp[j]);
 		}
 		(*env_array)[i] = NULL;

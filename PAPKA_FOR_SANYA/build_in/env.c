@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell_2.h"
+#include "../minishell.h"
 
 void	ft_env(char **argc, char ***env_array)
 {
-	int i;
-	int j;
-	char **arr_copy;
-	char *tmp;
+	int		i;
+	int		j;
+	char	**arr_copy;
+	char	*tmp;
 
 	i = -1;
 	arr_copy = ft_char_array_cpy(*env_array);
@@ -26,7 +26,8 @@ void	ft_env(char **argc, char ***env_array)
 		j = i - 1;
 		while (arr_copy[++j])
 		{
-			if (ft_strncmp(arr_copy[i], arr_copy[j], ft_strlen(arr_copy[i])) > 0)
+			if (ft_strncmp(arr_copy[i], arr_copy[j],
+					ft_strlen(arr_copy[i])) > 0)
 			{
 				tmp = arr_copy[i];
 				arr_copy[i] = arr_copy[j];
@@ -34,7 +35,6 @@ void	ft_env(char **argc, char ***env_array)
 			}
 		}
 	}
-
 	i = -1;
 	(void)argc;
 	while (arr_copy[++i])

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell_2.h"
+#include "../minishell.h"
 
 void	signal_handler_in_exec(int status, char **argv, char ***envp)
 {

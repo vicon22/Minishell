@@ -6,11 +6,11 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:04:36 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/19 13:50:37 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/19 14:12:21 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell_2.h"
+#include "../minishell.h"
 
 int ft_is_valid_dollar(char *content)
 {
@@ -30,9 +30,9 @@ void	ft_handle_envps(t_arg *arg_l, char**envp)
 	while (arg_l != NULL)
 	{
 		content = &(arg_l->content);
-		while (ft_strchr(*content, '\"') && ft_closed_quote(ft_strchr(*content, '\"')) && ft_is_valid_dollar(*content))
-			ft_replace_by_envp(content, envp);
 		while (!(ft_strchr(*content, '\'') && ft_closed_quote(ft_strchr(*content, '\''))) && ft_is_valid_dollar(*content))
+			ft_replace_by_envp(content, envp);
+		while (ft_strchr(*content, '\"') && ft_closed_quote(ft_strchr(*content, '\"')) && ft_is_valid_dollar(*content))
 			ft_replace_by_envp(content, envp);
 //		if (**content == '\"' && ft_closed_quote(ft_strchr(*content, '\"')))
 //			ft_remove_quotes(ft_strchr(*content, '\"'));

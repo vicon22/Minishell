@@ -17,10 +17,10 @@
 # include "stdlib.h"
 # include <fcntl.h>
 
-void	ft_bzero(void *s, size_t n);
-size_t	ft_strlen(const char *s);
+void	ft_bzero_gnl(void *s, size_t n);
+size_t	ft_strlen_gnl(const char *s);
 char	*ft_strjoin_gnl(char **s1, char *s2);
-char	*ft_strchr(const char *str, int ch);
+char	*ft_strchr_gnl(const char *str, int ch);
 int		find_pos_of_newline(const char *str);
 void	buffer_change(char *str, int pos);
 char	*get_next_line(int fd);
