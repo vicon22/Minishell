@@ -6,62 +6,67 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/19 15:55:25 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/19 16:42:39 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int g_flag;
-void    ft_set_funcs_structure(t_arg *arg_l, t_arg **func_l)
+void	ft_set_func_args(t_arg **arg_l, t_arg ***func_l)
 {
-	char   *line;
-	int    command_exists;
+	char	*line;
+
+	if ((!ft_is_pipe_or_redir((*arg_l)->content)) || (!ft_is_pipe_or_redir(
+				(*arg_l)->content) && (*arg_l)->prev->prev && !ft_strncmp(
+				(*arg_l)->prev->prev->content, "<<", 3)))
+	{
+		line = ft_strjoin(" ", (*arg_l)->content);
+		(*arg_l) = (*arg_l)->next;
+		while ((*arg_l) && !ft_is_pipe_or_redir((*arg_l)->content))
+		{
+			if (*(*arg_l)->content == '\"' && ft_closed_quote(
+					ft_strchr((*arg_l)->content, '\"')))
+				ft_remove_quotes(ft_strchr((*arg_l)->content, '\"'));
+			else if (*(*arg_l)->content == '\'' && ft_closed_quote(
+					ft_strchr((*arg_l)->content, '\'')))
+				ft_remove_quotes(ft_strchr((*arg_l)->content, '\''));
+			line = ft_strjoin2(&line, " ");
+			line = ft_strjoin2(&line, (*arg_l)->content);
+			(*arg_l) = (*arg_l)->next;
+		}
+		ft_lst2add_args(*func_l, ft_split(line, ' '));
+		free(line);
+	}
+	else
+		(*arg_l) = (*arg_l)->next;
+}
+
+void	ft_set_funcs_structure(t_arg *arg_l, t_arg **func)
+{
+	int		command_exists;
 
 	command_exists = 0;
 	while (arg_l)
 	{
-		if (arg_l->next && (!ft_strncmp(arg_l->content, ">", 2) || !ft_strncmp(arg_l->content, "<", 2) || !ft_strncmp(arg_l->content, ">>", 3) || !ft_strncmp(arg_l->content, "<<", 3)))
+		if (arg_l->next && ft_is_pipe_or_redir(arg_l->content)
+			&& ft_strncmp(arg_l->content, "|", 3))
 		{
-			ft_lst2add_back(func_l, ft_lst2_new(ft_strdup(arg_l->content)));
+			ft_lst2add_back(func, ft_lst2_new(ft_strdup(arg_l->content)));
+			ft_lst2add_back(func, ft_lst2_new(ft_strdup(arg_l->next->content)));
 			if (command_exists == 0)
 			{
-				ft_lst2add_back(func_l, ft_lst2_new(ft_strdup(arg_l->next->content)));
 				arg_l = arg_l->next->next;
-				continue;
+				continue ;
 			}
 			else
-			{
-				ft_lst2add_back(func_l, ft_lst2_new(ft_strdup(arg_l->next->content)));
 				arg_l = arg_l->next;
-			}
-
 		}
 		else if (arg_l->content)
 		{
-			ft_lst2add_back(func_l, ft_lst2_new(ft_strdup(arg_l->content)));
+			ft_lst2add_back(func, ft_lst2_new(ft_strdup(arg_l->content)));
 			command_exists = 1;
 		}
-
-		if ((!ft_is_pipe_or_redir(arg_l->content)) || (!ft_is_pipe_or_redir(arg_l->content) && arg_l->prev->prev && !ft_strncmp(arg_l->prev->prev->content, "<<", 3)))
-		{
-			line = ft_strjoin(" ", arg_l->content);
-			arg_l = arg_l->next;
-			while (arg_l && !ft_is_pipe_or_redir(arg_l->content))
-			{
-				if (*arg_l->content == '\"' && ft_closed_quote(ft_strchr(arg_l->content, '\"')))
-					ft_remove_quotes(ft_strchr(arg_l->content, '\"'));
-				else if (*arg_l->content == '\'' && ft_closed_quote(ft_strchr(arg_l->content, '\'')))
-					ft_remove_quotes(ft_strchr(arg_l->content, '\''));
-				line = ft_strjoin2(&line, " ");
-				line = ft_strjoin2(&line, arg_l->content);
-				arg_l = arg_l->next;
-			}
-			ft_lst2add_args(func_l, ft_split(line, ' '));
-			free(line);
-		}
-		else
-			arg_l = arg_l->next;
+		ft_set_func_args(&arg_l, &func);
 	}
 }
 
@@ -90,7 +95,7 @@ char	*ft_find_path(void *content, char *path)
 	return (NULL);
 }
 
-int ft_is_built_int(char *func_name)
+int	ft_is_built_int(char *func_name)
 {
 	if (!ft_strncmp(func_name, "pwd", 4))
 		return (1);
@@ -109,16 +114,17 @@ int ft_is_built_int(char *func_name)
 	return (0);
 }
 
-int    ft_set_path(t_arg *func_l, char *path, char ***envp)
+int	ft_set_path(t_arg *func_l, char *path, char ***envp)
 {
-	int flag;
+	int	flag;
 
 	flag = 0;
 	while (func_l)
 	{
 		func_l->path = ft_find_path(func_l->content, path);
-		if (!func_l->path && !ft_is_pipe_or_redir(func_l->content) && !ft_is_built_int(func_l->content) &&
-				!ft_is_pipe_or_redir(func_l->content) && !func_l->prev)
+		if (!func_l->path && !ft_is_pipe_or_redir(func_l->content)
+			&& !ft_is_built_int(func_l->content)
+			&& !ft_is_pipe_or_redir(func_l->content) && !func_l->prev)
 		{
 			ft_call_export(func_l->args, envp, 127);
 			ft_putstr_fd("minishell: ", 2);
@@ -142,27 +148,27 @@ void	ft_parse_input_str(char *args_str, t_arg **arg_l)
 		arg = NULL;
 		if ((*args_str == '\''
 				|| *args_str == '\"') && ft_closed_quote(args_str))
-			args_str += ft_pull_str(args_str, &arg, ft_closed_quote(args_str));
+			args_str += ft_pull(args_str, &arg, ft_closed_quote(args_str));
 		else if (*args_str == '>' || *args_str == '<')
 		{
 			if (*(args_str + 1) == *args_str)
-				args_str += ft_pull_str(args_str, &arg, 2);
+				args_str += ft_pull(args_str, &arg, 2);
 			else
-				args_str += ft_pull_str(args_str, &arg, 1);
+				args_str += ft_pull(args_str, &arg, 1);
 		}
 		else if ((*args_str == '\'' || *args_str == '\"'))
-			args_str += ft_pull_str(args_str, &arg, ft_next_space_or_pipe(args_str));
+			args_str += ft_pull(args_str, &arg, ft_next_space_pipe(args_str));
 		else if (*args_str == '|')
-			args_str += ft_pull_str(args_str, &arg, 1);
+			args_str += ft_pull(args_str, &arg, 1);
 		else
-			args_str += ft_pull_str(args_str, &arg, ft_next_space_or_quote_or_other(args_str));
+			args_str += ft_pull(args_str, &arg, ft_next_other(args_str));
 		ft_lst2add_back(arg_l, ft_lst2_new(arg));
 	}
 }
 
-int ft_array_len(char **array)
+int	ft_array_len(char **array)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (array[i])
@@ -170,47 +176,16 @@ int ft_array_len(char **array)
 	return (i);
 }
 
-void ft_set_heredoc(t_arg *func_l)
-{
-	t_arg *next;
-	int i;
-	int j;
-	char **new_args;
-
-	while (func_l)
-	{
-		next = func_l->next;
-		if (next)
-			if (!ft_strncmp(next->content, "<<", 2))
-			{
-				if (next->next)
-				{
-					new_args = (char **)ft_calloc((ft_array_len(func_l->args) + ft_array_len(next->next->args) + 1), sizeof(char *));
-					i = -1;
-					while (++i < ft_array_len(func_l->args))
-						new_args[i] = ft_strdup(func_l->args[i]);
-					j = 0;
-					while (++j < ft_array_len(next->next->args))
-						new_args[i + j - 1] = ft_strdup(next->next->args[j]);
-					free_all(func_l->args);
-					func_l->args = new_args;
-					func_l = next->next;
-				}
-			}
-		func_l = func_l->next;
-	}
-}
-
-void sig_quit_par(int signal)
+void	sig_quit_par(int signal)
 {
 	(void)signal;
 	ft_putstr_fd("Quit: 3\n", 2);
 }
 
-void ft_sig_parent()
+void	ft_sig_parent(void)
 {
 	signal(SIGINT, sig_int_par);
-	signal(SIGQUIT,	SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
 }
 
 void	sig_quit_ch(int signal)
@@ -221,25 +196,25 @@ void	sig_quit_ch(int signal)
 	exit(131);
 }
 
-void ft_sig_ignore()
+void	ft_sig_ignore(void)
 {
 	signal(SIGINT, SIG_IGN);
 	signal(SIGQUIT, SIG_IGN);
 }
 
-void ft_sig_child_heredoc()
+void	ft_sig_child_heredoc(void)
 {
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_IGN);
 }
 
-void ft_sig_child()
+void	ft_sig_child(void)
 {
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, sig_quit_ch);
 }
 
-void ft_sig_par_ignore()
+void ft_sig_par_ignore(void)
 {
 	signal(SIGINT, SIG_IGN);
 	signal(SIGQUIT, sig_quit_par);
@@ -254,11 +229,11 @@ void	sig_int_par(int signal)
 	rl_redisplay();
 }
 
-void ft_read_history(int history_fd)
+void	ft_read_history(int history_fd)
 {
-	char *history_line;
+	char	*history_line;
 
-	history_line = 	get_next_line(history_fd);
+	history_line = get_next_line(history_fd);
 	while (history_line != NULL)
 	{
 		history_line[ft_strlen(history_line) - 1] = '\0';
@@ -268,7 +243,7 @@ void ft_read_history(int history_fd)
 	}
 }
 
-void ft_write_history(int history_fd, char *line)
+void	ft_write_history(int history_fd, char *line)
 {
 	write(history_fd, line, ft_strlen(line));
 	write(history_fd, "\n", 1);
@@ -276,7 +251,7 @@ void ft_write_history(int history_fd, char *line)
 
 int	ft_arr_len(char **array)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (array[i])
@@ -284,10 +259,10 @@ int	ft_arr_len(char **array)
 	return (i);
 }
 
-char **ft_char_array_cpy(char **array)
+char	**ft_char_array_cpy(char **array)
 {
-	char **new_array;
-	int i;
+	char	**new_array;
+	int		i;
 
 	new_array = ft_calloc(ft_arr_len(array) + 2, sizeof (char *));
 	i = 0;
@@ -299,15 +274,15 @@ char **ft_char_array_cpy(char **array)
 	new_array[i] = ft_strdup("?=0");
 	i++;
 	new_array[i] = NULL;
-
 	return (new_array);
 }
 
-int ft_check_syntax_errors(t_arg *func_l)
+int	ft_check_syntax_errors(t_arg *func_l)
 {
 	while (func_l)
 	{
-		if (ft_is_pipe_or_redir(func_l->content) && ((!func_l->prev && !func_l->next) || (!func_l->prev && !ft_strncmp(func_l->content, "|", 2)) || (!func_l->next && ft_strncmp(func_l->content, "|", 2)) || (func_l->next && ft_is_pipe_or_redir(func_l->next->content))))
+		if (ft_is_pipe_or_redir(func_l->content) && ((!func_l->prev
+					&& !func_l->next) || (!func_l->prev && !ft_strncmp(func_l->content, "|", 2)) || (!func_l->next && ft_strncmp(func_l->content, "|", 2)) || (func_l->next && ft_is_pipe_or_redir(func_l->next->content))))
 		{
 			ft_putstr_fd("minishell: ", 2);
 			ft_putstr_fd("syntax error near unexpected token '", 2);
@@ -323,28 +298,7 @@ int ft_check_syntax_errors(t_arg *func_l)
 	return (0);
 }
 
-//void ft_remove_newline(t_arg *func_l)
-//{
-//	t_arg *tmp;
-//
-//	while (func_l)
-//	{
-//		if (!ft_strncmp(func_l->content,  "<", 2))
-//		{
-//			tmp = func_l;
-//			if (func_l->next && func_l->prev)
-//				func_l->prev->next = func_l->next;
-//			else if (func_l->next)
-//				func_l = func_l->next;
-//			else if (func_l->prev)
-//				func_l->prev->next = NULL;
-//			free(tmp->content);
-//			free(tmp);
-//		}
-//
-//		func_l=func_l->next;
-//	}
-//}
+
 
 void ft_handle_quotes(t_arg *func_l)
 {
@@ -414,8 +368,6 @@ int	main(int argc, char **argv, char **envp)
 		ft_handle_envps(arg_l, env_array);
 		ft_set_funcs_structure(arg_l, &func_l);
 //		ft_show_lst(func_l);
-//		ft_handle_quotes(func_l);
-//		ft_set_heredoc(func_l);
 		if (!ft_check_syntax_errors(func_l))
 			if (func_l && !ft_set_path(func_l, ft_return_env(env_array, "PATH"), &env_array))
 			{
@@ -427,3 +379,34 @@ int	main(int argc, char **argv, char **envp)
 	}
 	return 0;
 }
+
+//void	ft_set_heredoc(t_arg *func_l)
+//{
+//	t_arg	*next;
+//	int		i;
+//	int		j;
+//	char	**new_args;
+//
+//	while (func_l)
+//	{
+//		next = func_l->next;
+//		if (next)
+//			if (!ft_strncmp(next->content, "<<", 2))
+//			{
+//				if (next->next)
+//				{
+//					new_args = (char **)ft_calloc((ft_array_len(func_l->args) + ft_array_len(next->next->args) + 1), sizeof(char *));
+//					i = -1;
+//					while (++i < ft_array_len(func_l->args))
+//						new_args[i] = ft_strdup(func_l->args[i]);
+//					j = 0;
+//					while (++j < ft_array_len(next->next->args))
+//						new_args[i + j - 1] = ft_strdup(next->next->args[j]);
+//					free_all(func_l->args);
+//					func_l->args = new_args;
+//					func_l = next->next;
+//				}
+//			}
+//		func_l = func_l->next;
+//	}
+//}

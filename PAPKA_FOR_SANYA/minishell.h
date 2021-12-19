@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:03:02 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/19 14:35:38 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/19 16:36:02 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int		ft_is_space(char c);
 void	ft_show_lst(t_arg *lst);
 void	ft_free_lst(t_arg **lst);
 int		ft_closed_quote(char *arg_str);
-int		ft_next_space_or_quote_or_other(char *arg_str);
-int		ft_next_space_or_pipe(char *arg_str);
-int		ft_pull_str(char *args_str, char **cur_arg, int n);
+int		ft_next_other(char *arg_str);
+int		ft_next_space_pipe(char *arg_str);
+int		ft_pull(char *args_str, char **cur_arg, int n);
 void	ft_remove_quotes(void *content);
 void	ft_replace_by_envp(char **content, char**envp);
 void	ft_handle_envps(t_arg *arg_l, char**envp);
@@ -52,8 +52,9 @@ void	ft_lst2add_args(t_arg **lst, char **line);
 void	free_all(char **result);
 void	free_all_exclude_head(char **result);
 void	ft_set_funcs_structure(t_arg *arg_l, t_arg **func_l);
+void	ft_set_func_args(t_arg **arg_l, t_arg ***func_l);
 void	ft_parse_input_str(char *args_str, t_arg **arg_l);
-char 	*ft_return_env(char **envp, char *var);
+char	*ft_return_env(char **envp, char *var);
 int		ft_set_path(t_arg *func_l, char *path, char ***envp);
 void	ft_set_heredoc(t_arg *func_l);
 int		ft_arr_len(char **array);

@@ -866,3 +866,10 @@ echo $1
 export 1=313
 export A1=313
 export 1A=313
+echo test > ls >> ls >> ls
+echo test > ls >> ls >> ls
+echo 1 2 3 4 5
+<< st echo test << st2
+<< st echo test << st2
+echo 1 2 3 4 5
+ls -la

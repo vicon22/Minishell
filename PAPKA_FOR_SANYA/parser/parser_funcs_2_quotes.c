@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:04:36 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/19 16:14:23 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/19 16:14:59 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	ft_closed_quote(char *arg_str)
 	return (0);
 }
 
-int	ft_pull_str(char *args_str, char **cur_arg, int n)
+int	ft_pull(char *args_str, char **cur_arg, int n)
 {
 	*cur_arg = ft_calloc(n + 1, sizeof (char));
 	if (!*cur_arg)
