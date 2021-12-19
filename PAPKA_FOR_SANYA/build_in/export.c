@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 18:10:30 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/19 14:16:56 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/19 16:17:46 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	ft_call_export(char **argc, char ***envp, int status)
 	char	*export[3];
 	char	*error;
 
+	(void)argc;
 	error = ft_itoa(status);
 	export[0] = "export";
 	export[1] = ft_strjoin("?=", error);
@@ -33,6 +34,8 @@ static int	ft_arg_contains_only_valid_c(char *arg)
 	i = -1;
 	if (ft_strchr(arg, '=') && ft_strlen(arg) >= 2)
 	{
+		if (ft_isdigit(arg[0]))
+			return (0);
 		while (arg[++i] && arg[i] != '=')
 		{
 			if (!ft_isdigit(arg[i]) && !ft_isalpha(arg[i]) && arg[i] != '_'

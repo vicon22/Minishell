@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:04:36 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/19 14:12:21 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/19 16:14:23 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,50 @@ int ft_is_valid_dollar(char *content)
 {
 	while (*content)
 	{
-		if (*content == '$' && (ft_isalpha(*(content + 1)) || ft_isdigit(*(content + 1)) || *(content + 1) == '_' || *(content + 1) == '?'))
+		if (*content == '$' && (ft_isalpha(*(content + 1)) || ft_isdigit(*(content + 1)) ||  *(content + 1) == '_' || *(content + 1) == '?'))
 			return (1);
 		content++;
 	}
 	return (0);
 }
 
-void	ft_handle_envps(t_arg *arg_l, char**envp)
+int	is_double_quote_main(char *content)
 {
-	char	**content;
+	int i;
+
+	i = -1;
+	if (ft_strchr(content, '\"') && ft_closed_quote(ft_strchr(content, '\"')) && (ft_strchr(content, '\'') && ft_closed_quote(ft_strchr(content, '\''))))
+	{
+		while (content[++i])
+		{
+			if (*content == '\'')
+				return (0);
+			if (*content == '\"')
+				return (1);
+		}
+	}
+	else if (ft_strchr(content, '\"') && ft_closed_quote(ft_strchr(content, '\"')))
+		return (1);
+	return (0);
+}
+
+void   ft_handle_envps(t_arg *arg_l, char**envp)
+{
+	char   **content;
+
 
 	while (arg_l != NULL)
 	{
 		content = &(arg_l->content);
+		while (ft_strchr(*content, '\"') && ft_closed_quote(ft_strchr(*content, '\"')) && ft_is_valid_dollar(*content) &&
+			   is_double_quote_main(*content))
+			ft_replace_by_envp(content, envp);
 		while (!(ft_strchr(*content, '\'') && ft_closed_quote(ft_strchr(*content, '\''))) && ft_is_valid_dollar(*content))
 			ft_replace_by_envp(content, envp);
-		while (ft_strchr(*content, '\"') && ft_closed_quote(ft_strchr(*content, '\"')) && ft_is_valid_dollar(*content))
-			ft_replace_by_envp(content, envp);
-//		if (**content == '\"' && ft_closed_quote(ft_strchr(*content, '\"')))
-//			ft_remove_quotes(ft_strchr(*content, '\"'));
-//		else if (**content == '\'' && ft_closed_quote(ft_strchr(*content, '\'')))
-//			ft_remove_quotes(ft_strchr(*content, '\''));
+//    if (**content == '\"' && ft_closed_quote(ft_strchr(*content, '\"')))
+//       ft_remove_quotes(ft_strchr(*content, '\"'));
+//    else if (**content == '\'' && ft_closed_quote(ft_strchr(*content, '\'')))
+//       ft_remove_quotes(ft_strchr(*content, '\''));
 		arg_l = arg_l->next;
 	}
 }
@@ -84,6 +106,11 @@ void	ft_remove_quotes(void *content)
 char	*ft_end_of_var(char *content)
 {
 	content++;
+	if (ft_isdigit(*content))
+	{
+		content++;
+		return (content);
+	}
 	while (*content && !ft_is_space(*content) && *content != '\'' && *content != '\"' && (ft_isalpha(*content) || ft_isdigit(*content) || *content == '_'))
 	{
 		content++;
@@ -129,7 +156,7 @@ void ft_replace_by_envp(char **content, char**envp)
 	var_len = ft_strlen(*content) - pre_len - post_len - 1;
 	while (envp[++i] && ft_strchr(*content, '$'))
 	{
-		if (ft_strchr(*content, '$') && !ft_strncmp(envp[i], ft_strchr(*content, '$') + 1, var_len) && var_len == (ft_strlen(envp[i]) -
+		if (ft_strchr(*content, '$') && !ft_strncmp(envp[i], ft_strchr(*content, '$') + 1, var_len) && var_len == (int)(ft_strlen(envp[i]) -
 				ft_strlen(ft_strchr(envp[i], '='))))
 		{
 			pre_len = ft_strlen(*content) - ft_strlen(ft_strchr(*content, '$'));

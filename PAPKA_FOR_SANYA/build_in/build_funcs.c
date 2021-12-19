@@ -31,6 +31,7 @@ void	(*ft_find_buildin(char **argc, char **envp))(char **argc, char ***envp)
 
 	func_name = argc[0];
 	buildin = NULL;
+	(void)envp;
 	if (!ft_strncmp(func_name, "pwd", 4))
 		buildin = ft_pwd;
 	if (!ft_strncmp(func_name, "cd", 3))

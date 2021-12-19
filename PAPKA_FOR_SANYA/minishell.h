@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:03:02 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/19 14:18:36 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/19 14:35:38 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	free_all(char **result);
 void	free_all_exclude_head(char **result);
 void	ft_set_funcs_structure(t_arg *arg_l, t_arg **func_l);
 void	ft_parse_input_str(char *args_str, t_arg **arg_l);
-char	*ft_return_path(char **envp);
+char 	*ft_return_env(char **envp, char *var);
 int		ft_set_path(t_arg *func_l, char *path, char ***envp);
 void	ft_set_heredoc(t_arg *func_l);
 int		ft_arr_len(char **array);

@@ -14,9 +14,7 @@
 
 void	ft_add(char *file_name)
 {
-	int		pip[2];
 	int		fd;
-	int		pid;
 
 	//write(2, "+++\n", 4);
 	//pipe(pip);
@@ -41,7 +39,7 @@ void	ft_rewrite(char *file_name)
 {
 	//int		pip[2];
 	int		fd;
-	int		pid;
+	//int		pid;
 
 	//write(2, "---\n", 4);
 	fd = open(file_name, O_WRONLY | O_TRUNC | O_CREAT, 0777);

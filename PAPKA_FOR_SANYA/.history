@@ -674,3 +674,195 @@ echo "'$PATH'"
 echo "'$PATH'"
 echo '$PATH'
 echo "'$PATH'"
+echo "'$PATH'"
+echo '$PATH'
+echo '"$PATH"'
+echo "$PATH"
+echo '$PATH'
+echo
+> echo
+< echo
+echo >|
+< echo
+< echo
+< echo
+< echo
+< echo
+
+
+< echo
+< echo
+< echo
+< echo
+> echo
+< echo
+> echo
+echo $?
+> echo
+> echo
+echo $?
+sasa
+echo $?
+ls
+echo $?
+yes
+echo $?
+yes
+echo $?
+yes
+echo $?
+<< st
+<< st
+chlen
+exit 228
+echo $PATH
+hui
+dfsd
+s
+s
+chlen
+c
+echo $?
+echo $?
+s
+s
+echo $?
+s
+echo $?
+s
+fdf
+fdf
+l
+<
+>
+|
+<
+
+<
+<
+<
+<
+<
+<
+<
+<
+<
+<
+<
+<
+ls
+ls
+ls
+<
+<
+<
+<
+<
+<
+<
+>
+>
+>
+ls
+ls
+<
+>
+>
+>
+<
+<
+<
+>
+<
+<
+<
+<
+<
+>
+<>
+<<<
+<<<>>>
+<
+>
+;; test
+| test
+echo > <
+echo | |
+echo ||
+echo <
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+echo <
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls
+cat < ls > ls 
+cat < ls > ls
+cat < ls > ls
+cat < ls
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+> lol echo test lol
+echo test > ls >> ls >> ls
+echo test > ls
+echo test     \    test
+echo \"test
+echo $TEST
+export
+env
+export TEST=131
+echo $TEST
+echo "$TEST"
+echo "$TEST"
+echo "$TEST"
+echo "$TEST"
+echo '$TEST'
+echo "$TEST$TEST$TEST"
+export TEST=LOL
+echo "$TEST$TEST=lol$TEST"
+echo "   $TEST lol $TEST"
+echo $TEST$TEST$TEST
+echo $TEST$TEST=lol$TEST""lol
+echo    $TEST lol $TEST
+echo test "" test "" test
+echo "\$TEST"
+echo "$=TEST"
+echo "$"
+echo $TEST $TEST
+echo "$1TEST"
+echo "$1TEST"
+echo "$?TEST"
+echo "$1TEST"
+echo "$1TEST"
+echo $TEST $TEST
+export TEST=LOL
+echo $TEST $TEST
+echo $TEST $TEST
+echo $1TEST 
+echo $1TEST 
+echo $1TEST 
+echo $1TEST 
+echo $1TEST 
+echo $1TEST 
+echo $1TEST 
+echo $1TEST 
+echo $1TEST 
+echo $1TEST 
+echo $1TEST 
+echo $1
+echo $A
+echo "$T1TEST"
+echo "$1TEST"
+echo $?
+echo "$=TEST"
+echo $?
+echo $1
+echo $1
+export 1=313
+export A1=313
+export 1A=313

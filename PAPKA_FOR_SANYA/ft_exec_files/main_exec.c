@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 12:55:33 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/19 13:41:24 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/19 15:25:37 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	ft_add_command_after_pipe(t_arg	*needful, char ***envp)
 	ft_parse_input_str(args_str, &arg_l);
 	ft_handle_envps(arg_l, *envp);
 	ft_set_funcs_structure(arg_l, &needful);
-	ft_set_path(needful, ft_return_path(*envp), envp);
+	ft_set_path(needful, ft_return_env(*envp, "PATH"), envp);
 	ft_show_lst(needful);
 	ft_free_lst(&arg_l);
 	free(args_str);
@@ -109,9 +109,9 @@ void	ft_exec(t_arg *lst, char ***envp)
 			args = ft_redirect_in_command(needful, envp);
 			args2 = ft_redirect_in_file(needful, envp);
 			command = ft_find_command(needful, envp);
-			ft_putstr_fd("find command: ", 2);
-			write(2, command->content, ft_strlen(command->content));
-			write(2, "\n", 1);
+//			ft_putstr_fd("find command: ", 2);
+//			write(2, command->content, ft_strlen(command->content));
+//			write(2, "\n", 1);
 			args = ft_binding_args(args, args2, 0);
 			if (!ft_is_a_command(command))
 			{

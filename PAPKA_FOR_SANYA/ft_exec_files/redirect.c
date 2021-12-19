@@ -36,6 +36,7 @@ void	ft_redirect(t_arg *redirect, char *file, char **envp)
 {
 	int	fd;
 
+	(void)envp;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return ;
@@ -76,6 +77,7 @@ char	**ft_redirect_in_file(t_arg *lst, char ***envp)
 	t_arg	*needful;
 	char	**args;
 
+	(void)envp;
 	args = NULL;
 	needful = ft_find_output(lst);
 	while (needful)
