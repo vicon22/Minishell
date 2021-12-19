@@ -6,10 +6,10 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 18:10:30 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/16 16:17:34 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/19 13:50:37 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "minishell_2.h"
+#include "../minishell_2.h"
 
 static int ft_arg_contains_only_valid_c(char *arg)
 {

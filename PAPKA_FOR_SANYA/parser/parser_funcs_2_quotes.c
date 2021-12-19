@@ -6,11 +6,11 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:04:36 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/15 16:50:15 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/19 13:50:37 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell_2.h"
+#include "../minishell_2.h"
 
 int ft_is_valid_dollar(char *content)
 {

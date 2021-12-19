@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell_2.h"
+#include "../minishell_2.h"
 
 t_arg	*ft_find_command(t_arg *lst, char ***envp)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell_2.h"
+#include "../minishell_2.h"
 
 void	ft_add(char *file_name)
 {

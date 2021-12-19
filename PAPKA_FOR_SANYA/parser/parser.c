@@ -6,11 +6,11 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/18 21:41:39 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/19 13:50:37 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell_2.h"
+#include "../minishell_2.h"
 
 int g_flag;
 void    ft_set_funcs_structure(t_arg *arg_l, t_arg **func_l)

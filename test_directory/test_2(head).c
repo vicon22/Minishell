@@ -47,10 +47,12 @@ int	main(int argc, char **argv, char **envp)
 	char	**argcc[3];
 	char	*yes[2];
 	char	*head[2];
+	char 	*testhead[1];
 	char	*wc[2];
 
 	yes[0] = "/usr/bin/yes";
 	yes[1] = 0;
+	head[0] = "/usr/bin/head";
 	head[0] = "/usr/bin/head";
 	head[1] = 0;
 	wc[0] = "/usr/bin/wc";

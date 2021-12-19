@@ -6,23 +6,11 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 17:42:00 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/18 20:55:10 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/19 13:38:32 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell_2.h"
-
-t_arg	*ft_find_heredoc(t_arg *lst)
-{
-	t_arg	*heredoc;
-
-	heredoc = lst;
-	while (heredoc && ft_strncmp(heredoc->content, "<<", 3) )
-	{
-		heredoc = heredoc->next;
-	}
-	return (heredoc);
-}
+#include "../minishell_2.h"
 
 t_arg	*ft_find_redirect(t_arg *lst)
 {
@@ -30,7 +18,7 @@ t_arg	*ft_find_redirect(t_arg *lst)
 
 	redirect = lst;
 	while (redirect && ft_strncmp(redirect->content, "<<", 3)
-		   && ft_strncmp(redirect->content, "<", 2))
+		&& ft_strncmp(redirect->content, "<", 2))
 	{
 		//write(2, redirect->content, ft_strlen(redirect->content));
 		//write(2, "\n", 1);
@@ -44,22 +32,22 @@ t_arg	*ft_find_redirect(t_arg *lst)
 	return (redirect);
 }
 
-void ft_redirect(t_arg *redirect, char *file, char **envp)
+void	ft_redirect(t_arg *redirect, char *file, char **envp)
 {
-	int fd;
+	int	fd;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return;
+		return ;
 	else
-	if (!ft_find_redirect(redirect->next))
-		dup2(fd, 0);
+		if (!ft_find_redirect(redirect->next))
+			dup2(fd, 0);
 }
 
-char **ft_redirect_in_command(t_arg *lst, char ***envp)
+char	**ft_redirect_in_command(t_arg *lst, char ***envp)
 {
 	t_arg	*needful;
-	char 	**args;
+	char	**args;
 
 	args = NULL;
 	needful = ft_find_redirect(lst);
@@ -83,14 +71,15 @@ char **ft_redirect_in_command(t_arg *lst, char ***envp)
 	return (args);
 }
 
-char **ft_redirect_in_file(t_arg *lst, char ***envp)
+char	**ft_redirect_in_file(t_arg *lst, char ***envp)
 {
 	t_arg	*needful;
-	char 	**args;
+	char	**args;
 
 	args = NULL;
 	needful = ft_find_output(lst);
-	while (needful) {
+	while (needful)
+	{
 		if (ft_strlen(needful->content) == 1)
 			ft_rewrite(needful->next->content);
 		if (ft_strlen(needful->content) == 2)

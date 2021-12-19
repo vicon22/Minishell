@@ -6,11 +6,11 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:04:23 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/01 17:14:20 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/19 13:50:37 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell_2.h"
+#include "../minishell_2.h"
 
 t_arg	*ft_lst2_new(char *content)
 {

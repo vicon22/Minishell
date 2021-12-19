@@ -6,11 +6,11 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 18:36:25 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/13 15:25:36 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/19 13:50:37 by eveiled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell_2.h"
+#include "../minishell_2.h"
 
 void	ft_unset(char **args, char ***env_array)
 {

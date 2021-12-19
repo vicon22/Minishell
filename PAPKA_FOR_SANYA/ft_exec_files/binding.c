@@ -10,12 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell_2.h"
+#include "../minishell_2.h"
 
-
-void ft_free(char **array)
+void	ft_free(char **array)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	//write(2, "free\n", 5);
@@ -24,16 +23,16 @@ void ft_free(char **array)
 		free(array[i]);
 		i++;
 	}
-		free(array);
+	free(array);
 }
 
-char **ft_binding_args(char **args_first, char **args_second, int flag)
+char	**ft_binding_args(char **args_first, char **args_second, int flag)
 {
-	int count_first;
-	int count_second;
-	int i;
-	int j;
-	char **bind_args;
+	int		count_first;
+	int		count_second;
+	int		i;
+	int		j;
+	char	**bind_args;
 
 	count_first = 0;
 	count_second = 0;
@@ -45,7 +44,8 @@ char **ft_binding_args(char **args_first, char **args_second, int flag)
 			count_second++;
 	if (count_second < 2)
 		return (args_first);
-	bind_args = (char **)malloc(sizeof(char *) * (count_first + count_second + 1));
+	bind_args = (char **)malloc(sizeof(char *)
+			* (count_first + count_second + 1));
 	if (NULL == bind_args)
 	{
 		write(2, "malloc error in ft_binding_args\n", 32);
@@ -60,7 +60,7 @@ char **ft_binding_args(char **args_first, char **args_second, int flag)
 	j = 1;
 	if (!args_first)
 		j = 0;
-	while (j <  count_second)
+	while (j < count_second)
 	{
 		bind_args[i] = ft_strdup(args_second[j]);
 		j++;
@@ -72,32 +72,4 @@ char **ft_binding_args(char **args_first, char **args_second, int flag)
 	if (args_second && flag == 1)
 		ft_free(args_second);
 	return (bind_args);
-}
-
-int ft_array_cpm(char **args_first, char **args_second)
-{
-	int count_first;
-	int count_second;
-	int i;
-
-	count_first = 0;
-	count_second = 0;
-	if (args_first)
-		while (args_first[count_first])
-			count_first++;
-	if (args_second)
-		while (args_second[count_second])
-			count_second++;
-	if (count_first != count_second)
-		return (1);
-	i = 0;
-	while (args_first[i] && args_second[i])
-	{
-		if (ft_strlen(args_first[i]) != ft_strlen(args_second[i]))
-			return (1);
-		if (ft_strncmp(args_first[i], args_second[i], ft_strlen(args_first[i])))
-			return (1);
-		i++;
-	}
-	return (0);
 }

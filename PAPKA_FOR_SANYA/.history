@@ -600,3 +600,24 @@ echo test444 |
 
 chlen
 ||
+cat -e lol2 > lol7
+cat -e lol2 > lol7 lol9
+yes
+yes | head
+yes | head | wc
+yes | head -5
+yes | head -5
+yes
+yes
+yes | head -5
+yes | head -5
+yes | head -5 > yyyyy
+yes | head -5 > yyyyy
+yes | head -5 > yyyyy > y5
+yes | head -5
+yes | head -5
+export TEST="ls       -l     - a"
+env
+export TEST="ls -l - a"
+export TEST="ls -l - a"
+||
