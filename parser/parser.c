@@ -125,7 +125,7 @@ int	main(int argc, char **argv, char **envp)
 	t_arg				*func_l;
 	int					history_fd;
 
-	history_fd = open(".history", O_RDWR | O_APPEND | O_CREAT);
+	history_fd = open(".history", O_RDWR | O_APPEND | O_CREAT, 0777);
 	ft_read_history(history_fd);
 	env_array = ft_char_array_cpy(envp);
 	while (1)
