@@ -873,3 +873,843 @@ echo 1 2 3 4 5
 << st echo test << st2
 echo 1 2 3 4 5
 ls -la
+
+
+
+
+ls
+echo
+echo
+echo 1
+echo 1 2
+echo
+ls
+ls -la
+echo test | grep t | grep t
+echo test | grep t | grep t
+ls
+ls
+ls -la
+da
+ads
+da
+sd
+asd
+a
+dssa
+d
+asd
+ad
+a
+sd
+sad
+as
+
+
+
+
+
+
+
+a
+s
+a
+s
+a
+
+as
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+as
+
+
+
+
+
+
+a
+s
+a
+sa
+as
+
+
+
+
+
+dasda
+ls -la
+echo $PATH
+echo $P
+echo $PATH
+echo $PATH
+echo $PATH
+echo $PATH
+echo $PATH
+echo $PATH
+echo $PATH
+echo $PATH
+echo $PATH
+ls
+ls -ls
+
+
+
+
+
+
+
+
+
+
+ls
+ls -la
+echo $P
+echo $PA
+echo $PAT
+echo $PATH
+echo $PATH
+echo $PWD
+echo $PWD
+echo $PATH
+ls
+ls
+ls
+<<
+<
+>
+< echo
+;; echo
+chlen echo
+ls -la
+;s
+ls
+ls -la
+ls
+cd parser/
+ls
+norminette
+ls
+norminette
+ls
+export
+env
+env
+export
+export a="1 23 23"
+export TEST="ls       -l     - a"
+env
+export TEST="ls       -l     - a"
+export TEST="ls       -l     - a"
+env
+export TEST="ls       -l     - a"
+env
+env
+env
+ls
+export A="1 2 3"
+env
+expot 1A=4
+ebv
+export 1A=4
+env
+export A="1 2 3"
+export
+export A=1
+export A="1 2 3"
+export A="1 2 3"
+export A="1 2 3"
+export A="1 2 3"
+env
+exit
+export A="1 2 3"
+env
+export A="1 2 3{"
+export A{="1 2 3{"
+export A{="1 2 3{"
+export A="1 2 3"
+env
+export A{="1 2 3{"
+export A{="1 2 3{"
+export A{="1 2 3"
+export A="1 2 3"
+export A="1 2 3"
+export A="1 2 3"
+export A="1 2 3"
+export A="1 2 3"
+export A="1 2 3"
+export A="1 2 3"
+export A="1 2 3"
+export A="1 2 3"
+export A="1 2 3"
+export A="1 2 3"
+export A="1 2 3"
+export A="1 2 3" C{=4
+export A="1 2 3" C{=4
+export A{="1 2 3" C{=4
+export A{="1 2 3" C=4
+export A{="1 2 3" C=4
+env
+export A{="1 2 3" C=4
+export A{="1 2 3" C=4
+export A{="1 2 3" C{=4
+export A{="1 2 3" C{=4
+export A{="1 2 3" C=4
+export A{="1 2 3" C{=4
+export A{="1 2 3" C{=4
+make
+export A{="1 2 3" C{=4
+export A{="1 2 3" C{=4
+export A{="1 2 3" C{=4
+export A{="1 2 3" C{=4
+export A{="1 2 3" C{=4
+export A{="1 2 3" C=4
+export A{="1 2 3" C{=4
+export A{="1 2 3" C{=4
+export A{="1 2 3" C{=4
+export A{="1 2 3" C{=4
+export A{="1 2 3" C{=4
+export A{="1 2 3" C{=4
+export A="1 2 3" C{=4
+export c="1 2 3" C{=4
+export B="1 2 3" d=4
+env
+export B="1= 2 3" d=4
+export B="1 2 3" d=4
+export B="1 2 3" d=4
+export B="1 2 3" d=4
+export B="1 2 3" d=4
+export B="1 2 3" d=4
+export B="1 2 3" d=4
+env
+export B="1 2 3" d=4
+export B="1 2 3" d=4
+export B="1 2 3" d=4
+export B="1 2 3" 
+export B="1 2 3" 
+export B="1 2 3" 
+export B="1 2 3" 
+export B="1 2 3" 
+export B="1 2 3" 
+export B="1 2 3" d=4
+export B="1 2 3" d=4
+export B="1 2 3" d=4
+export B="1 2 3" d=4
+export B="1 2 3" d=4
+export B="1 2 3" d
+export B="1 2 3" 
+export B="1 2 3" 
+export B="1 2 3" 
+export B="1 2 3" 
+export B="1 2 3" 
+export B="1 2 3" 
+export B="1 2 3" 
+export B="1 2 3" 
+export B="1 2 3" d=5
+env
+export B="1 2 3" d=5
+export B="1 2 3" d=5
+export B="1 2 3" d=5
+export B="1 2 3" d=5
+export B="1 2 3" d=55
+env
+export
+env
+
+
+
+
+
+export B="1 2 3" d=55
+export B="1 2 3" d{=55
+export B{="1 2 3" d{=55
+export TEST="ls       -l     - a"
+env
+export B{="1 2= 3" d{=55
+export B{="1 2= 3" d{=55
+export B{="1 2= 3" d{=55
+export B{="1 2= 3" d{=55
+export B{="1 2= 3" d{=55
+export B{="1 2= 3" d{=55
+export B="1 2 3" d=55
+export B="1 2 3" d=55
+export B="1 2 3" d=55
+export B="1 2 3" d=55
+export B="1 2 3" d=55
+export B="1 2 3" d=55
+export B="1 2 3" d=55
+export B="1 2 3" d=55
+export B="1 2 3" d=55
+export B="1 2 3" d=55
+
+export B="1 2 3" d=55
+export B="1 2 3" d=55
+export B="1 2 3" d=55
+export B="1 2 3" d=55
+export B="1 2 3" d=55
+export B="1 2 3" d=55
+export B="1 2 3" d=55
+env
+env
+export B="1 2 3" d=55
+export B="1 2 3" d=55
+export B="1 2 3" d=55
+export B="1 2 3" d=55
+export B="1 2 3" d=55
+export B="1 2 3" d=55
+env
+env
+export B="1 2 3" d{=345
+export B="1 2 3" d{=345
+export B="1 2 3" d{=345
+env
+export B="1 2 3" d=345
+env
+export B="1 2 3" d=345
+env
+export B="1 2 3" d=345
+export B="1 2 3" d=345
+export B="1 2 3" d=345
+export B="1 2 3" d=345
+env
+export B="1 2 3" d=345
+env
+export B="1 2 3" d=345
+env
+export B="1 2 3" d=345
+env
+export B="1 2 3" d=345
+env
+export B="1 2 3" d=345
+env
+export B="1 2 3" d=345
+env
+export B="1 2 3" d=345
+export B="1 2 3" d=345
+env
+ls
+export B="1 2 3" d=345
+env
+export B="1 2 3" d=345
+env
+export B="1 2 3" d=345
+export B="1 2 3" d=345
+env
+env
+export B="1 2 3" d=345
+env
+export B="1 2 3" d=345
+cat ""
+cat "cat lol.c | cat > lol.c" - в "" 
+cat "cat lol.c | cat > lol.c" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+env
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+ls
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH" 
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+"cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+ls
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+ls
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+clear
+
+
+
+
+
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+cat "cat lol.c | cat > lol.c $PATH"
+>lol echo > test>lol>test>>lol>test mdr >lol test >test
+echo 1 2 3
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+ls
+ls -la
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+ls
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 2 3 4 5 6
+echo 1 
+echo 3 3 3
+echo 3 3 4
+echo 3 3 4
+echo 3 3 4
+echo 3 3 4
+echo 3 3 4
+echo 3 3 4
+echo 3 3 4
+echo 3 3 4
+echo 3 3 4
+echo 3 3 4
+echo 3 3 4
+echo 3 3 4
+echo 3 3 4
+echo 3 3 4
+echo 3 3 4
+echo 3 3 4
+
+echo 3 3 4
+echo 3 3 4
+echo 3 3 4
+echo 3 3 4
+echo 3 3 4
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+echo "1 2 3'
+echo "1 2 3"
+echo "1 2 3"
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+ls
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+echo 1 2 3 4 5
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat 1 2 3 4 5
+cat 1 2 3 4 5 | echo 4 5 6
+cat 1 2 3 4 5 | echo 4 5 6
+cat 1 2 3 4 5 | echo 4 5 6
+cat 1 2 3 4 5 | echo 4 5 6
+cat 1 2 3 4 5 | echo 4 5 6
+cat 1 2 3 4 5 | echo 4 5 6
+cat 1 2 3 4 5 | echo 4 5 6
+cat 1 2 3 4 5 | echo 4 5 6
+cat 1 2 3 4 5 | echo 4 5 6
+cat "1 2 3 4 5 | echo 4 5 6
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat" lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+cat "cat lol.c | cat > lol.c"
+echo "1 2 3 4 5 6"
+echo "1 2 3 4 5 6" | grep "1 2 3"
+echo "1 2 3 4 5 6" | grep "1 2 3 $PWD"
+echo "1 2 3 4 5 6" | grep "1 2 3 $PWD ${"
+export A="1 2 3"
+export A="1 2 3"
+env
+export A="1 2 3"
+export A="1 2 3"
+env
+export A="1 2 3"
+export A="1 2 3"
+export A="1 2 3"
+env
+export A="1 2 3"
+env
+export A="1 2 3"
+env
+export A="1 2 3 4 5"
+env
+export A="1 2 3 4 5"
+export A="1 2 3 4 5"
+env
+export A="1 2 3 4 5"
+export A="1 2 3 4 5"
+export A="1 2 3 4 5"
+env
+export A="1 2 3 4 5"
+export A="1 2 3 4 5"
+env
+export A="1 2 3 4 5"
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+s
+s
+1
+2
+2
+1
+1
+12
+env
+export A="1 2 3 4 5"
+export A="1 2 3 4 5"
+env
+export A="1 2 3 4 5" C{=345
+env
+export A="1 2 3 4 5" C{=345
+env
+export A="1 2 3 4 5" C{=345 B=345
+env
+export A="1 2 3 4 5" C{=345 B=345
+export A="1 2 3 4 5" C{=345 B=345
+export A="1 2 3 4 5" C{=345 B=345
+export A="1 2 3 4 5" C{=345 B=345
+export A="1 2 3 4 5" C{=345 B=345
+export A="1 2 3 4 5" C{=345 B=345
+export A="1 2 3 4 5" C{=345 B=345
+export A="1 2 3 4 5" C{=345 B=345
+export A="1 2 3 4 5" C{=345 B=345
+
+export A="1 2 3 4 5" C{=345 B=345
+export A="1 2 3 4 5" C{=345 B=345
+export A="1 2 3 4 5" C{=345 B=345
+export A="1 2 3 4 5" C{=345 B=345
+env
+env
+export A="1 2 3 4 5" C{=345 B=345
+echo 1 2 3 4 5
+echo 1 2 3 4 5
+echo 1 2 3 4 5
+echo 1 2 3 4 5
+echo 1 2 3 4 5
+echo 1 2 3 4 5
+echo 1 2 3 4 5
+echo 1 2 3 4 5
+echo 1 2 3 4 5
+echo 1 2 3 4 5
+echo 1 2 3 4 5
+echo 1 2 3 4 5
+echo 1 2 3 4 5
+echo 1 2 3 4 5
+echo 1 2 3 4 5
+echo 1 2 3 4 5
+echo 1 2 3 4 5
+echo 1 2 3 4 5
+echo 1 2 3 4 5
+echo 1 2 3 4 5 | cat -e
+export A="1 2 3 4 5" C{=345 B=345
+export A="1 2 3 4 5" C{=345 B=345
+export A="1 2 3 4 5" C{=345 B=345
+export A="1 2 3 4 5" C{=345 B=345
+export A="1 2 3 4 5" C{=345 B=345
+export A="1 2 3 4 5" C{=345 B=345
+export A="1 2 3 4 5" C{=345 B=345
+export A=1
+export A=1
+export A=1
+export A=1
+export A=1 B=3
+export A=1 B=3
+export A=1 B=3
+export A=1 B{=3
+export A=1 B{=3
+export A=1 B{=3
+export A=1 B{=3
+export A=1 B{=3
+export A="1 2" B{=3
+export A="1 2" B{=3
+export A="1 2" B{=3
+export A="1 2" B{=3
+export A="1 2" B{=3
+export A="1 2" B{=3
+export A="1 2" B{=3
+env
+export A="1" B{=3
+export A="1" B{=3
+export A="1" B{=3
+env
+export A="1 2" B{=3
+export A="1 2 3" B{=3
+env
+env
+env
+export A="1 2 3" B{=3
+export A="1 2 3" B{=3
+export A="1 2 3" B{=3
+export A="1 2 3" B{=3
+export A="1 2 3" B{=3
+export A="1 2 3" B{=3
+export A="1 2 3" B{=3
+export A="1 2 3" B{=3
+export A="1 2 3" B{=3
+export A="1 2 3" B{=3
+export A="1 2 3" B{=3
+export A="1 2 3" B{=3
+export A="1 2 3" B{=3
+export A="1 2 3"
+export A="1 2 3"
+export A="1 2 3"
+export A="1 2 3
+env
+export A="1 2 3
+export A="1 2 3
+export A="1 2 3
+export A="1 2 3
+export A="1 2 3
+export A="1 2 3
+
+
+export A{="1 2 3
+export A{="1 2 3 B=31231
+export A{="1 2 3 B=31231 C="31231"
+env

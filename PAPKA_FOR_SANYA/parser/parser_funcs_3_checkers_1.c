@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:05:32 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/19 13:50:37 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/19 18:02:00 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,6 @@ int	ft_is_pipe_or_redir(void *cont)
 	return (0);
 }
 
-char	*ft_strjoin2(char **s1, char *s2)
-{
-	char	*s_start;
-	char	*s1_start;
-	char	*s;
-
-	s = malloc(sizeof(char) * (ft_strlen(*s1) + ft_strlen(s2) + 1));
-	if (!s)
-		return (NULL);
-	s_start = s;
-	s1_start = *s1;
-	while (**s1)
-		*(s++) = *((*s1)++);
-	while (*s2 && *s2 != '\n')
-		*s++ = *s2++;
-	if (*s2 == '\n')
-		*(s++) = '\n';
-	*s = '\0';
-	free((void *) s1_start);
-	return (s_start);
-}
-
 int	ft_is_space(char c)
 {
 	if (c == ' ')
@@ -73,7 +51,8 @@ int	ft_next_other(char *arg_str)
 	while (arg_str[++i])
 	{
 		if ((arg_str[i] == ' ' || arg_str[i] == '\''
-				|| arg_str[i] == '\"' || arg_str[i] == '|' || arg_str[i] == '<' || arg_str[i] == '>') && i != 0)
+				|| arg_str[i] == '\"' || arg_str[i] == '|'
+				|| arg_str[i] == '<' || arg_str[i] == '>') && i != 0)
 		{
 			return (i);
 		}
@@ -96,36 +75,11 @@ int	ft_next_space_pipe(char *arg_str)
 	return (i);
 }
 
-void	free_all(char **result)
+int	ft_correct_number(char *number)
 {
-	int	j;
+	char	*saver;
 
-	j = 0;
-	while (result[j])
-	{
-		free(result[j]);
-		j++;
-	}
-	free(result);
-}
-
-void	free_all_exclude_head(char **result)
-{
-	int	j;
-
-	j = 0;
-	while (result[j])
-	{
-		free(result[j]);
-		j++;
-	}
-}
-
-int ft_correct_number(char *number)
-{
-	char        *saver;
 	saver = number;
-
 	if (*saver == '-' || *saver == '+')
 		saver++;
 	while (*saver)

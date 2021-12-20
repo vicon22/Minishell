@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 18:36:25 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/19 13:50:37 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/19 18:15:02 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,7 @@ void	ft_unset(char **args, char ***env_array)
 	char	**tmp;
 
 	if (ft_arr_len(args) <= 1)
-	{
-		write(1, "unset: not enough arguments\n", 28);
-		//переделать в errno
 		return ;
-	}
 	else
 	{
 		tmp = *env_array;

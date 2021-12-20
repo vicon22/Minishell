@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:03:02 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/19 16:36:02 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/20 13:21:40 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,18 @@ int		ft_next_other(char *arg_str);
 int		ft_next_space_pipe(char *arg_str);
 int		ft_pull(char *args_str, char **cur_arg, int n);
 void	ft_remove_quotes(void *content);
+void	ft_remove_quotes_func(t_arg *func_l);
 void	ft_replace_by_envp(char **content, char**envp);
 void	ft_handle_envps(t_arg *arg_l, char**envp);
 int		ft_is_pipe_or_redir(void *cont);
 char	*ft_strjoin2(char **s1, char *s2);
 void	ft_lst2add_args(t_arg **lst, char **line);
+char	**ft_add_args(char **old_arr, char *new_elem);
+void	ft_args_control(t_arg **arg_l, char ***arr);
 void	free_all(char **result);
 void	free_all_exclude_head(char **result);
 void	ft_set_funcs_structure(t_arg *arg_l, t_arg **func_l);
-void	ft_set_func_args(t_arg **arg_l, t_arg ***func_l);
+void	ft_set_func_args(t_arg **arg_l, t_arg **func_l);
 void	ft_parse_input_str(char *args_str, t_arg **arg_l);
 char	*ft_return_env(char **envp, char *var);
 int		ft_set_path(t_arg *func_l, char *path, char ***envp);
@@ -60,6 +63,14 @@ void	ft_set_heredoc(t_arg *func_l);
 int		ft_arr_len(char **array);
 char	**ft_char_array_cpy(char **array);
 int		ft_correct_number(char *number);
+int		ft_is_valid_dollar(char *content);
+char	*ft_find_path(void *content, char *path);
+void	ft_check_eof(char *args_str, char **env_array);
+int		ft_check_syntax_errors(t_arg *func_l);
+void	ft_read_history(int history_fd);
+void	ft_write_history(int history_fd, char *line, int argc, char **argv);
+void	ft_free_argl_func_l_argstr(t_arg **arg_l,
+			t_arg **func_l, char *args_str);
 
 void	nothing(int signal);
 void	sig_int_par(int signal);

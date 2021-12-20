@@ -6,36 +6,43 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 18:06:59 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/19 13:50:37 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/19 18:13:57 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	ft_env(char **argc, char ***env_array)
+static void	ft_arr_sort(char ***arr_copy)
 {
-	int		i;
-	int		j;
-	char	**arr_copy;
 	char	*tmp;
+	int		j;
+	int		i;
 
 	i = -1;
-	arr_copy = ft_char_array_cpy(*env_array);
-	while (arr_copy[++i])
+	while ((*arr_copy)[++i])
 	{
 		j = i - 1;
-		while (arr_copy[++j])
+		while ((*arr_copy)[++j])
 		{
-			if (ft_strncmp(arr_copy[i], arr_copy[j],
-					ft_strlen(arr_copy[i])) > 0)
+			if (ft_strncmp((*arr_copy)[i], (*arr_copy)[j],
+			ft_strlen((*arr_copy)[i])) > 0)
 			{
-				tmp = arr_copy[i];
-				arr_copy[i] = arr_copy[j];
-				arr_copy[j] = tmp;
+				tmp = (*arr_copy)[i];
+				(*arr_copy)[i] = (*arr_copy)[j];
+				(*arr_copy)[j] = tmp;
 			}
 		}
 	}
+}
+
+void	ft_env(char **argc, char ***env_array)
+{
+	int		i;
+	char	**arr_copy;
+
+	arr_copy = ft_char_array_cpy(*env_array);
 	i = -1;
+	ft_arr_sort(&arr_copy);
 	(void)argc;
 	while (arr_copy[++i])
 	{
