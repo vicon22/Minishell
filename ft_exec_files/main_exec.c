@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 12:55:33 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/21 15:06:38 by kmercy           ###   ########.fr       */
+/*   Updated: 2021/12/21 15:32:31 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	ft_every_pipe(t_arg	*needful, int	*in_out, char ***envp)
 	if (!ft_strncmp(needful->content, "|", 2) && !needful->next)
 		ft_add_command_after_pipe(in_out, needful, envp);
 	args = ft_redirect_in_command(needful, envp);
-	args = ft_binding_args(args, ft_redirect_in_file(needful, envp), 0);
+	args = ft_binding_args(args, ft_redirect_in_file(needful, envp), 1);
 	command = ft_find_command(needful, envp);
 	if (!ft_is_a_command(command))
 	{
@@ -100,7 +100,8 @@ void	ft_every_pipe(t_arg	*needful, int	*in_out, char ***envp)
 		{
 			ft_return(command->path, args, envp);
 			dup2(in_out[1], 1);
-			dup2(in_out[0], 0);
+			if (ft_find_redirect(ft_find_pipe(needful->next)))
+				dup2(in_out[0], 0);
 		}
 		else if (!ft_find_pipe_int(needful->next)
 			&& ft_find_output_int(needful))
