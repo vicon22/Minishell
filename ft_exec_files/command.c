@@ -32,7 +32,7 @@ int	ft_is_a_command(t_arg *lst)
 {
 	if (!lst)
 		return (1);
-	if (!lst->path)
+	if (!lst->path && !ft_is_built_int(lst->content))
 	{
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(lst->content, 2);

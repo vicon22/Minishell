@@ -6,7 +6,7 @@
 /*   By: kmercy <kmercy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 14:07:08 by kmercy            #+#    #+#             */
-/*   Updated: 2021/12/20 14:42:10 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/21 13:03:51 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,31 +88,31 @@ void	ft_set_funcs_structure(t_arg *arg_l, t_arg **func)
 	}
 }
 
-void	ft_parse_input_str(char *args_str, t_arg **arg_l)
+void	ft_parse_input_str(char *arg_str, t_arg **arg_l)
 {
 	char	*arg;
 
-	while (*args_str)
+	while (*arg_str)
 	{
-		while (ft_is_space(*args_str))
-			args_str++;
-		arg = NULL;
-		if ((*args_str == '\''
-				|| *args_str == '\"') && ft_closed_quote(args_str))
-			args_str += ft_pull(args_str, &arg, ft_closed_quote(args_str));
-		else if (*args_str == '>' || *args_str == '<')
+		while (ft_is_space(*arg_str))
+			arg_str++;
+		if ((*arg_str == '\'' || *arg_str == '\"') && ft_closed_quote(arg_str))
+			arg_str += ft_pull(arg_str, &arg, ft_closed_quote(arg_str));
+		else if (*arg_str == '>' || *arg_str == '<')
 		{
-			if (*(args_str + 1) == *args_str)
-				args_str += ft_pull(args_str, &arg, 2);
+			if (*(arg_str + 1) == *arg_str)
+				arg_str += ft_pull(arg_str, &arg, 2);
 			else
-				args_str += ft_pull(args_str, &arg, 1);
+				arg_str += ft_pull(arg_str, &arg, 1);
 		}
-		else if ((*args_str == '\'' || *args_str == '\"'))
-			args_str += ft_pull(args_str, &arg, ft_next_space_pipe(args_str));
-		else if (*args_str == '|')
-			args_str += ft_pull(args_str, &arg, 1);
+		else if ((*arg_str == '\'' || *arg_str == '\"'))
+			arg_str += ft_pull(arg_str, &arg, ft_next_space_pipe(arg_str));
+		else if (*arg_str == '|')
+			arg_str += ft_pull(arg_str, &arg, 1);
 		else
-			args_str += ft_pull(args_str, &arg, ft_next_other(args_str));
+			arg_str += ft_pull(arg_str, &arg, ft_next_other(arg_str));
+		while (ft_is_space(*arg_str))
+			arg_str++;
 		ft_lst2add_back(arg_l, ft_lst2_new(arg));
 	}
 }
@@ -145,5 +145,3 @@ int	main(int argc, char **argv, char **envp)
 		ft_free_argl_func_l_argstr(&arg_l, &func_l, args_str);
 	}
 }
-//ft_show_lst(func_l);
-//		ft_show_lst(arg_l);

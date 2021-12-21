@@ -79,8 +79,8 @@ char	*get_next_line_read(char *line, char *buffer, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[BUFFER_SIZE *
-	((BUFFER_SIZE > 0) - (BUFFER_SIZE < 0)) + 1];
+	static char	buffer[BUFFER_SIZE
+		*((BUFFER_SIZE > 0) - (BUFFER_SIZE < 0)) + 1];
 	char		*line;
 
 	if (BUFFER_SIZE <= 0 || fd < 0)
