@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 12:55:33 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/20 15:46:41 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/21 15:06:38 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,11 @@ void	ft_every_pipe(t_arg	*needful, int	*in_out, char ***envp)
 		{
 			ft_return(command->path, args, envp);
 			dup2(in_out[1], 1);
+			dup2(in_out[0], 0);
 		}
 		else if (!ft_find_pipe_int(needful->next)
 			&& ft_find_output_int(needful))
-		{
 			ft_pipe(command->path, args, envp);
-		}
 		if (ft_array_cpm(args, command->args))
 			ft_free(args);
 	}

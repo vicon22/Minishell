@@ -44,21 +44,24 @@ char	*ft_find_path(void *content, char *path)
 	int		i;
 
 	i = 0;
-	paths = ft_split(path, ':');
-	while (paths[i])
+	if (path)
 	{
-		paths[i] = ft_strjoin2(&paths[i], "/");
-		path_result = ft_strjoin(paths[i], (char *) content);
-		if (access(path_result, F_OK) == 0)
+		paths = ft_split(path, ':');
+		while (paths[i])
 		{
-			free_all(paths);
-			return (path_result);
+			paths[i] = ft_strjoin2(&paths[i], "/");
+			path_result = ft_strjoin(paths[i], (char *) content);
+			if (access(path_result, F_OK) == 0)
+			{
+				free_all(paths);
+				return (path_result);
+			}
+			else
+				free(path_result);
+			i++;
 		}
-		else
-			free(path_result);
-		i++;
+		free_all(paths);
 	}
-	free_all(paths);
 	return (NULL);
 }
 

@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 17:42:00 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/19 17:37:21 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/21 15:09:38 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,19 @@
 t_arg	*ft_find_redirect(t_arg *lst)
 {
 	t_arg	*redirect;
+	int		i;
 
 	redirect = lst;
+	i = 0;
 	while (redirect && ft_strncmp(redirect->content, "<<", 3)
 		&& ft_strncmp(redirect->content, "<", 2))
 	{
-		if (!ft_strncmp(redirect->content, "|", 2))
+		if (!ft_strncmp(redirect->content, "|", 2) && i != 0)
 		{
 			redirect = NULL;
 			break ;
 		}
+		i++;
 		redirect = redirect->next;
 	}
 	return (redirect);
@@ -41,8 +44,6 @@ void	ft_redirect(t_arg *redirect, char *file, char **envp)
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(file, 2);
 		ft_putstr_fd(": No such file or directory\n", 2);
-		close(1);
-		close(2);
 		return ;
 	}
 	else
