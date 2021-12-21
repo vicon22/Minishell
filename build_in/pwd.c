@@ -6,7 +6,7 @@
 /*   By: eveiled <eveiled@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 14:17:59 by eveiled           #+#    #+#             */
-/*   Updated: 2021/12/19 14:18:57 by eveiled          ###   ########.fr       */
+/*   Updated: 2021/12/21 13:53:11 by kmercy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ void	ft_set_oldpwd(char *old_pwd, char ***envp)
 		{
 			tmp = (*envp)[i];
 			(*envp)[i] = ft_strjoin("OLDPWD=", old_pwd);
-			free(old_pwd);
-			free(tmp);
 		}
 	}
+	if (old_pwd)
+		free(old_pwd);
+	if (tmp)
+		free(tmp);
 }
 
 void	ft_set_pwd(char ***envp)
