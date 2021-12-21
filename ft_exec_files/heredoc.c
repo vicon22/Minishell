@@ -30,7 +30,7 @@ void	ft_child_logic(int *pip, char *stop, char **envp)
 
 	ft_sig_child_heredoc();
 	args_str = readline("> ");
-	while (ft_strncmp(args_str, stop, ft_strlen(stop)))
+	while (ft_strncmp(args_str, stop, ft_strlen(stop) + 1))
 	{
 		while (ft_strchr(args_str, '\"')
 			&& ft_closed_quote(ft_strchr(args_str, '\"'))
